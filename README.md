@@ -7,6 +7,8 @@
 
 ✅ Setting some directory location.
 
+✅ Remove unneccesary code.
+
 etc...
 
 ## 🦮 Getting Started
