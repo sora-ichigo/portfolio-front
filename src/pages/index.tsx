@@ -1,8 +1,8 @@
 import { NextPage } from "next";
-import { World } from "../hello/world";
+import { Header } from "../header/components/Header";
 
 const Home: NextPage = () => {
-  return <World />;
+  return <Header />;
 };
 
 export default Home;
