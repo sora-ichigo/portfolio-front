@@ -39,11 +39,11 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <link
-            href="https://fonts.googleapis.com/css2?family=Lato&family=M+PLUS+1p&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Lato|Lato:300,400,500,700&family=M+PLUS+1p&display=swap"
             rel="stylesheet"
           ></link>
         </Head>
-        <body>
+        <body className="font-main text-navy font-light">
           <Main />
           <NextScript />
         </body>
