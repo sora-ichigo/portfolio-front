@@ -6,6 +6,9 @@ module.exports = {
         main: ["Lato", "sans-serif"], // サイト全体の基本フォント
         tabTitle: ["Arial", "Helvetica", "sans-serif"], // タブ文字
       },
+      fontSize: {
+        "4/5xl": "2.7rem",
+      },
       colors: {
         navy: "#334455", // 基本のテキストカラー
         grey: {
@@ -19,7 +22,10 @@ module.exports = {
           DEFAULT: "#5BCF80",
           link: "#009966", // a タグに使う
         },
-        yellow: "#F8CB30",
+        yellow: {
+          DEFAULT: "#F8CB30",
+          marker: "#FAF46A",
+        },
         blue: {
           DEFAULT: "#74BADE",
           light: "#E4F1F6",
