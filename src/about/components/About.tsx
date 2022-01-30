@@ -1,6 +1,40 @@
 import React from "react";
 import { GlobalHeading } from "../../common/components/GlobalHeading";
-import { FaUserAlt, FaTwitter } from "react-icons/fa";
+import { FaUserAlt, FaTwitter, FaMagic } from "react-icons/fa";
+import { IconColorType, ServiceListItem } from "./ServiceListItem";
+import { IconType } from "react-icons";
+
+const ServicesDataList: {
+  icon: IconType;
+  color: IconColorType;
+  title: string;
+  text: string;
+}[] = [
+  {
+    icon: FaMagic,
+    color: "yellow",
+    title: "web design",
+    text: "I design super cool websites. It is a long established fact that a reader will be distracted by the readable content.",
+  },
+  {
+    icon: FaMagic,
+    color: "blue",
+    title: "type design",
+    text: "I design super cool websites. It is a long established fact that a reader will be distracted by the readable content.",
+  },
+  {
+    icon: FaMagic,
+    color: "green",
+    title: "web design",
+    text: "I design super cool websites. It is a long established fact that a reader will be distracted by the readable content.",
+  },
+  {
+    icon: FaMagic,
+    color: "red",
+    title: "web design",
+    text: "I design super cool websites. It is a long established fact that a reader will be distracted by the readable content.",
+  },
+];
 
 export const About: React.FC = () => {
   return (
@@ -8,11 +42,9 @@ export const About: React.FC = () => {
       {/* ------------------------- 
           A LITTLE ABOUT ME 
           ------------------------- */}
-      <div className="px-4 pb-4">
-        <div className="mt-3">
-          <GlobalHeading text="A LITTLE ABOUT ME" icon={FaUserAlt} />
-        </div>
-        <h3 className="mt-6 mb-4 text-2xl font-light leading-snug md:mt-8 md:mb-5 md:text-3-4xl">
+      <div className="mt-3">
+        <GlobalHeading text="A LITTLE ABOUT ME" icon={FaUserAlt} />
+        <h3 className="mt-6 text-2xl font-light leading-snug md:mt-8 md:mb-5 md:text-3-4xl">
           Hello. I am <span className="font-bold">a writer</span>. <br />I live
           in a small town somewhere in the world. <br /> I am passionated about{" "}
           <span className="font-bold">minimalistic</span> and flat design.
@@ -22,7 +54,7 @@ export const About: React.FC = () => {
       {/* ------------------------- 
           LATEST TWEETS
           ------------------------- */}
-      <div className="px-4 pb-4">
+      <div className="mt-9">
         <div className="mt-3 mb-6">
           <GlobalHeading text="LATEST TWEETS" icon={FaTwitter} />
         </div>
@@ -39,6 +71,26 @@ export const About: React.FC = () => {
         >
           POSTED ON JAN 23, 2021
         </p>
+      </div>
+
+      {/* ------------------------- 
+          SERVICES
+          ------------------------- */}
+      <div className="mt-9">
+        <div className="mt-9 mb-3">
+          <GlobalHeading text="SERVICES" icon={FaMagic} />
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {ServicesDataList.map((v, i) => (
+            <ServiceListItem
+              key={i}
+              icon={v.icon}
+              color={v.color}
+              title={v.title}
+              text={v.text}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
