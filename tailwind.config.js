@@ -7,7 +7,8 @@ module.exports = {
         tabTitle: ["Arial", "Helvetica", "sans-serif"], // タブ文字
       },
       fontSize: {
-        "4/5xl": "2.7rem",
+        "3-4xl": "2.0rem",
+        "4-5xl": "2.7rem",
       },
       colors: {
         navy: "#334455", // 基本のテキストカラー

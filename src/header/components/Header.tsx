@@ -16,14 +16,12 @@ export const Header: React.FC = () => {
       <p className="mb-2 inline-block rounded  bg-yellow-marker px-2.5 py-1.5 italic leading-none">
         software engineer
       </p>
-      <ul className="mx-auto flex h-24 max-w-5xl items-center">
-        <li className="w-2/6 cursor-pointer font-tabTitle font-bold text-grey-4 sm:text-xl md:text-4/5xl">
+      <ul className="mx-auto flex h-24 max-w-5xl items-center text-xl sm:text-3xl md:text-4xl lg:text-4-5xl ">
+        <li className="w-2/6 cursor-pointer font-tabTitle font-bold text-grey-4">
           about me
         </li>
-        <li className="w-2/6 font-tabTitle font-bold sm:text-xl md:text-4/5xl">
-          portfolio
-        </li>
-        <li className="w-2/6 cursor-pointer font-tabTitle font-bold text-grey-4 sm:text-xl  md:text-4/5xl">
+        <li className="w-2/6 font-tabTitle font-bold">portfolio</li>
+        <li className="w-2/6 cursor-pointer font-tabTitle font-bold text-grey-4">
           contact
         </li>
         <li className="hidden">resume</li>
