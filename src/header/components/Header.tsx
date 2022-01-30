@@ -5,7 +5,7 @@ import { useMediaQuery } from "react-responsive";
 export const Header: React.FC = () => {
   const isWindowMd = useMediaQuery({ query: "(min-width: 768px)" });
   return (
-    <header className="text-center sm:px-4 sm:pt-6 sm:pb-1 md:p-8">
+    <header className="pt-6 text-center sm:px-4 sm:pb-1 md:p-8">
       <Image
         src="/profile_icon.png"
         width={isWindowMd ? 160 : 140}
