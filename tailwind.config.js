@@ -7,6 +7,7 @@ module.exports = {
         tabTitle: ["Arial", "Helvetica", "sans-serif"], // タブ文字
       },
       fontSize: {
+        "ex-sm": "0.9rem", // 14px
         "3-4xl": "2.0rem",
         "4-5xl": "2.7rem",
       },
