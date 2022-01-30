@@ -1,57 +1,74 @@
 import React from "react";
-import { GlobalHeading } from "../../common/components/GlobalHeading";
-import { FaUserAlt, FaTwitter, FaMagic } from "react-icons/fa";
-import { IconColorType, ServiceListItem } from "./ServiceListItem";
-import { IconType } from "react-icons";
+import {
+  FaUserAlt,
+  FaTwitter,
+  FaMagic,
+  FaBurn,
+  FaInstagram,
+  FaRegLightbulb,
+  FaPeopleArrows,
+  FaHtml5,
+} from "react-icons/fa";
+import { RiMotorbikeFill } from "react-icons/ri";
+import { FiType } from "react-icons/fi";
+import { SiWebflow } from "react-icons/si";
+import { MdDesignServices } from "react-icons/md";
 
-const ServicesDataList: {
-  icon: IconType;
-  color: IconColorType;
-  title: string;
-  text: string;
-}[] = [
+import { ServiceListItemType, ServiceListItem } from "./ServiceListItem";
+import { FunFactListItem, FunFactListItemType } from "./FunFactListItem";
+import { GlobalHeading } from "../../common/components/GlobalHeading";
+
+const ServicesDataList: ServiceListItemType[] = [
   {
-    icon: FaMagic,
+    icon: FaHtml5,
     color: "yellow",
     title: "web design",
     text: "I design super cool websites. It is a long established fact that a reader will be distracted by the readable content.",
   },
   {
-    icon: FaMagic,
+    icon: FiType,
     color: "blue",
     title: "type design",
     text: "I design super cool websites. It is a long established fact that a reader will be distracted by the readable content.",
   },
   {
-    icon: FaMagic,
+    icon: SiWebflow,
     color: "green",
     title: "web design",
     text: "I design super cool websites. It is a long established fact that a reader will be distracted by the readable content.",
   },
   {
-    icon: FaMagic,
+    icon: MdDesignServices,
     color: "red",
     title: "web design",
     text: "I design super cool websites. It is a long established fact that a reader will be distracted by the readable content.",
   },
 ];
 
+const FunFactDataList: FunFactListItemType[] = [
+  { icon: FaInstagram, text: "24000 SHOT CAPTURED" },
+  { icon: FaRegLightbulb, text: "37 PROJECTS COMPLETED" },
+  { icon: FaPeopleArrows, text: "87 SATISFIED CUSTOMERS" },
+  { icon: RiMotorbikeFill, text: "1450 KM CYCLED" },
+];
+
 export const About: React.FC = () => {
   return (
     <div className="mx-auto w-11/12 py-4 md:w-5/6">
-      {/* ------------------------- 
-          A LITTLE ABOUT ME 
+      {/* -------------------------
+          A LITTLE ABOUT ME
           ------------------------- */}
       <div className="mt-3">
         <GlobalHeading text="A LITTLE ABOUT ME" icon={FaUserAlt} />
         <h3 className="mt-6 text-2xl font-light leading-snug md:mt-8 md:mb-5 md:text-3-4xl">
-          Hello. I am <span className="font-bold">a writer</span>. <br />I live
-          in a small town somewhere in the world. <br /> I am passionated about{" "}
+          Hello.I am <span className="font-bold">a writer</span>.<br />I live in
+          a small town somewhere in the world.
+          <br /> I am passionated about{" "}
           <span className="font-bold">minimalistic</span> and flat design.
         </h3>
       </div>
 
-      {/* ------------------------- 
+      {/* -------------------------
           LATEST TWEETS
           ------------------------- */}
       <div className="mt-9">
@@ -59,7 +76,8 @@ export const About: React.FC = () => {
           <GlobalHeading text="LATEST TWEETS" icon={FaTwitter} />
         </div>
         <p className="mb-1 rounded bg-blue-light px-8 py-5 text-ex-sm leading-relaxed text-grey-3">
-          Hi, we have just released a new WordPress theme for Podcasters. <br />
+          Hi, we have just released a new WordPress theme for Podcasters.
+          <br />
           <a href="#">https://twitter.com/hashtag/wordpress?src=hash</a>{" "}
           <a href="#">#wordpress</a> <a href="#">#podcast</a>
           <a href="#">#audio</a> <a href="#">#podcaster</a>{" "}
@@ -73,11 +91,11 @@ export const About: React.FC = () => {
         </p>
       </div>
 
-      {/* ------------------------- 
+      {/* -------------------------
           SERVICES
           ------------------------- */}
       <div className="mt-9">
-        <div className="mt-9 mb-3">
+        <div className="mb-3">
           <GlobalHeading text="SERVICES" icon={FaMagic} />
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -89,6 +107,20 @@ export const About: React.FC = () => {
               title={v.title}
               text={v.text}
             />
+          ))}
+        </div>
+      </div>
+
+      {/* -------------------------
+          FUN FACT
+          ------------------------- */}
+      <div className="mt-9">
+        <div className="mb-3">
+          <GlobalHeading text="FUN FACT" icon={FaBurn} />
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {FunFactDataList.map((v, i) => (
+            <FunFactListItem key={i} icon={v.icon} text={v.text} />
           ))}
         </div>
       </div>

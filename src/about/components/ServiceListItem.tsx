@@ -1,7 +1,7 @@
 import React from "react";
 import { IconType } from "react-icons";
 
-type Props = {
+export type ServiceListItemType = {
   icon: IconType;
   color: IconColorType;
   title: string;
@@ -10,7 +10,7 @@ type Props = {
 
 export type IconColorType = "red" | "blue" | "green" | "yellow";
 
-export const ServiceListItem: React.FC<Props> = ({
+export const ServiceListItem: React.FC<ServiceListItemType> = ({
   icon,
   color,
   title,
@@ -54,7 +54,7 @@ export const ServiceListItem: React.FC<Props> = ({
         {title}
       </h3>
       <p
-        className="mx-auto mt-2 mb-5 w-5/6 text-grey md:w-full"
+        className="mx-auto mt-2 mb-5 w-5/6 text-grey lg:w-11/12"
         style={{ fontSize: "15px" }}
       >
         {text}
