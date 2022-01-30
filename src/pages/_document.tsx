@@ -43,7 +43,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           ></link>
         </Head>
-        <body className="font-main text-navy font-light">
+        <body className="font-main font-light text-navy">
           <Main />
           <NextScript />
         </body>
