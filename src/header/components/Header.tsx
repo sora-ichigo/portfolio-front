@@ -18,13 +18,13 @@ export const Header: React.FC = () => {
       </p>
       <ul className="mx-auto flex h-24 max-w-5xl items-center text-xl sm:text-3xl md:text-4xl lg:text-4-5xl ">
         <li className="w-2/6 cursor-pointer font-tabTitle font-bold text-grey-4">
-          about me
-        </li>
-        <li className="w-2/6 font-tabTitle font-bold">portfolio</li>
-        <li className="w-2/6 cursor-pointer font-tabTitle font-bold text-grey-4">
           contact
         </li>
-        <li className="hidden">resume</li>
+        <li className="w-2/6 font-tabTitle font-bold">about me</li>
+        <li className="w-2/6 cursor-pointer font-tabTitle font-bold text-grey-4">
+          resume
+        </li>
+        <li className="hidden">portfolio</li>
       </ul>
     </header>
   );
