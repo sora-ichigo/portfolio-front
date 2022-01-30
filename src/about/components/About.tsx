@@ -22,6 +22,7 @@ import { WtdIcon } from "../../common/components/WtdIcon";
 import { ServiceListItemType, ServiceListItem } from "./ServiceListItem";
 import { FunFactListItem, FunFactListItemType } from "./FunFactListItem";
 import { GlobalHeading } from "../../common/components/GlobalHeading";
+import { Container } from "../../common/components/Container";
 
 const ServicesDataList: ServiceListItemType[] = [
   {
@@ -90,7 +91,7 @@ const SNSAccountDataList: SNSAccountDataType[] = [
 ];
 
 export const About: React.FC = () => (
-  <div className="mx-auto w-11/12 py-4 md:w-5/6">
+  <Container>
     <div className="lg:grid lg:grid-cols-3 lg:gap-8">
       {/* -------------------------
         A LITTLE ABOUT ME
@@ -180,5 +181,5 @@ export const About: React.FC = () => (
         ))}
       </div>
     </div>
-  </div>
+  </Container>
 );
