@@ -142,16 +142,26 @@ export const Resume: React.FC = () => (
         {/* -------------------------
             VIEW MORE ABOUT ME
             ------------------------- */}
-        <div className="my-3">
-          <GlobalHeading icon={GiArmoredBoomerang} text="view more about me" />
-        </div>
-        <p className="mt-4 mb-4">{viewMoreAboutData.text}</p>
-        <div className="flex text-4xl">
-          {viewMoreAboutData.sns.map((v, i) => (
-            <a className="mr-3 text-navy" href={v.url} target="_blunk" key={i}>
-              {React.createElement(v.icon)}
-            </a>
-          ))}
+        <div className="pb-12">
+          <div className="my-3">
+            <GlobalHeading
+              icon={GiArmoredBoomerang}
+              text="view more about me"
+            />
+          </div>
+          <p className="mt-4 mb-4">{viewMoreAboutData.text}</p>
+          <div className="flex text-4xl">
+            {viewMoreAboutData.sns.map((v, i) => (
+              <a
+                className="mr-3 text-navy"
+                href={v.url}
+                target="_blunk"
+                key={i}
+              >
+                {React.createElement(v.icon)}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </div>
