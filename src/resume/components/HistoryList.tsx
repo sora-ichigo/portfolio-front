@@ -7,7 +7,7 @@ import { HistoryListItem, HistoryListItemType } from "./HistoryListItem";
 export const HistoryList: React.FC<{
   historyListProps: HistoryListItemType[];
 }> = ({ historyListProps }) => (
-  <div className="relative pl-20 pb-2 sm:ml-4 md:ml-0">
+  <div className="relative mt-5 pl-20 pb-2 sm:ml-4 md:ml-0">
     <HistoryLine />
     <h2 className="relative mb-9 text-2xl font-light tracking-widest">
       <WorkHistoryIcon>
