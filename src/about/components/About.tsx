@@ -22,8 +22,9 @@ import { WtdIcon } from "../../common/components/WtdIcon";
 import { ServiceListItemType, ServiceListItem } from "./ServiceListItem";
 import { FunFactListItem, FunFactListItemType } from "./FunFactListItem";
 import { GlobalHeading } from "../../common/components/GlobalHeading";
+import { Container } from "../../common/components/Container";
 
-const ServicesDataList: ServiceListItemType[] = [
+const servicesData: ServiceListItemType[] = [
   {
     icon: FaHtml5,
     color: "yellow",
@@ -50,19 +51,19 @@ const ServicesDataList: ServiceListItemType[] = [
   },
 ];
 
-const FunFactDataList: FunFactListItemType[] = [
+const funFactData: FunFactListItemType[] = [
   { icon: FaInstagram, text: "24000 SHOT CAPTURED" },
   { icon: FaRegLightbulb, text: "37 PROJECTS COMPLETED" },
   { icon: FaPeopleArrows, text: "87 SATISFIED CUSTOMERS" },
   { icon: RiMotorbikeFill, text: "1450 KM CYCLED" },
 ];
 
-type SNSAccountDataType = {
+export type SNSAccountDataType = {
   url: string;
   icon: IconType | React.FC;
 };
 
-const SNSAccountDataList: SNSAccountDataType[] = [
+const snsAccountData: SNSAccountDataType[] = [
   {
     url: "https://www.instagram.com/sora_ick12/",
     icon: FaInstagram,
@@ -90,7 +91,7 @@ const SNSAccountDataList: SNSAccountDataType[] = [
 ];
 
 export const About: React.FC = () => (
-  <div className="mx-auto w-11/12 py-4 md:w-5/6">
+  <Container>
     <div className="lg:grid lg:grid-cols-3 lg:gap-8">
       {/* -------------------------
         A LITTLE ABOUT ME
@@ -137,7 +138,7 @@ export const About: React.FC = () => (
         <GlobalHeading text="SERVICES" icon={FaMagic} />
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {ServicesDataList.map((v, i) => (
+        {servicesData.map((v, i) => (
           <ServiceListItem
             key={i}
             icon={v.icon}
@@ -157,7 +158,7 @@ export const About: React.FC = () => (
         <GlobalHeading text="FUN FACT" icon={FaBurn} />
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {FunFactDataList.map((v, i) => (
+        {funFactData.map((v, i) => (
           <FunFactListItem key={i} icon={v.icon} text={v.text} />
         ))}
       </div>
@@ -171,7 +172,7 @@ export const About: React.FC = () => (
         <GlobalHeading text="SNS ACCOUNT" icon={IoShareSocialSharp} />
       </div>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-        {SNSAccountDataList.map((v, i) => (
+        {snsAccountData.map((v, i) => (
           <div key={i} className="mx-auto pt-6 pb-12 text-7xl">
             <a className="text-navy" href={v.url} target="_blunk">
               {React.createElement(v.icon)}
@@ -180,5 +181,5 @@ export const About: React.FC = () => (
         ))}
       </div>
     </div>
-  </div>
+  </Container>
 );
