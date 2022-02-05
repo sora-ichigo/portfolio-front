@@ -5,6 +5,7 @@ module.exports = {
       fontFamily: {
         main: ["Lato", "sans-serif"], // サイト全体の基本フォント
         tabTitle: ["Arial", "Helvetica", "sans-serif"], // タブ文字
+        history: ["Oswald", "sans-serif"],
       },
       fontSize: {
         "ex-sm": "0.9rem", // 14px
@@ -33,6 +34,9 @@ module.exports = {
           light: "#E4F1F6",
         },
         red: "#E25E5B",
+      },
+      borderWidth: {
+        3: "3px",
       },
     },
   },
