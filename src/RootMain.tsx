@@ -3,7 +3,6 @@ import { About } from "./about/components/About";
 import {
   GetPageNameFromPageType,
   MainPageType,
-  MAIN_PAGES,
 } from "./common/utils/mainPages";
 import { Header } from "./header/components/Header";
 import { Resume } from "./resume/components/Resume";
