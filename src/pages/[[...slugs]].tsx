@@ -1,15 +1,15 @@
 import { GetServerSideProps, NextPage } from "next";
 import { RootMain } from "../RootMain";
-import { MAIN_PAGES, MAIN_PAGES_TYPE } from "../common/utils/pages";
+import { MAIN_PAGES, MainPageType } from "../common/utils/mainPages";
 
-const Home: NextPage = () => {
-  return <RootMain />;
+const Home: NextPage<{ pageType: MainPageType }> = ({ pageType }) => {
+  return <RootMain pageType={pageType} />;
 };
 
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  let pageType: MAIN_PAGES_TYPE = 0;
+  let pageType: MainPageType = 0;
 
   switch (ctx.req.url) {
     case "/":
