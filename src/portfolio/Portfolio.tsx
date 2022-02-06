@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
+import FlipMove from "react-flip-move";
 import { FaLeaf } from "react-icons/fa";
 
 import { GlobalCenterHeading } from "../common/components/GlobalCenterHeading";
@@ -53,14 +54,14 @@ const mediaData: MediaItemType[] = [
   {
     id: 0,
     title: "personal cv project",
-    categoryID: CATEGORY["CODING"],
+    categoryID: CATEGORY["DESIGN"],
     imgUrl:
       "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
   },
   {
     id: 1,
     title: "personal cv project",
-    categoryID: CATEGORY["DESIGN"],
+    categoryID: CATEGORY["CODING"],
     imgUrl:
       "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
   },
@@ -116,6 +117,7 @@ export const Portfolio: React.FC = () => {
     });
   }, [currentCategory]);
 
+  console.log(visibleMediaData);
   return (
     <>
       <div className="my-3">
@@ -130,7 +132,7 @@ export const Portfolio: React.FC = () => {
         </ul>
       </div>
 
-      <div className="mb-8 grid grid-cols-1 gap-10 gap-y-10 px-2 sm:grid-cols-2 lg:grid-cols-3">
+      <FlipMove className="mb-8 grid grid-cols-1 gap-10 gap-y-10 px-2 sm:grid-cols-2 lg:grid-cols-3">
         {visibleMediaData.map((v) => (
           <MediaItem
             key={v.id}
@@ -140,26 +142,26 @@ export const Portfolio: React.FC = () => {
             imgUrl={v.imgUrl}
           />
         ))}
-      </div>
+      </FlipMove>
     </>
   );
 };
 
-const MediaItem: React.FC<MediaItemType> = ({
-  id,
-  title,
-  categoryID,
-  imgUrl,
-}) => (
-  <div className="mx-auto rounded border border-grey-4">
-    <a href={`#?${id}`}>
-      <img src={imgUrl} alt={title} />
-    </a>
-    <div className="px-10 py-7 text-center">
-      <h3 className="text-sm font-bold uppercase tracking-wider">{title}</h3>
-      <p className="uppercase text-grey-2" style={{ fontSize: "13px" }}>
-        {GetCategoryName(categoryID)}
-      </p>
+const MediaItem: React.FC<MediaItemType> = forwardRef(function renderMediaItem(
+  { id, title, categoryID, imgUrl },
+  ref
+) {
+  return (
+    <div className="mx-auto rounded border border-grey-4" ref={ref}>
+      <a href={`#?${id}`}>
+        <img src={imgUrl} alt={title} />
+      </a>
+      <div className="px-10 py-7 text-center">
+        <h3 className="text-sm font-bold uppercase tracking-wider">{title}</h3>
+        <p className="uppercase text-grey-2" style={{ fontSize: "13px" }}>
+          {GetCategoryName(categoryID)}
+        </p>
+      </div>
     </div>
-  </div>
-);
+  );
+});
