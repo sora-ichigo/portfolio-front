@@ -42,6 +42,44 @@ const GetCategoryName = (categoryID: CategoryType): string => {
   return categoryName;
 };
 
+type MediaItemType = {
+  id: number;
+  title: string;
+  categoryID: CategoryType;
+  imgUrl: string;
+};
+
+const mediaData: MediaItemType[] = [
+  {
+    id: 0,
+    title: "personal cv project",
+    categoryID: CATEGORY["CODING"],
+    imgUrl:
+      "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
+  },
+  {
+    id: 1,
+    title: "personal cv project",
+    categoryID: CATEGORY["CODING"],
+    imgUrl:
+      "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
+  },
+  {
+    id: 2,
+    title: "personal cv project",
+    categoryID: CATEGORY["CODING"],
+    imgUrl:
+      "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
+  },
+  {
+    id: 3,
+    title: "personal cv project",
+    categoryID: CATEGORY["CODING"],
+    imgUrl:
+      "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
+  },
+];
+
 export const Portfolio: React.FC = () => {
   const [currentCategory, setCurrentCategory] = useState<CategoryType>(-1);
 
@@ -76,25 +114,28 @@ export const Portfolio: React.FC = () => {
         </ul>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        <MediaItem
-          id={0}
-          title="personal cv project"
-          categoryID={CATEGORY["CODING"]}
-          imgUrl="https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png"
-        />
+      <div className="mb-8 grid grid-cols-1 gap-10 gap-y-10 px-2 sm:grid-cols-2 lg:grid-cols-3">
+        {mediaData.map((v) => (
+          <MediaItem
+            key={v.id}
+            id={v.id}
+            title={v.title}
+            categoryID={v.categoryID}
+            imgUrl={v.imgUrl}
+          />
+        ))}
       </div>
     </>
   );
 };
 
-const MediaItem: React.FC<{
-  id: number;
-  title: string;
-  categoryID: CategoryType;
-  imgUrl: string;
-}> = ({ id, title, categoryID, imgUrl }) => (
-  <div className="mx-auto w-11/12 rounded border border-grey-4">
+const MediaItem: React.FC<MediaItemType> = ({
+  id,
+  title,
+  categoryID,
+  imgUrl,
+}) => (
+  <div className="mx-auto rounded border border-grey-4">
     <a href={`#?${id}`}>
       <img src={imgUrl} alt={title} />
     </a>
