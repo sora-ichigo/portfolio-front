@@ -2,8 +2,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import Modal from "react-modal";
-import { useMediaQuery } from "react-responsive";
+import { MediaItemModal } from "../components/MediaItemModal";
 
 import { GetCategoryName, MediaItemType } from "../components/Portfolio";
 
@@ -53,35 +52,5 @@ export const useRenderMediaItem = (
         onRequestClose={onRequestClose}
       />
     </>
-  );
-};
-
-const MediaItemModal: React.FC<{
-  mediaItem: MediaItemType;
-  selected: boolean;
-  onRequestClose: () => void;
-}> = ({ selected, onRequestClose }) => {
-  const isWindowMd = useMediaQuery({ query: "(min-width: 768px)" });
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      width: isWindowMd ? "80%" : "90%",
-      height: "70%",
-    },
-  };
-
-  return (
-    <Modal
-      isOpen={selected}
-      onRequestClose={() => onRequestClose()}
-      style={customStyles}
-    >
-      <button>the modal</button>
-    </Modal>
   );
 };
