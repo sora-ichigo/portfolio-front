@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaLeaf } from "react-icons/fa";
 
 import { GlobalCenterHeading } from "../common/components/GlobalCenterHeading";
@@ -60,7 +60,7 @@ const mediaData: MediaItemType[] = [
   {
     id: 1,
     title: "personal cv project",
-    categoryID: CATEGORY["CODING"],
+    categoryID: CATEGORY["DESIGN"],
     imgUrl:
       "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
   },
@@ -74,7 +74,7 @@ const mediaData: MediaItemType[] = [
   {
     id: 3,
     title: "personal cv project",
-    categoryID: CATEGORY["CODING"],
+    categoryID: CATEGORY["LOGO"],
     imgUrl:
       "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
   },
@@ -82,6 +82,8 @@ const mediaData: MediaItemType[] = [
 
 export const Portfolio: React.FC = () => {
   const [currentCategory, setCurrentCategory] = useState<CategoryType>(-1);
+  const [visibleMediaData, setVisibleMediaData] =
+    useState<MediaItemType[]>(mediaData);
 
   const CategoryBtn: React.FC<{ text: string; id: CategoryType }> = ({
     text,
@@ -100,6 +102,20 @@ export const Portfolio: React.FC = () => {
     </li>
   );
 
+  // TODO: テスト書く
+  useEffect(() => {
+    setVisibleMediaData((): MediaItemType[] => {
+      if (currentCategory === -1) return mediaData;
+
+      let tmp = mediaData.map((v) => {
+        if (v.categoryID === currentCategory) return v;
+      });
+      const newData = tmp.filter(Boolean);
+
+      return newData as MediaItemType[];
+    });
+  }, [currentCategory]);
+
   return (
     <>
       <div className="my-3">
@@ -115,7 +131,7 @@ export const Portfolio: React.FC = () => {
       </div>
 
       <div className="mb-8 grid grid-cols-1 gap-10 gap-y-10 px-2 sm:grid-cols-2 lg:grid-cols-3">
-        {mediaData.map((v) => (
+        {visibleMediaData.map((v) => (
           <MediaItem
             key={v.id}
             id={v.id}
