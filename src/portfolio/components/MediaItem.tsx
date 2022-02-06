@@ -4,7 +4,8 @@ import React, { forwardRef } from "react";
 import { MediaItemType } from "./Portfolio";
 import { useRenderMediaItem } from "../hooks/useRenderMediaItem";
 
-export const MediaItem: React.FC<MediaItemType> = forwardRef<
-  HTMLDivElement,
-  MediaItemType
->(useRenderMediaItem);
+type Props = { mediaItem: MediaItemType };
+
+export const MediaItem: React.FC<Props> = forwardRef<HTMLDivElement, Props>(
+  useRenderMediaItem
+);

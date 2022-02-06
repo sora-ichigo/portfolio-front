@@ -8,7 +8,7 @@ import { useMediaQuery } from "react-responsive";
 import { GetCategoryName, MediaItemType } from "../components/Portfolio";
 
 export const useRenderMediaItem = (
-  { id, title, categoryID, imgUrl }: MediaItemType,
+  { mediaItem }: { mediaItem: MediaItemType },
   ref: React.LegacyRef<HTMLDivElement> | undefined
 ) => {
   const router = useRouter();
@@ -26,31 +26,36 @@ export const useRenderMediaItem = (
         ref={ref}
         onClick={() => setSelected(true)}
       >
-        <Link href={`/portfolio?item=${id}`} shallow>
+        <Link href={`/portfolio?item=${mediaItem.id}`} shallow>
           <a>
             <img
-              src={imgUrl}
-              alt={title}
+              src={mediaItem.imgUrl}
+              alt={mediaItem.title}
               className="transition hover:opacity-50"
             />
           </a>
         </Link>
         <div className="px-10 py-7 text-center">
           <h3 className="text-sm font-bold uppercase tracking-wider">
-            {title}
+            {mediaItem.title}
           </h3>
           <p className="uppercase text-grey-2" style={{ fontSize: "13px" }}>
-            {GetCategoryName(categoryID)}
+            {GetCategoryName(mediaItem.categoryID)}
           </p>
         </div>
       </div>
 
-      <MediaItemModal selected={selected} onRequestClose={onRequestClose} />
+      <MediaItemModal
+        mediaItem={mediaItem}
+        selected={selected}
+        onRequestClose={onRequestClose}
+      />
     </>
   );
 };
 
 const MediaItemModal: React.FC<{
+  mediaItem: MediaItemType;
   selected: boolean;
   onRequestClose: () => void;
 }> = ({ selected, onRequestClose }) => {

@@ -133,13 +133,7 @@ export const Portfolio: React.FC = () => {
 
       <FlipMove className="mb-8 grid grid-cols-1 gap-10 gap-y-10 px-2 sm:grid-cols-2 lg:grid-cols-3">
         {visibleMediaData.map((v) => (
-          <MediaItem
-            key={v.id}
-            id={v.id}
-            title={v.title}
-            categoryID={v.categoryID}
-            imgUrl={v.imgUrl}
-          />
+          <MediaItem key={v.id} mediaItem={v} />
         ))}
       </FlipMove>
     </>
