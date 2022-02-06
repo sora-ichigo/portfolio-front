@@ -1,11 +1,11 @@
-/* eslint-disable @next/next/no-img-element */
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import FlipMove from "react-flip-move";
 import { FaLeaf } from "react-icons/fa";
 
 import { GlobalCenterHeading } from "../../common/components/GlobalCenterHeading";
+import { MediaItem } from "./MediaItem";
 
-const CATEGORY = {
+export const CATEGORY = {
   CODING: 0,
   DESIGN: 1,
   LOGO: 2,
@@ -32,7 +32,7 @@ const categoryData: { name: string; id: CategoryType }[] = [
 ];
 
 // TODO: テスト書く
-const GetCategoryName = (categoryID: CategoryType): string => {
+export const GetCategoryName = (categoryID: CategoryType): string => {
   let categoryName = "undefined";
   categoryData.find((v) => {
     if (v.id === categoryID) {
@@ -43,7 +43,7 @@ const GetCategoryName = (categoryID: CategoryType): string => {
   return categoryName;
 };
 
-type MediaItemType = {
+export type MediaItemType = {
   id: number;
   title: string;
   categoryID: CategoryType;
@@ -145,22 +145,3 @@ export const Portfolio: React.FC = () => {
     </>
   );
 };
-
-const MediaItem: React.FC<MediaItemType> = forwardRef<
-  HTMLDivElement,
-  MediaItemType
->(function renderMediaItem({ id, title, categoryID, imgUrl }, ref) {
-  return (
-    <div className="mx-auto rounded border border-grey-4" ref={ref}>
-      <a href={`#?${id}`}>
-        <img src={imgUrl} alt={title} className="transition hover:opacity-50" />
-      </a>
-      <div className="px-10 py-7 text-center">
-        <h3 className="text-sm font-bold uppercase tracking-wider">{title}</h3>
-        <p className="uppercase text-grey-2" style={{ fontSize: "13px" }}>
-          {GetCategoryName(categoryID)}
-        </p>
-      </div>
-    </div>
-  );
-});
