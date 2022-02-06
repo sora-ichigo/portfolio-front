@@ -3,7 +3,7 @@ import React, { forwardRef, useEffect, useState } from "react";
 import FlipMove from "react-flip-move";
 import { FaLeaf } from "react-icons/fa";
 
-import { GlobalCenterHeading } from "../common/components/GlobalCenterHeading";
+import { GlobalCenterHeading } from "../../common/components/GlobalCenterHeading";
 
 const CATEGORY = {
   CODING: 0,
