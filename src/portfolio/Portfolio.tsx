@@ -75,7 +75,7 @@ const mediaData: MediaItemType[] = [
   {
     id: 3,
     title: "personal cv project",
-    categoryID: CATEGORY["LOGO"],
+    categoryID: CATEGORY["CODING"],
     imgUrl:
       "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
   },
@@ -117,7 +117,6 @@ export const Portfolio: React.FC = () => {
     });
   }, [currentCategory]);
 
-  console.log(visibleMediaData);
   return (
     <>
       <div className="my-3">
@@ -147,10 +146,10 @@ export const Portfolio: React.FC = () => {
   );
 };
 
-const MediaItem: React.FC<MediaItemType> = forwardRef(function renderMediaItem(
-  { id, title, categoryID, imgUrl },
-  ref
-) {
+const MediaItem: React.FC<MediaItemType> = forwardRef<
+  HTMLDivElement,
+  MediaItemType
+>(function renderMediaItem({ id, title, categoryID, imgUrl }, ref) {
   return (
     <div className="mx-auto rounded border border-grey-4" ref={ref}>
       <a href={`#?${id}`}>
