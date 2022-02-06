@@ -153,7 +153,7 @@ const MediaItem: React.FC<MediaItemType> = forwardRef<
   return (
     <div className="mx-auto rounded border border-grey-4" ref={ref}>
       <a href={`#?${id}`}>
-        <img src={imgUrl} alt={title} />
+        <img src={imgUrl} alt={title} className="transition hover:opacity-50" />
       </a>
       <div className="px-10 py-7 text-center">
         <h3 className="text-sm font-bold uppercase tracking-wider">{title}</h3>
