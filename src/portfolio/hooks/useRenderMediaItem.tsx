@@ -29,7 +29,7 @@ export const useRenderMediaItem = (
         <Link href={`/portfolio?item=${mediaItem.id}`} shallow>
           <a>
             <img
-              src={mediaItem.imgUrl}
+              src={mediaItem.thumbnailUrl}
               alt={mediaItem.title}
               className="transition hover:opacity-50"
             />

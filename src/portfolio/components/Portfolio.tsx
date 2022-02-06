@@ -47,7 +47,7 @@ export type MediaItemType = {
   id: number;
   title: string;
   categoryID: CategoryType;
-  imgUrl: string;
+  thumbnailUrl: string;
 };
 
 const mediaData: MediaItemType[] = [
@@ -55,28 +55,28 @@ const mediaData: MediaItemType[] = [
     id: 0,
     title: "personal cv project",
     categoryID: CATEGORY["DESIGN"],
-    imgUrl:
+    thumbnailUrl:
       "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
   },
   {
     id: 1,
     title: "personal cv project",
     categoryID: CATEGORY["CODING"],
-    imgUrl:
+    thumbnailUrl:
       "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
   },
   {
     id: 2,
     title: "personal cv project",
     categoryID: CATEGORY["CODING"],
-    imgUrl:
+    thumbnailUrl:
       "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
   },
   {
     id: 3,
     title: "personal cv project",
     categoryID: CATEGORY["CODING"],
-    imgUrl:
+    thumbnailUrl:
       "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
   },
 ];
