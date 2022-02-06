@@ -11,7 +11,8 @@ export default Home;
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   let pageType: MainPageType = 0;
 
-  switch (ctx.req.url) {
+  // TODO: テスト書く
+  switch (ctx.req.url?.split("?")[0]) {
     case "/":
       pageType = MAIN_PAGES["ABOUT_ME"];
       break;
