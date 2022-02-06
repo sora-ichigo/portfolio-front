@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import React, { forwardRef } from "react";
 
 import { MediaItemType } from "./Portfolio";

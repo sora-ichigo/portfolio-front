@@ -14,6 +14,8 @@ export const useRenderMediaItem = (
   const router = useRouter();
   const [selected, setSelected] = useState(false);
 
+  // TODO: もし ?item=OO の指定があったらモーダルを表示する
+
   const onRequestClose = () => {
     setSelected(false);
     router.push("/portfolio", undefined, { shallow: true });
