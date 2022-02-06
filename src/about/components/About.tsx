@@ -91,7 +91,7 @@ const snsAccountData: SNSAccountDataType[] = [
 ];
 
 export const About: React.FC = () => (
-  <Container>
+  <>
     <div className="lg:grid lg:grid-cols-3 lg:gap-8">
       {/* -------------------------
         A LITTLE ABOUT ME
@@ -181,5 +181,5 @@ export const About: React.FC = () => (
         ))}
       </div>
     </div>
-  </Container>
+  </>
 );

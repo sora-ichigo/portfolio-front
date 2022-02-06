@@ -1,11 +1,14 @@
 import React from "react";
-import { About } from "./about/components/About";
+
 import {
   GetPageNameFromPageType,
   MainPageType,
 } from "./common/utils/mainPages";
+import { About } from "./about/components/About";
 import { Header } from "./header/components/Header";
+import { Portfolio } from "./portfolio/Portfolio";
 import { Resume } from "./resume/components/Resume";
+import { Container } from "./common/components/Container";
 
 const renderMainContent = (pageType: MainPageType): React.ReactNode => {
   switch (GetPageNameFromPageType(pageType)) {
@@ -14,7 +17,7 @@ const renderMainContent = (pageType: MainPageType): React.ReactNode => {
     case "RESUME":
       return <Resume />;
     case "PORTFOLIO":
-      return <About />;
+      return <Portfolio />;
     case "CONTACT":
       return <About />;
     default:
@@ -27,6 +30,6 @@ export const RootMain: React.FC<{ pageType: MainPageType }> = ({
 }) => (
   <>
     <Header pageType={pageType} />
-    {renderMainContent(pageType)}
+    <Container>{renderMainContent(pageType)}</Container>
   </>
 );
