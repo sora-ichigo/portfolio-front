@@ -27,7 +27,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     default:
       return { notFound: true };
   }
-  console.log(pageType);
 
   return { props: { pageType } };
 };

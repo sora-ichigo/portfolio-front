@@ -110,62 +110,52 @@ const viewMoreAboutData: ViewMoreAboutType = {
 };
 
 export const Resume: React.FC = () => (
-  <Container>
-    <div className="lg:grid lg:grid-cols-2 lg:gap-6">
-      {/* -------------------------
+  <div className="lg:grid lg:grid-cols-2 lg:gap-6">
+    {/* -------------------------
         HISTORY
         ------------------------- */}
-      <HistoryList historyListProps={historyData} />
+    <HistoryList historyListProps={historyData} />
 
-      <div>
-        {/* -------------------------
+    <div>
+      {/* -------------------------
             SKILL
             ------------------------- */}
-        <div className="my-3">
-          <GlobalHeading icon={FaSuperpowers} text="development Skills" />
-        </div>
-        <div className="pb-14 md:pb-10">
-          {skillsData.development.map((v, i) => (
-            <SkillBar name={v.name} level={v.level} key={i} />
-          ))}
-        </div>
+      <div className="my-3">
+        <GlobalHeading icon={FaSuperpowers} text="development Skills" />
+      </div>
+      <div className="pb-14 md:pb-10">
+        {skillsData.development.map((v, i) => (
+          <SkillBar name={v.name} level={v.level} key={i} />
+        ))}
+      </div>
 
-        <div className="my-3">
-          <GlobalHeading icon={AiOutlineAntDesign} text="Desgin Skills" />
-        </div>
-        <div className="pb-10 md:pb-14">
-          {skillsData.design.map((v, i) => (
-            <SkillBar name={v.name} level={v.level} key={i} />
-          ))}
-        </div>
+      <div className="my-3">
+        <GlobalHeading icon={AiOutlineAntDesign} text="Desgin Skills" />
+      </div>
+      <div className="pb-10 md:pb-14">
+        {skillsData.design.map((v, i) => (
+          <SkillBar name={v.name} level={v.level} key={i} />
+        ))}
+      </div>
 
-        {/* -------------------------
+      {/* -------------------------
             VIEW MORE ABOUT ME
             ------------------------- */}
-        <div className="pb-12">
-          <div className="my-3">
-            <GlobalHeading
-              icon={GiArmoredBoomerang}
-              text="view more about me"
-            />
-          </div>
-          <p className="mt-4 mb-4">{viewMoreAboutData.text}</p>
-          <div className="flex text-4xl">
-            {viewMoreAboutData.sns.map((v, i) => (
-              <a
-                className="mr-3 text-navy"
-                href={v.url}
-                target="_blunk"
-                key={i}
-              >
-                {React.createElement(v.icon)}
-              </a>
-            ))}
-          </div>
+      <div className="pb-12">
+        <div className="my-3">
+          <GlobalHeading icon={GiArmoredBoomerang} text="view more about me" />
+        </div>
+        <p className="mt-4 mb-4">{viewMoreAboutData.text}</p>
+        <div className="flex text-4xl">
+          {viewMoreAboutData.sns.map((v, i) => (
+            <a className="mr-3 text-navy" href={v.url} target="_blunk" key={i}>
+              {React.createElement(v.icon)}
+            </a>
+          ))}
         </div>
       </div>
     </div>
-  </Container>
+  </div>
 );
 
 // width is caluculated by params `level`.
