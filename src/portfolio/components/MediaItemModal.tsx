@@ -39,7 +39,7 @@ export const MediaItemModal: React.FC<{
         onClick={onRequestClose}
       />
       <div className="mx-auto w-11/12">
-        <h2 className="pt-4 pb-8 text-2xl font-bold tracking-widest md:text-3-4xl">
+        <h2 className="pt-4 pb-8 text-2xl font-bold tracking-wider md:text-3-4xl">
           {mediaItem.title}
         </h2>
         <div className="lg:grid lg:grid-cols-5 lg:gap-10">
