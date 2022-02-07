@@ -6,7 +6,7 @@ import {
 } from "./common/utils/mainPages";
 import { About } from "./about/components/About";
 import { Header } from "./header/components/Header";
-import { Portfolio } from "./portfolio/Portfolio";
+import { Portfolio } from "./portfolio/components/Portfolio";
 import { Resume } from "./resume/components/Resume";
 import { Container } from "./common/components/Container";
 
