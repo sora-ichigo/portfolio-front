@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
+import { AiFillCloseCircle } from "react-icons/ai";
 import Modal from "react-modal";
 import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
@@ -22,15 +23,21 @@ export const MediaItemModal: React.FC<{
       transform: "translate(-50%, -50%)",
       width: isWindowLg ? "80%" : "90%",
       height: "85%",
+      posision: "relative",
     },
   };
 
   return (
     <Modal
       isOpen={selected}
-      onRequestClose={() => onRequestClose()}
+      onRequestClose={onRequestClose}
       style={customStyles}
     >
+      <AiFillCloseCircle
+        className="absolute hidden bg-white text-7xl text-green md:block"
+        style={{ top: "2%", right: "3%" }}
+        onClick={onRequestClose}
+      />
       <div className="mx-auto w-11/12">
         <h2 className="pt-4 pb-8 text-2xl font-bold tracking-widest md:text-3-4xl">
           {mediaItem.title}
@@ -76,6 +83,21 @@ export const MediaItemModal: React.FC<{
                 <TagItem>Ruby</TagItem>
               </li>
             </ul>
+
+            <div className="py-8">
+              <a
+                href="#"
+                className="inline-block transform rounded border-2 border-grey py-4 px-6 text-xs font-bold
+                 tracking-widest text-grey transition hover:border-white hover:bg-green hover:text-white sm:px-7"
+              >
+                LAUNCH PROJECT
+              </a>
+            </div>
+
+            <AiFillCloseCircle
+              className="block bg-white text-7xl text-green md:hidden"
+              onClick={onRequestClose}
+            />
           </div>
         </div>
       </div>
