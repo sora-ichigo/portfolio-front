@@ -43,11 +43,19 @@ export const GetCategoryName = (categoryID: CategoryType): string => {
   return categoryName;
 };
 
+// 開発スタイル: 0 が個人, 1 がチーム
+type DevStyle = 0 | 1;
+
 export type MediaItemType = {
   id: number;
   title: string;
   categoryID: CategoryType;
   thumbnailUrl: string;
+  imgUrl: string;
+  description: string;
+  devStyle: DevStyle;
+  tags: string[];
+  externalUrl: string;
 };
 
 const mediaData: MediaItemType[] = [
@@ -57,27 +65,55 @@ const mediaData: MediaItemType[] = [
     categoryID: CATEGORY["DESIGN"],
     thumbnailUrl:
       "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
+    imgUrl:
+      "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
+    description:
+      "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using.",
+    devStyle: 0,
+    tags: ["HTML5", "CSS3", "TypeScript", "Ruby"],
+    externalUrl: "https://github.com/igsr5",
   },
   {
     id: 1,
     title: "personal cv project",
-    categoryID: CATEGORY["CODING"],
+    categoryID: CATEGORY["DESIGN"],
     thumbnailUrl:
       "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
+    imgUrl:
+      "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
+    description:
+      "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using.",
+    devStyle: 1,
+    tags: ["HTML5", "CSS3", "TypeScript", "Ruby"],
+    externalUrl: "https://github.com/igsr5",
   },
   {
     id: 2,
     title: "personal cv project",
-    categoryID: CATEGORY["CODING"],
+    categoryID: CATEGORY["DESIGN"],
     thumbnailUrl:
       "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
+    imgUrl:
+      "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
+    description:
+      "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using.",
+    devStyle: 1,
+    tags: ["HTML5", "CSS3", "TypeScript", "Ruby"],
+    externalUrl: "https://github.com/igsr5",
   },
   {
     id: 3,
     title: "personal cv project",
-    categoryID: CATEGORY["CODING"],
+    categoryID: CATEGORY["DESIGN"],
     thumbnailUrl:
       "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
+    imgUrl:
+      "https://themes.pixelwars.org/cvcard-wp/wp-content/uploads/2014/04/single-05.png",
+    description:
+      "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using.",
+    devStyle: 0,
+    tags: ["HTML5", "CSS3", "TypeScript", "Ruby"],
+    externalUrl: "https://github.com/igsr5",
   },
 ];
 

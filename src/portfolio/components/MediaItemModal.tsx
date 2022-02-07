@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
+import styled from "styled-components";
 import { AiFillCloseCircle } from "react-icons/ai";
 import Modal from "react-modal";
 import { useMediaQuery } from "react-responsive";
-import styled from "styled-components";
 
 import { MediaItemType } from "./Portfolio";
 
@@ -34,7 +34,7 @@ export const MediaItemModal: React.FC<{
       style={customStyles}
     >
       <AiFillCloseCircle
-        className="absolute hidden bg-white text-7xl text-green md:block"
+        className="absolute hidden cursor-pointer bg-white text-7xl text-green md:block"
         style={{ top: "2%", right: "3%" }}
         onClick={onRequestClose}
       />
@@ -45,7 +45,7 @@ export const MediaItemModal: React.FC<{
         <div className="lg:grid lg:grid-cols-5 lg:gap-10">
           <div className="col-span-3">
             <div className="mb-4">
-              <img src={mediaItem.thumbnailUrl} alt="" />
+              <img src={mediaItem.imgUrl} alt="" />
             </div>
           </div>
           <div className="col-span-2">
@@ -55,19 +55,16 @@ export const MediaItemModal: React.FC<{
             >
               DESCRIPTION
             </h3>
-            <p className="mb-5">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using.
-            </p>
+            <p className="mb-5">{mediaItem.description}</p>
             <h3
               className="mt-8 mb-1 font-bold uppercase tracking-widest text-grey-2"
               style={{ fontSize: "13px" }}
             >
-              CLIENT
+              DEV Style
             </h3>
-            <p className="mb-5">Apple Inc.</p>
+            <p className="mb-5">
+              {mediaItem.devStyle === 0 ? "Single" : "Team"}
+            </p>
             <h3
               className="mt-8 font-bold uppercase tracking-widest text-grey-2"
               style={{ fontSize: "13px" }}
@@ -76,17 +73,16 @@ export const MediaItemModal: React.FC<{
             </h3>
 
             <ul>
-              <li>
-                <TagItem>HTML5</TagItem>
-                <TagItem>CSS3</TagItem>
-                <TagItem>TypeScript</TagItem>
-                <TagItem>Ruby</TagItem>
-              </li>
+              {mediaItem.tags.map((v, i) => (
+                <TagItem key={i}>{v}</TagItem>
+              ))}
             </ul>
 
             <div className="py-8">
               <a
-                href="#"
+                href={mediaItem.externalUrl}
+                target="_blank"
+                rel="noreferrer"
                 className="inline-block transform rounded border-2 border-grey py-4 px-6 text-xs font-bold
                  tracking-widest text-grey transition hover:border-white hover:bg-green hover:text-white sm:px-7"
               >
@@ -95,7 +91,7 @@ export const MediaItemModal: React.FC<{
             </div>
 
             <AiFillCloseCircle
-              className="block bg-white text-7xl text-green md:hidden"
+              className="block cursor-pointer bg-white text-7xl text-green md:hidden"
               onClick={onRequestClose}
             />
           </div>

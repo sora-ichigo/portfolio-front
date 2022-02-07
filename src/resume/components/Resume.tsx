@@ -8,7 +8,6 @@ import {
 import { AiOutlineAntDesign } from "react-icons/ai";
 import { GiArmoredBoomerang } from "react-icons/gi";
 
-import { Container } from "../../common/components/Container";
 import { GlobalHeading } from "../../common/components/GlobalHeading";
 import { HistoryList } from "./HistoryList";
 import { HistoryListItemType } from "./HistoryListItem";
