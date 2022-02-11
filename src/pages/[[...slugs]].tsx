@@ -22,9 +22,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     case "/portfolio":
       pageType = MAIN_PAGES["PORTFOLIO"];
       break;
-    case "/contact":
-      pageType = MAIN_PAGES["CONTACT"];
-      break;
     default:
       return { notFound: true };
   }

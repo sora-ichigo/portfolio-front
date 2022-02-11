@@ -1,50 +1,41 @@
 import React from "react";
 import { useRouter } from "next/router";
+import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
+import type CoreSwiper from "swiper";
 import Image from "next/image";
+
 import { useMediaQuery } from "react-responsive";
-import { END_PAGE, MainPageType } from "../../common/utils/mainPages";
+import { MainPageType } from "../../common/utils/mainPages";
 
-const PageList = new Map<MainPageType, { name: string; path: string }>([
-  [
-    0,
-    {
-      name: "about me",
-      path: "/",
-    },
-  ],
-  [
-    1,
-    {
-      name: "resume",
-      path: "/resume",
-    },
-  ],
-  [
-    2,
-    {
-      name: "portfolio",
-      path: "/portfolio",
-    },
-  ],
-  [
-    3,
-    {
-      name: "contact",
-      path: "/contact",
-    },
-  ],
-]);
+const PageList: { name: string; path: string }[] = [
+  {
+    name: "about me",
+    path: "/",
+  },
+  {
+    name: "resume",
+    path: "/resume",
+  },
+  {
+    name: "portfolio",
+    path: "/portfolio",
+  },
+];
 
-export const Header: React.FC<{ pageType: MainPageType }> = ({ pageType }) => {
+type Props = {
+  swiperGeneralProps: SwiperProps;
+  pageType: MainPageType;
+  setTabSwiper: React.Dispatch<React.SetStateAction<CoreSwiper | undefined>>;
+  moveSlide: (isNext: boolean, isPrev: boolean) => void;
+};
+
+export const Header: React.FC<Props> = ({
+  swiperGeneralProps,
+  pageType,
+  setTabSwiper,
+  moveSlide,
+}) => {
   const isWindowMd = useMediaQuery({ query: "(min-width: 768px)" });
-  const router = useRouter();
-
-  // TODO: テスト書く
-  const visibleTab = [
-    PageList.get(pageType > 0 ? ((pageType - 1) as MainPageType) : END_PAGE),
-    PageList.get(pageType),
-    PageList.get(pageType < END_PAGE ? ((pageType + 1) as MainPageType) : 0),
-  ];
 
   return (
     <header className="pt-6 text-center sm:px-4 sm:pb-1 md:p-8">
@@ -58,25 +49,52 @@ export const Header: React.FC<{ pageType: MainPageType }> = ({ pageType }) => {
       <p className="mb-2 inline-block rounded  bg-yellow-marker px-2.5 py-1.5 italic leading-none">
         software engineer
       </p>
-      <ul className="mx-auto flex h-24 max-w-5xl items-center text-xl sm:text-3xl md:text-4xl lg:text-4-5xl ">
-        <li
-          className="w-2/6 cursor-pointer font-tabTitle font-bold text-grey-4"
-          onClick={() =>
-            router.push(visibleTab[0]!.path, undefined, { shallow: true })
-          }
-        >
-          {visibleTab[0]!.name}
-        </li>
-        <li className="w-2/6 font-tabTitle font-bold">{visibleTab[1]!.name}</li>
-        <li
-          className="w-2/6 cursor-pointer font-tabTitle font-bold text-grey-4"
-          onClick={() =>
-            router.push(visibleTab[2]!.path, undefined, { shallow: true })
-          }
-        >
-          {visibleTab[2]!.name}
-        </li>
-      </ul>
+      <SwiperPart
+        swiperGeneralProps={swiperGeneralProps}
+        pageType={pageType}
+        setTabSwiper={setTabSwiper}
+        moveSlide={moveSlide}
+      />
     </header>
+  );
+};
+
+const SwiperPart: React.FC<Props> = ({
+  swiperGeneralProps,
+  pageType,
+  setTabSwiper,
+  moveSlide,
+}) => {
+  const router = useRouter();
+
+  return (
+    <Swiper
+      {...swiperGeneralProps}
+      initialSlide={pageType}
+      onInit={(swiper: CoreSwiper) => setTabSwiper(swiper)}
+      allowTouchMove={false}
+      className="mx-auto flex h-24 max-w-5xl items-center text-xl sm:text-3xl md:text-4xl lg:text-4-5xl "
+    >
+      {PageList.map((v, i) => (
+        <SwiperSlide
+          key={i}
+          className="w-2/6 font-tabTitle font-bold"
+          onClick={() =>
+            router.push(v.path, undefined, {
+              shallow: true,
+            })
+          }
+        >
+          {({ isActive, isNext, isPrev }) => (
+            <span
+              className={isActive ? "text-navy" : "cursor-pointer text-grey-4"}
+              onClick={() => moveSlide(isNext, isPrev)}
+            >
+              {v.name}
+            </span>
+          )}
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 };

@@ -35,6 +35,7 @@ export const MediaItemModal: React.FC<{
       isOpen={selected}
       onRequestClose={onRequestClose}
       style={customStyles}
+      ariaHideApp={false}
     >
       <AiFillCloseCircle
         className="absolute hidden cursor-pointer bg-white text-7xl text-green md:block"
