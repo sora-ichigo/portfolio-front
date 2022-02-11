@@ -25,6 +25,9 @@ export const MediaItemModal: React.FC<{
       height: "85%",
       posision: "relative",
     },
+    overlay: {
+      zIndex: "10",
+    },
   };
 
   return (
@@ -32,6 +35,7 @@ export const MediaItemModal: React.FC<{
       isOpen={selected}
       onRequestClose={onRequestClose}
       style={customStyles}
+      ariaHideApp={false}
     >
       <AiFillCloseCircle
         className="absolute hidden cursor-pointer bg-white text-7xl text-green md:block"
