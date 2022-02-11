@@ -22,7 +22,6 @@ import { WtdIcon } from "../../common/components/WtdIcon";
 import { ServiceListItemType, ServiceListItem } from "./ServiceListItem";
 import { FunFactListItem, FunFactListItemType } from "./FunFactListItem";
 import { GlobalHeading } from "../../common/components/GlobalHeading";
-import { Container } from "../../common/components/Container";
 
 const servicesData: ServiceListItemType[] = [
   {
