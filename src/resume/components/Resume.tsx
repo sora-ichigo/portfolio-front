@@ -109,7 +109,7 @@ const viewMoreAboutData: ViewMoreAboutType = {
 };
 
 export const Resume: React.FC = () => (
-  <div className="lg:grid lg:grid-cols-2 lg:gap-6">
+  <div className="lg:grid lg:grid-cols-2 lg:gap-10">
     {/* -------------------------
         HISTORY
         ------------------------- */}
