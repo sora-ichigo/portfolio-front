@@ -7,7 +7,7 @@ import { HistoryListItem, HistoryListItemType } from "./HistoryListItem";
 export const HistoryList: React.FC<{
   historyListProps: HistoryListItemType[];
 }> = ({ historyListProps }) => (
-  <div className="relative mt-5 pl-28 pb-2 sm:ml-4 md:ml-0">
+  <div className="relative mt-5 pl-24 pb-2 sm:ml-4 md:ml-0 md:pl-28">
     <HistoryLine />
     <h2 className="relative mb-9 text-2xl font-light tracking-widest">
       <WorkHistoryIcon>
@@ -54,6 +54,6 @@ const HistoryLine = styled.div`
   width: 5px;
 
   @media (max-width: 768px) {
-    left: 56px;
+    left: 33px;
   }
 `;
