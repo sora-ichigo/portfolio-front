@@ -5,22 +5,7 @@ import type CoreSwiper from "swiper";
 import Image from "next/image";
 
 import { useMediaQuery } from "react-responsive";
-import { MainPageType } from "../../common/utils/mainPages";
-
-const PageList: { name: string; path: string }[] = [
-  {
-    name: "about me",
-    path: "/",
-  },
-  {
-    name: "resume",
-    path: "/resume",
-  },
-  {
-    name: "portfolio",
-    path: "/portfolio",
-  },
-];
+import { MainPageType, PAGE_LIST } from "../../common/utils/mainPages";
 
 type Props = {
   swiperGeneralProps: SwiperProps;
@@ -29,12 +14,7 @@ type Props = {
   moveSlide: (isNext: boolean, isPrev: boolean) => void;
 };
 
-export const Header: React.FC<Props> = ({
-  swiperGeneralProps,
-  pageType,
-  setTabSwiper,
-  moveSlide,
-}) => {
+export const Header: React.FC<Props> = (props) => {
   const isWindowMd = useMediaQuery({ query: "(min-width: 768px)" });
 
   return (
@@ -49,12 +29,7 @@ export const Header: React.FC<Props> = ({
       <p className="mb-2 inline-block rounded  bg-yellow-marker px-2.5 py-1.5 italic leading-none">
         software engineer
       </p>
-      <SwiperPart
-        swiperGeneralProps={swiperGeneralProps}
-        pageType={pageType}
-        setTabSwiper={setTabSwiper}
-        moveSlide={moveSlide}
-      />
+      <SwiperPart {...props} />
     </header>
   );
 };
@@ -75,7 +50,7 @@ const SwiperPart: React.FC<Props> = ({
       allowTouchMove={false}
       className="mx-auto flex h-24 max-w-5xl items-center text-xl sm:text-3xl md:text-4xl lg:text-4-5xl "
     >
-      {PageList.map((v, i) => (
+      {PAGE_LIST.map((v, i) => (
         <SwiperSlide
           key={i}
           className="w-2/6 font-tabTitle font-bold"

@@ -1,13 +1,10 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import type CoreSwiper from "swiper";
 import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
 
-import { END_PAGE, MainPageType } from "./common/utils/mainPages";
+import { END_PAGE, MainPageType, PAGE_LIST } from "./common/utils/mainPages";
 import { Header } from "./header/components/Header";
 import { SwiperOverlay } from "./common/components/SwiperOverlay";
-import { Resume } from "./resume/components/Resume";
-import { Portfolio } from "./portfolio/components/Portfolio";
-import { About } from "./about/components/About";
 
 const swiperGeneralProps: SwiperProps = {
   slidesPerView: "auto",
@@ -56,32 +53,16 @@ export const RootMain: React.FC<{ pageType: MainPageType }> = ({
         onSlideChange={onMainSlideChange}
         className="pt-3"
       >
-        <SwiperSlide style={{ width: "85%" }}>
-          {(props) => (
-            <>
-              <SwiperOverlay {...props} moveSlide={moveSlide} />
-              <About />
-            </>
-          )}
-        </SwiperSlide>
-
-        <SwiperSlide style={{ width: "85%" }}>
-          {(props) => (
-            <>
-              <SwiperOverlay {...props} moveSlide={moveSlide} />
-              <Resume />
-            </>
-          )}
-        </SwiperSlide>
-
-        <SwiperSlide style={{ width: "85%" }}>
-          {(props) => (
-            <>
-              <SwiperOverlay {...props} moveSlide={moveSlide} />
-              <Portfolio />
-            </>
-          )}
-        </SwiperSlide>
+        {PAGE_LIST.map((v, i) => (
+          <SwiperSlide style={{ width: "85%" }} key={i}>
+            {(props) => (
+              <>
+                <SwiperOverlay {...props} moveSlide={moveSlide} />
+                {v.component({})}
+              </>
+            )}
+          </SwiperSlide>
+        ))}
       </Swiper>
     </>
   );
