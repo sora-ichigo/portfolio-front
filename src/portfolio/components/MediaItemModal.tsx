@@ -25,6 +25,9 @@ export const MediaItemModal: React.FC<{
       height: "85%",
       posision: "relative",
     },
+    overlay: {
+      zIndex: "10",
+    },
   };
 
   return (
