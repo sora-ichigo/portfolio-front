@@ -54,6 +54,6 @@ const HistoryLine = styled.div`
   width: 5px;
 
   @media (max-width: 768px) {
-    left: 25px;
+    left: 56px;
   }
 `;

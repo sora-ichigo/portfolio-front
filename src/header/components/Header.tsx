@@ -1,10 +1,10 @@
 import React from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
 import type CoreSwiper from "swiper";
-import Image from "next/image";
-
 import { useMediaQuery } from "react-responsive";
+
 import { MainPageType, PAGE_LIST } from "../../common/utils/mainPages";
 
 type Props = {
@@ -48,26 +48,27 @@ const SwiperPart: React.FC<Props> = ({
       initialSlide={pageType}
       onInit={(swiper: CoreSwiper) => setTabSwiper(swiper)}
       allowTouchMove={false}
-      className="mx-auto flex h-24 max-w-5xl items-center text-xl sm:text-3xl md:text-4xl lg:text-4-5xl "
+      className="mx-auto flex h-24 max-w-5xl items-center text-xl sm:text-3xl md:text-4xl lg:text-4-5xl"
     >
       {PAGE_LIST.map((v, i) => (
-        <SwiperSlide
-          key={i}
-          className="w-2/6 font-tabTitle font-bold"
-          onClick={() =>
-            router.push(v.path, undefined, {
-              shallow: true,
-            })
-          }
-        >
-          {({ isActive, isNext, isPrev }) => (
-            <span
-              className={isActive ? "text-navy" : "cursor-pointer text-grey-4"}
-              onClick={() => moveSlide(isNext, isPrev)}
-            >
-              {v.name}
-            </span>
-          )}
+        <SwiperSlide key={i} className="w-1/3 font-tabTitle font-bold">
+          {({ isActive, isNext, isPrev }) => {
+            if (isActive && router.asPath.split("?")[0] !== v.path) {
+              router.push(v.path, undefined, {
+                shallow: true,
+              });
+            }
+            return (
+              <span
+                className={
+                  isActive ? "text-navy" : "cursor-pointer text-grey-4"
+                }
+                onClick={() => moveSlide(isNext, isPrev)}
+              >
+                {v.name}
+              </span>
+            );
+          }}
         </SwiperSlide>
       ))}
     </Swiper>

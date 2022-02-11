@@ -5,14 +5,7 @@ import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
 import { END_PAGE, MainPageType, PAGE_LIST } from "./common/utils/mainPages";
 import { Header } from "./header/components/Header";
 import { SwiperOverlay } from "./common/components/SwiperOverlay";
-
-const swiperGeneralProps: SwiperProps = {
-  slidesPerView: "auto",
-  spaceBetween: 50,
-  loop: true,
-  speed: 500,
-  centeredSlides: true,
-};
+import { useMediaQuery } from "react-responsive";
 
 export const RootMain: React.FC<{ pageType: MainPageType }> = ({
   pageType,
@@ -32,6 +25,15 @@ export const RootMain: React.FC<{ pageType: MainPageType }> = ({
     };
     const op = checkSlideMove(slideStatus.current);
     tabSlideMove(op, tabSwiper);
+  };
+
+  const isWindowMd = useMediaQuery({ query: "(min-width: 768px)" });
+  const swiperGeneralProps: SwiperProps = {
+    slidesPerView: "auto",
+    spaceBetween: isWindowMd ? 50 : 10,
+    loop: true,
+    speed: 500,
+    centeredSlides: true,
   };
 
   const moveSlide = (isNext: boolean, isPrev: boolean) => {
