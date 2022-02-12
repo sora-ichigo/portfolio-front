@@ -1,6 +1,6 @@
 import React from "react";
 import { About } from "../../about/components/About";
-import { aboutData, resumeData } from "../../domain/data";
+import { aboutData, portfolioData, resumeData } from "../../domain/data";
 import { Data } from "../../domain/type";
 import { Portfolio } from "../../portfolio/components/Portfolio";
 import { Resume } from "../../resume/components/Resume";
@@ -31,7 +31,7 @@ pageList[MAIN_PAGES["RESUME"]] = {
 };
 pageList[MAIN_PAGES["PORTFOLIO"]] = {
   name: "portfolio",
-  data: resumeData,
+  data: portfolioData,
   component: Portfolio,
   path: "/portfolio",
 };
