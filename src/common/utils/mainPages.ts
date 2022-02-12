@@ -2,6 +2,7 @@ import React from "react";
 import { About } from "../../about/components/About";
 import { Portfolio } from "../../portfolio/components/Portfolio";
 import { Resume } from "../../resume/components/Resume";
+import { Data } from "../../RootMain";
 
 export const MAIN_PAGES = {
   ABOUT_ME: 0,
@@ -9,7 +10,11 @@ export const MAIN_PAGES = {
   PORTFOLIO: 2,
 } as const;
 
-let pageList: { name: string; component: React.FC; path: string }[] = [];
+let pageList: {
+  name: string;
+  component: React.FC<{ data: Data }>;
+  path: string;
+}[] = [];
 pageList[MAIN_PAGES["ABOUT_ME"]] = {
   name: "about me",
   component: About,

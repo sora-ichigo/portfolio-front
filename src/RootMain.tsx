@@ -3,14 +3,10 @@ import type CoreSwiper from "swiper";
 import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
 
 import { END_PAGE, MainPageType, PAGE_LIST } from "./common/utils/mainPages";
-import { Header, HeaderDataType } from "./header/components/Header";
+import { Header } from "./header/components/Header";
 import { SwiperOverlay } from "./common/components/SwiperOverlay";
 import { useMediaQuery } from "react-responsive";
-
-const headerData: HeaderDataType = {
-  name: "Sora Ichigo",
-  description: "software engineer",
-};
+import { aboutData, headerData } from "./domain/data";
 
 export const RootMain: React.FC<{ pageType: MainPageType }> = ({
   pageType,
@@ -66,7 +62,7 @@ export const RootMain: React.FC<{ pageType: MainPageType }> = ({
             {(props) => (
               <>
                 <SwiperOverlay {...props} moveSlide={moveSlide} />
-                {v.component({})}
+                {v.component({ data: aboutData })}
               </>
             )}
           </SwiperSlide>

@@ -6,8 +6,7 @@ import type CoreSwiper from "swiper";
 import { useMediaQuery } from "react-responsive";
 
 import { MainPageType, PAGE_LIST } from "../../common/utils/mainPages";
-
-export type HeaderDataType = { name: string; description: string };
+import { HeaderDataType } from "../../domain/type";
 
 type Props = {
   headerData: HeaderDataType;

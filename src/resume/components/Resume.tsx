@@ -12,7 +12,7 @@ import { GlobalHeading } from "../../common/components/GlobalHeading";
 import { HistoryList } from "./HistoryList";
 import { HistoryListItemType } from "./HistoryListItem";
 import { WtdIconForResume } from "../../common/components/WtdIcon";
-import { SNSAccountDataType } from "../../about/components/About";
+import { SNSAccountDataType } from "../../domain/type";
 
 const historyData: HistoryListItemType[] = [
   {

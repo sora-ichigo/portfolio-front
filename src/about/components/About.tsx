@@ -1,99 +1,14 @@
 import React from "react";
-import { IconType } from "react-icons";
-import {
-  FaUserAlt,
-  FaTwitter,
-  FaMagic,
-  FaBurn,
-  FaInstagram,
-  FaRegLightbulb,
-  FaPeopleArrows,
-  FaHtml5,
-  FaFacebook,
-  FaGithub,
-} from "react-icons/fa";
-import { RiMotorbikeFill } from "react-icons/ri";
-import { FiType } from "react-icons/fi";
-import { SiWebflow, SiZenn } from "react-icons/si";
-import { MdDesignServices } from "react-icons/md";
+import { FaUserAlt, FaTwitter, FaMagic, FaBurn } from "react-icons/fa";
 import { IoShareSocialSharp } from "react-icons/io5";
 
-import { WtdIcon } from "../../common/components/WtdIcon";
-import { ServiceListItemType, ServiceListItem } from "./ServiceListItem";
-import { FunFactListItem, FunFactListItemType } from "./FunFactListItem";
+import { ServiceListItem } from "./ServiceListItem";
+import { FunFactListItem } from "./FunFactListItem";
 import { GlobalHeading } from "../../common/components/GlobalHeading";
 import { StrWithBr } from "../../common/components/StrWithBr";
+import { AboutData } from "../../domain/type";
 
-const description =
-  "Hello.I am a writer.\nI live in a small town somewhere in the world.\nI am passionated about minimalistic and flat design.";
-
-const servicesData: ServiceListItemType[] = [
-  {
-    icon: FaHtml5,
-    color: "yellow",
-    title: "web design",
-    text: "I design super cool websites. It is a long established fact that a reader will be distracted by the readable content.",
-  },
-  {
-    icon: FiType,
-    color: "blue",
-    title: "type design",
-    text: "I design super cool websites. It is a long established fact that a reader will be distracted by the readable content.",
-  },
-  {
-    icon: SiWebflow,
-    color: "green",
-    title: "web design",
-    text: "I design super cool websites. It is a long established fact that a reader will be distracted by the readable content.",
-  },
-  {
-    icon: MdDesignServices,
-    color: "red",
-    title: "web design",
-    text: "I design super cool websites. It is a long established fact that a reader will be distracted by the readable content.",
-  },
-];
-
-const funFactData: FunFactListItemType[] = [
-  { icon: FaInstagram, text: "24000 SHOT CAPTURED" },
-  { icon: FaRegLightbulb, text: "37 PROJECTS COMPLETED" },
-  { icon: FaPeopleArrows, text: "87 SATISFIED CUSTOMERS" },
-  { icon: RiMotorbikeFill, text: "1450 KM CYCLED" },
-];
-
-export type SNSAccountDataType = {
-  url: string;
-  icon: IconType | React.FC;
-};
-
-const snsAccountData: SNSAccountDataType[] = [
-  {
-    url: "https://www.instagram.com/sora_ick12/",
-    icon: FaInstagram,
-  },
-  {
-    url: "https://twitter.com/igsr5_",
-    icon: FaTwitter,
-  },
-  {
-    url: "https://wantedly.com/id/igsr5",
-    icon: WtdIcon,
-  },
-  {
-    url: "https://www.facebook.com/igsr5/",
-    icon: FaFacebook,
-  },
-  {
-    url: "https://github.com/igsr5",
-    icon: FaGithub,
-  },
-  {
-    url: "https://zenn.dev/ichigo_dev",
-    icon: SiZenn,
-  },
-];
-
-export const About: React.FC = () => (
+export const About: React.FC<{ data: AboutData }> = ({ data }) => (
   <>
     <div className="lg:grid lg:grid-cols-3 lg:gap-8">
       {/* -------------------------
@@ -102,7 +17,7 @@ export const About: React.FC = () => (
       <div className="col-span-2 mt-3">
         <GlobalHeading text="A LITTLE ABOUT ME" icon={FaUserAlt} />
         <h3 className="mt-6 text-2xl font-light leading-snug md:mt-8 md:mb-5 md:text-3-4xl">
-          {StrWithBr(description)}
+          {StrWithBr(data.description)}
         </h3>
       </div>
 
@@ -138,7 +53,7 @@ export const About: React.FC = () => (
         <GlobalHeading text="SERVICES" icon={FaMagic} />
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {servicesData.map((v, i) => (
+        {data.services.map((v, i) => (
           <ServiceListItem
             key={i}
             icon={v.icon}
@@ -158,7 +73,7 @@ export const About: React.FC = () => (
         <GlobalHeading text="FUN FACT" icon={FaBurn} />
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {funFactData.map((v, i) => (
+        {data.funFacts.map((v, i) => (
           <FunFactListItem key={i} icon={v.icon} text={v.text} />
         ))}
       </div>
@@ -172,7 +87,7 @@ export const About: React.FC = () => (
         <GlobalHeading text="SNS ACCOUNT" icon={IoShareSocialSharp} />
       </div>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-        {snsAccountData.map((v, i) => (
+        {data.snsAccounts.map((v, i) => (
           <div key={i} className="mx-auto pt-6 pb-12 text-7xl">
             <a className="text-navy" href={v.url} target="_blunk">
               {React.createElement(v.icon)}
