@@ -1,13 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export type HistoryListItemType = {
-  title: string;
-  subTitle: string;
-  text: string;
-  date: string;
-  current?: boolean;
-};
+import { HistoryListItemType } from "../../domain/type";
 
 export const HistoryListItem: React.FC<HistoryListItemType> = ({
   title,

@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { FaFlask } from "react-icons/fa";
 
-import { HistoryListItem, HistoryListItemType } from "./HistoryListItem";
+import { HistoryListItem } from "./HistoryListItem";
+import { HistoryListItemType } from "../../domain/type";
 
 export const HistoryList: React.FC<{
   historyListProps: HistoryListItemType[];
