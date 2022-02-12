@@ -6,6 +6,7 @@ import { END_PAGE, MainPageType, PAGE_LIST } from "./common/utils/mainPages";
 import { Header } from "./header/components/Header";
 import { SwiperOverlay } from "./common/components/SwiperOverlay";
 import { useMediaQuery } from "react-responsive";
+import { headerData } from "./_data";
 
 export const RootMain: React.FC<{ pageType: MainPageType }> = ({
   pageType,
@@ -43,6 +44,7 @@ export const RootMain: React.FC<{ pageType: MainPageType }> = ({
   return (
     <>
       <Header
+        headerData={headerData}
         swiperGeneralProps={swiperGeneralProps}
         pageType={pageType}
         setTabSwiper={setTabSwiper}
@@ -60,7 +62,7 @@ export const RootMain: React.FC<{ pageType: MainPageType }> = ({
             {(props) => (
               <>
                 <SwiperOverlay {...props} moveSlide={moveSlide} />
-                {v.component({})}
+                {v.component({ data: v.data })}
               </>
             )}
           </SwiperSlide>

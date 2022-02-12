@@ -2,12 +2,15 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { getCategoryName } from "../../common/utils/getCategoryName";
+import { CategoryDataType, MediaItemType } from "../../domain";
 import { MediaItemModal } from "../components/MediaItemModal";
 
-import { GetCategoryName, MediaItemType } from "../components/Portfolio";
-
 export const useRenderMediaItem = (
-  { mediaItem }: { mediaItem: MediaItemType },
+  {
+    mediaItem,
+    categoryData,
+  }: { mediaItem: MediaItemType; categoryData: CategoryDataType[] },
   ref: React.LegacyRef<HTMLDivElement> | undefined
 ) => {
   const router = useRouter();
@@ -41,7 +44,7 @@ export const useRenderMediaItem = (
             {mediaItem.title}
           </h3>
           <p className="uppercase text-grey-2" style={{ fontSize: "13px" }}>
-            {GetCategoryName(mediaItem.categoryID)}
+            {getCategoryName(mediaItem.categoryID, categoryData)}
           </p>
         </div>
       </div>

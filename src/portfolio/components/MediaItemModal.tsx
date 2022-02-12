@@ -5,7 +5,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import Modal from "react-modal";
 import { useMediaQuery } from "react-responsive";
 
-import { MediaItemType } from "./Portfolio";
+import { MediaItemType } from "../../domain";
 
 export const MediaItemModal: React.FC<{
   mediaItem: MediaItemType;

@@ -6,8 +6,10 @@ import type CoreSwiper from "swiper";
 import { useMediaQuery } from "react-responsive";
 
 import { MainPageType, PAGE_LIST } from "../../common/utils/mainPages";
+import { HeaderDataType } from "../../domain";
 
 type Props = {
+  headerData: HeaderDataType;
   swiperGeneralProps: SwiperProps;
   pageType: MainPageType;
   setTabSwiper: React.Dispatch<React.SetStateAction<CoreSwiper | undefined>>;
@@ -25,9 +27,11 @@ export const Header: React.FC<Props> = (props) => {
         height={isWindowMd ? 160 : 140}
         alt="Ichigo Sora"
       />
-      <h1 className="mt-3.5 text-2xl font-light leading-snug">Sora Ichigo</h1>
+      <h1 className="mt-3.5 text-2xl font-light leading-snug">
+        {props.headerData.name}
+      </h1>
       <p className="mb-2 inline-block rounded  bg-yellow-marker px-2.5 py-1.5 italic leading-none">
-        software engineer
+        {props.headerData.description}
       </p>
       <SwiperPart {...props} />
     </header>

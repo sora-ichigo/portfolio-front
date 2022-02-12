@@ -1,14 +1,5 @@
 import React from "react";
-import { IconType } from "react-icons";
-
-export type ServiceListItemType = {
-  icon: IconType;
-  color: IconColorType;
-  title: string;
-  text: string;
-};
-
-export type IconColorType = "red" | "blue" | "green" | "yellow";
+import { IconColorType, ServiceListItemType } from "../../domain";
 
 export const ServiceListItem: React.FC<ServiceListItemType> = ({
   icon,

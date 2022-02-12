@@ -1,5 +1,7 @@
 import React from "react";
 import { About } from "../../about/components/About";
+import { aboutData, portfolioData, resumeData } from "../../_data";
+import { Data } from "../../domain";
 import { Portfolio } from "../../portfolio/components/Portfolio";
 import { Resume } from "../../resume/components/Resume";
 
@@ -9,19 +11,27 @@ export const MAIN_PAGES = {
   PORTFOLIO: 2,
 } as const;
 
-let pageList: { name: string; component: React.FC; path: string }[] = [];
+let pageList: {
+  name: string;
+  data: Data;
+  component: React.FC<{ data: Data }>;
+  path: string;
+}[] = [];
 pageList[MAIN_PAGES["ABOUT_ME"]] = {
   name: "about me",
+  data: aboutData,
   component: About,
   path: "/",
 };
 pageList[MAIN_PAGES["RESUME"]] = {
   name: "resume",
+  data: resumeData,
   component: Resume,
   path: "/resume",
 };
 pageList[MAIN_PAGES["PORTFOLIO"]] = {
   name: "portfolio",
+  data: portfolioData,
   component: Portfolio,
   path: "/portfolio",
 };
