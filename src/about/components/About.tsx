@@ -22,6 +22,10 @@ import { WtdIcon } from "../../common/components/WtdIcon";
 import { ServiceListItemType, ServiceListItem } from "./ServiceListItem";
 import { FunFactListItem, FunFactListItemType } from "./FunFactListItem";
 import { GlobalHeading } from "../../common/components/GlobalHeading";
+import { StrWithBr } from "../../common/components/StrWithBr";
+
+const description =
+  "Hello.I am a writer.\nI live in a small town somewhere in the world.\nI am passionated about minimalistic and flat design.";
 
 const servicesData: ServiceListItemType[] = [
   {
@@ -98,10 +102,7 @@ export const About: React.FC = () => (
       <div className="col-span-2 mt-3">
         <GlobalHeading text="A LITTLE ABOUT ME" icon={FaUserAlt} />
         <h3 className="mt-6 text-2xl font-light leading-snug md:mt-8 md:mb-5 md:text-3-4xl">
-          Hello.I am <span className="font-bold">a writer</span>.<br />I live in
-          a small town somewhere in the world.
-          <br /> I am passionated about{" "}
-          <span className="font-bold">minimalistic</span> and flat design.
+          {StrWithBr(description)}
         </h3>
       </div>
 
