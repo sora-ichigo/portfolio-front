@@ -3,12 +3,7 @@ import FlipMove from "react-flip-move";
 import { FaLeaf } from "react-icons/fa";
 
 import { GlobalCenterHeading } from "../../common/components/GlobalCenterHeading";
-import {
-  CategoryType,
-  Data,
-  MediaItemType,
-  PortfolioData,
-} from "../../domain/type";
+import { CategoryType, Data, MediaItemType, PortfolioData } from "../../domain";
 import { MediaItem } from "./MediaItem";
 
 export const Portfolio: React.FC<{ data: Data }> = ({ data }) => {

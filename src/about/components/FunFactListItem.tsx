@@ -1,5 +1,5 @@
 import React from "react";
-import { FunFactListItemType } from "../../domain/type";
+import { FunFactListItemType } from "../../domain";
 
 export const FunFactListItem: React.FC<FunFactListItemType> = ({
   icon,

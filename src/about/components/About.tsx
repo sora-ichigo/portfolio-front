@@ -6,7 +6,7 @@ import { ServiceListItem } from "./ServiceListItem";
 import { FunFactListItem } from "./FunFactListItem";
 import { GlobalHeading } from "../../common/components/GlobalHeading";
 import { StrWithBr } from "../../common/components/StrWithBr";
-import { AboutData, Data } from "../../domain/type";
+import { AboutData, Data } from "../../domain";
 
 export const About: React.FC<{ data: Data }> = ({ data }) => {
   const aboutData: AboutData = data as AboutData;

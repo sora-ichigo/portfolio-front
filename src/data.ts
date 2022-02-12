@@ -11,14 +11,14 @@ import { FiType } from "react-icons/fi";
 import { MdDesignServices } from "react-icons/md";
 import { RiMotorbikeFill } from "react-icons/ri";
 import { SiWebflow, SiZenn } from "react-icons/si";
-import { WtdIcon, WtdIconForResume } from "../common/components/WtdIcon";
+import { WtdIcon, WtdIconForResume } from "./common/components/WtdIcon";
 import {
   AboutData,
   CATEGORY,
   HeaderDataType,
   PortfolioData,
   ResumeData,
-} from "./type";
+} from "./domain";
 
 // -------------------
 // Header

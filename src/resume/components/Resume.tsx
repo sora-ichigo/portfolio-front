@@ -5,7 +5,7 @@ import { GiArmoredBoomerang } from "react-icons/gi";
 
 import { GlobalHeading } from "../../common/components/GlobalHeading";
 import { HistoryList } from "./HistoryList";
-import { Data, ResumeData, SkillItemType } from "../../domain/type";
+import { Data, ResumeData, SkillItemType } from "../../domain";
 
 export const Resume: React.FC<{ data: Data }> = ({ data }) => {
   const resumeData: ResumeData = data as ResumeData;

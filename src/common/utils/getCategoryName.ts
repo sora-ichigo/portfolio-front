@@ -1,4 +1,4 @@
-import { CategoryType } from "../../domain/type";
+import { CategoryType } from "../../domain";
 
 // TODO: テスト書く
 export const getCategoryName = (

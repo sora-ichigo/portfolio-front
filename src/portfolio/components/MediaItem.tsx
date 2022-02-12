@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { CategoryDataType, MediaItemType } from "../../domain/type";
+import { CategoryDataType, MediaItemType } from "../../domain";
 
 import { useRenderMediaItem } from "../hooks/useRenderMediaItem";
 

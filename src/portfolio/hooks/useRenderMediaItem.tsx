@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { getCategoryName } from "../../common/utils/getCategoryName";
-import { CategoryDataType, MediaItemType } from "../../domain/type";
+import { CategoryDataType, MediaItemType } from "../../domain";
 import { MediaItemModal } from "../components/MediaItemModal";
 
 export const useRenderMediaItem = (

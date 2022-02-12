@@ -6,7 +6,7 @@ import { END_PAGE, MainPageType, PAGE_LIST } from "./common/utils/mainPages";
 import { Header } from "./header/components/Header";
 import { SwiperOverlay } from "./common/components/SwiperOverlay";
 import { useMediaQuery } from "react-responsive";
-import { headerData } from "./domain/data";
+import { headerData } from "./data";
 
 export const RootMain: React.FC<{ pageType: MainPageType }> = ({
   pageType,
