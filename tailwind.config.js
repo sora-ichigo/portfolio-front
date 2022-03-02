@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       fontFamily: {
         main: ["Lato", "sans-serif"], // サイト全体の基本フォント
+        japanese: ["sans-serif"],
         tabTitle: ["Arial", "Helvetica", "sans-serif"], // タブ文字
         history: ["Oswald", "sans-serif"],
       },
