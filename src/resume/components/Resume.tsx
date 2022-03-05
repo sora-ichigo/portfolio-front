@@ -23,20 +23,26 @@ export const Resume: React.FC<{ data: Data }> = ({ data }) => {
         <div className="my-3">
           <GlobalHeading icon={FaSuperpowers} text="development Skills" />
         </div>
+        <p className="font-japanese text-sm">
+          自分が扱える専門技術のうち一番得意なものを基準として相対的にグラフ化しています。
+        </p>
         <div className="pb-14 md:pb-10">
           {resumeData.skills.development.map((v, i) => (
             <SkillBar name={v.name} level={v.level} key={i} />
           ))}
         </div>
 
-        <div className="my-3">
-          <GlobalHeading icon={AiOutlineAntDesign} text="Desgin Skills" />
-        </div>
-        <div className="pb-10 md:pb-14">
-          {resumeData.skills.design.map((v, i) => (
-            <SkillBar name={v.name} level={v.level} key={i} />
-          ))}
-        </div>
+        {
+          // NOTE: 書きたいことがなかったので一旦コメントアウト
+          //         <div className="my-3">
+          //           <GlobalHeading icon={AiOutlineAntDesign} text="Desgin Skills" />
+          //         </div>
+          //         <div className="pb-10 md:pb-14">
+          //           {resumeData.skills.design.map((v, i) => (
+          //             <SkillBar name={v.name} level={v.level} key={i} />
+          //           ))}
+          //         </div>
+        }
 
         {/* -------------------------
             VIEW MORE ABOUT ME
@@ -48,7 +54,9 @@ export const Resume: React.FC<{ data: Data }> = ({ data }) => {
               text="view more about me"
             />
           </div>
-          <p className="mt-4 mb-4">{resumeData.viewMoreAbout.text}</p>
+          <p className="mt-4 mb-4 font-japanese leading-7">
+            {resumeData.viewMoreAbout.text}
+          </p>
           <div className="flex text-4xl">
             {resumeData.viewMoreAbout.sns.map((v, i) => (
               <a

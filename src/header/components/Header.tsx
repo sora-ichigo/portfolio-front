@@ -7,6 +7,7 @@ import { useMediaQuery } from "react-responsive";
 
 import { MainPageType, PAGE_LIST } from "../../common/utils/mainPages";
 import { HeaderDataType } from "../../domain";
+import { headerData } from "../../_data";
 
 type Props = {
   headerData: HeaderDataType;
@@ -22,7 +23,8 @@ export const Header: React.FC<Props> = (props) => {
   return (
     <header className="pt-6 text-center sm:px-4 sm:pb-1 md:p-8">
       <Image
-        src="/profile_icon.png"
+        className="rounded-full"
+        src={headerData.profileImgUrl}
         width={isWindowMd ? 160 : 140}
         height={isWindowMd ? 160 : 140}
         alt="Ichigo Sora"

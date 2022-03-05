@@ -5,7 +5,8 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import Modal from "react-modal";
 import { useMediaQuery } from "react-responsive";
 
-import { MediaItemType } from "../../domain";
+import { DEV_STYLE, MediaItemType } from "../../domain";
+import { toFormatDevDateString } from "../../common/utils/toFormatDevDateString";
 
 export const MediaItemModal: React.FC<{
   mediaItem: MediaItemType;
@@ -43,7 +44,7 @@ export const MediaItemModal: React.FC<{
         onClick={onRequestClose}
       />
       <div className="mx-auto w-11/12">
-        <h2 className="pt-4 pb-8 text-2xl font-bold tracking-wider md:text-3-4xl">
+        <h2 className="pt-4 pb-8 font-japanese text-2xl  tracking-wider md:text-3-4xl">
           {mediaItem.title}
         </h2>
         <div className="lg:grid lg:grid-cols-5 lg:gap-10">
@@ -59,16 +60,43 @@ export const MediaItemModal: React.FC<{
             >
               DESCRIPTION
             </h3>
-            <p className="mb-5">{mediaItem.description}</p>
+            <p className="font-sm mb-5 font-japanese">
+              {mediaItem.description}
+            </p>
+            {mediaItem.externalUrl && (
+              <div className="mt-3 mb-5">
+                <a
+                  href={mediaItem.externalUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-block transform rounded border-2 border-grey py-4 px-6 text-xs font-bold
+                 tracking-widest text-grey transition hover:border-white hover:bg-green hover:text-white sm:px-7"
+                >
+                  MORE VIEW
+                </a>
+              </div>
+            )}
+
             <h3
               className="mt-8 mb-1 font-bold uppercase tracking-widest text-grey-2"
               style={{ fontSize: "13px" }}
             >
               DEV Style
             </h3>
-            <p className="mb-5">
-              {mediaItem.devStyle === 0 ? "Single" : "Team"}
+            <p className="mb-5 font-japanese text-sm">
+              {DEV_STYLE[mediaItem.devStyle]}
             </p>
+
+            <h3
+              className="mt-8 mb-1 font-bold uppercase tracking-widest text-grey-2"
+              style={{ fontSize: "13px" }}
+            >
+              Date
+            </h3>
+            <p className="mb-5 text-sm">
+              {toFormatDevDateString(mediaItem.devDate)}
+            </p>
+
             <h3
               className="mt-8 font-bold uppercase tracking-widest text-grey-2"
               style={{ fontSize: "13px" }}
@@ -76,23 +104,11 @@ export const MediaItemModal: React.FC<{
               TECHNOLOGY
             </h3>
 
-            <ul>
+            <ul className="mb-5">
               {mediaItem.tags.map((v, i) => (
                 <TagItem key={i}>{v}</TagItem>
               ))}
             </ul>
-
-            <div className="py-8">
-              <a
-                href={mediaItem.externalUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-block transform rounded border-2 border-grey py-4 px-6 text-xs font-bold
-                 tracking-widest text-grey transition hover:border-white hover:bg-green hover:text-white sm:px-7"
-              >
-                LAUNCH PROJECT
-              </a>
-            </div>
 
             <AiFillCloseCircle
               className="block cursor-pointer bg-white text-7xl text-green md:hidden"
@@ -112,6 +128,7 @@ const TagItem = styled.span`
   padding-right: 10px;
   background-color: #eaeeef;
   font-size: 12px;
+  letter-spacing: 0.075rem;
   line-height: 30px;
   border-radius: 0 2px 2px 0;
   margin-top: 12px;

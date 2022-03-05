@@ -1,53 +1,53 @@
 import {
+  FaDocker,
   FaFacebook,
   FaGithub,
   FaHtml5,
   FaInstagram,
-  FaPeopleArrows,
+  FaMountain,
   FaRegLightbulb,
   FaTwitter,
 } from "react-icons/fa";
-import { FiType } from "react-icons/fi";
-import { MdDesignServices } from "react-icons/md";
+import { FiMusic } from "react-icons/fi";
 import { RiMotorbikeFill } from "react-icons/ri";
-import { SiWebflow, SiZenn } from "react-icons/si";
+import { SiRuby, SiTypescript, SiZenn } from "react-icons/si";
 import { WtdIcon } from "../common/components/WtdIcon";
 import { AboutData } from "../domain";
 
 export const aboutData: AboutData = {
   description:
-    "Hello.I am a writer.\nI live in a small town somewhere in the world.\nI am passionated about minimalistic and flat design.",
+    "こんにちは！愛知県の情報工学科学生です。\nソフトウェア開発を通じて課題を解決するのが好きです。\n普段はコードを書いたり, バイクに乗ったり, 温泉に入ったりしています。",
   services: [
     {
-      icon: FaHtml5,
+      icon: SiTypescript,
       color: "yellow",
-      title: "web design",
-      text: "I design super cool websites. It is a long established fact that a reader will be distracted by the readable content.",
+      title: "Web Frontend",
+      text: "TypeScript, React, Next.js, GraphQL",
     },
     {
-      icon: FiType,
-      color: "blue",
-      title: "type design",
-      text: "I design super cool websites. It is a long established fact that a reader will be distracted by the readable content.",
-    },
-    {
-      icon: SiWebflow,
+      icon: SiRuby,
       color: "green",
-      title: "web design",
-      text: "I design super cool websites. It is a long established fact that a reader will be distracted by the readable content.",
+      title: "web backend",
+      text: "Golang, Ruby, Ruby on Rails, Node.js, REST API, gRPC",
     },
     {
-      icon: MdDesignServices,
+      icon: FaDocker,
+      color: "blue",
+      title: "infrastructure",
+      text: "Linux, Docker, AWS, Terraform",
+    },
+    {
+      icon: FaHtml5,
       color: "red",
-      title: "web design",
-      text: "I design super cool websites. It is a long established fact that a reader will be distracted by the readable content.",
+      title: "coding",
+      text: "HTML5, CSS3, Wordpress",
     },
   ],
   funFacts: [
-    { icon: FaInstagram, text: "24000 SHOT CAPTURED" },
-    { icon: FaRegLightbulb, text: "37 PROJECTS COMPLETED" },
-    { icon: FaPeopleArrows, text: "87 SATISFIED CUSTOMERS" },
-    { icon: RiMotorbikeFill, text: "1450 KM CYCLED" },
+    { icon: FaRegLightbulb, text: "Always making services" },
+    { icon: FaMountain, text: "Every 3 days go to onsen" },
+    { icon: RiMotorbikeFill, text: "Riding on MT-25" },
+    { icon: FiMusic, text: "Like J-POP" },
   ],
   snsAccounts: [
     {

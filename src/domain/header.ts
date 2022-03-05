@@ -1,1 +1,5 @@
-export type HeaderDataType = { name: string; description: string };
+export type HeaderDataType = {
+  name: string;
+  description: string;
+  profileImgUrl: string;
+};

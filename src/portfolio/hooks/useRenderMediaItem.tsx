@@ -31,22 +31,23 @@ export const useRenderMediaItem = (
         onClick={() => setSelected(true)}
       >
         <Link href={`/portfolio?item=${mediaItem.id}`} shallow>
-          <a>
+          <a className="flex h-full flex-col items-stretch">
             <img
               src={mediaItem.thumbnailUrl}
               alt={mediaItem.title}
-              className="transition hover:opacity-50"
+              className="h-full w-full object-cover transition hover:opacity-50"
+              style={{ flex: "1 0 0" }}
             />
+            <div className="px-10 py-7 text-center">
+              <h3 className="font-japanese text-sm tracking-wider text-navy">
+                {mediaItem.title}
+              </h3>
+              <p className="uppercase text-grey-2" style={{ fontSize: "13px" }}>
+                {getCategoryName(mediaItem.categoryID, categoryData)}
+              </p>
+            </div>
           </a>
         </Link>
-        <div className="px-10 py-7 text-center">
-          <h3 className="text-sm font-bold uppercase tracking-wider">
-            {mediaItem.title}
-          </h3>
-          <p className="uppercase text-grey-2" style={{ fontSize: "13px" }}>
-            {getCategoryName(mediaItem.categoryID, categoryData)}
-          </p>
-        </div>
       </div>
 
       <MediaItemModal

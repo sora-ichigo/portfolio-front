@@ -17,42 +17,45 @@ export const About: React.FC<{ data: Data }> = ({ data }) => {
         A LITTLE ABOUT ME
         ------------------------- */}
         <div className="col-span-2 mt-3">
-          <GlobalHeading text="A LITTLE ABOUT ME" icon={FaUserAlt} />
-          <h3 className="mt-6 text-2xl font-light leading-snug md:mt-8 md:mb-5 md:text-3-4xl">
+          <GlobalHeading text="A littel about me" icon={FaUserAlt} />
+          <h3 className="mt-6 font-japanese text-xl font-light leading-10 md:mt-8 md:mb-5">
             {StrWithBr(aboutData.description)}
           </h3>
         </div>
 
         {/* -------------------------
-        LATEST TWEETS
+        A RESENT TWEET
         ------------------------- */}
         <div className="mt-9 lg:mt-0">
           <div className="mt-3 mb-6">
-            <GlobalHeading text="LATEST TWEETS" icon={FaTwitter} />
+            <GlobalHeading text="A resent tweet" icon={FaTwitter} />
           </div>
-          <p className="mb-1 rounded bg-blue-light px-8 py-5 text-ex-sm leading-relaxed text-grey-3">
-            Hi, we have just released a new WordPress theme for Podcasters.
+          <p className="mb-1 break-words rounded bg-blue-light px-8 py-5 font-japanese text-ex-sm leading-relaxed text-grey-3">
+            最近、自分的最強の画像サーバを作りはじめました。
+            このサイトの開発でめちゃくちゃ役に立ちました。
             <br />
-            <a href="#">https://twitter.com/hashtag/wordpress?src=hash</a>{" "}
-            <a href="#">#wordpress</a> <a href="#">#podcast</a>
-            <a href="#">#audio</a> <a href="#">#podcaster</a>{" "}
-            <a href="#">#webdesign</a>
+            <a
+              href="https://zenn.dev/ichigo_dev/articles/b435fba30a73e23e78ad
+"
+            >
+              https://zenn.dev/ichigo_dev/articles/b435fba30a73e23e78ad
+            </a>
           </p>
           <p
             className="text-center tracking-widest"
-            style={{ fontSize: "10px", color: "#ccc" }}
+            style={{ fontSize: "10px" }}
           >
-            POSTED ON JAN 23, 2021
+            POSTED ON FEB 26, 2022
           </p>
         </div>
       </div>
 
       {/* -------------------------
-        SERVICES
+        Skills
         ------------------------- */}
       <div className="mt-9">
         <div className="mb-3">
-          <GlobalHeading text="SERVICES" icon={FaMagic} />
+          <GlobalHeading text="Skills" icon={FaMagic} />
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {aboutData.services.map((v, i) => (
@@ -72,7 +75,7 @@ export const About: React.FC<{ data: Data }> = ({ data }) => {
         ------------------------- */}
       <div className="mt-9">
         <div className="mb-3">
-          <GlobalHeading text="FUN FACT" icon={FaBurn} />
+          <GlobalHeading text="Fun fact" icon={FaBurn} />
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {aboutData.funFacts.map((v, i) => (
@@ -86,7 +89,7 @@ export const About: React.FC<{ data: Data }> = ({ data }) => {
         ------------------------- */}
       <div className="mt-9">
         <div className="mb-3">
-          <GlobalHeading text="SNS ACCOUNT" icon={IoShareSocialSharp} />
+          <GlobalHeading text="SNS account" icon={IoShareSocialSharp} />
         </div>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
           {aboutData.snsAccounts.map((v, i) => (
