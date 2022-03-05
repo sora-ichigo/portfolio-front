@@ -1,4 +1,4 @@
-import { CATEGORY, PortfolioData } from "../domain";
+import { CATEGORY, MediaItemType, PortfolioData } from "../domain";
 
 export const portfolioData: PortfolioData = {
   categoryData: [
@@ -128,5 +128,52 @@ export const portfolioData: PortfolioData = {
       tags: ["Ruby", "CloudFront", "S3", "Docker"],
       externalUrl: "https://zenn.dev/ichigo_dev/articles/b435fba30a73e23e78ad",
     },
-  ],
+    {
+      id: 9,
+      title: "Terraform Project - 個人開発用インフラ基盤",
+      categoryID: CATEGORY["INFRASTRUCTURE"],
+      thumbnailUrl: "https://images.igsr5.com/l/ksdmfd.png",
+      imgUrl: "https://images.igsr5.com/l/ksdmfd.png",
+      description:
+        "自分が個人で使うためのインフラリソース基盤です。自分が公開するサービスは基本的に ECS に立てたコンテナをロードバランサーに繋げて、 igsr5.com のサブドメインで公開しています。その為の仕組み（新しいサービスを簡単に公開できる仕組み）を構築しました。",
+      devStyle: 0,
+      devDate: new Date("2021-10"),
+      tags: ["AWS", "Terraform", "GitHub Action"],
+      externalUrl: "https://github.com/igsr5/igsr5-terraform",
+    },
+    {
+      id: 10,
+      title: "fes-order - お祭り用事前決済ツール",
+      categoryID: CATEGORY["BACKEND"],
+      thumbnailUrl: "https://images.igsr5.com/l/grjeido.png",
+      imgUrl: "https://images.igsr5.com/l/grjeido.png",
+      description:
+        "TwoGate Dev Camp 2021 で開発した Web サービスです。お祭りなどで事前に登録した屋台、商品に対してユーザがクレジットカードで購入することができます。屋台側も注文された商品を確認や商品の登録などができるようになっています。開発期間は2日ほどでしたがめちゃくちゃ機能を詰め込みました。",
+      devStyle: 1,
+      devDate: new Date("2021-04"),
+      tags: ["Ruby", "Ruby on Rails", "Angular", "Docker"],
+      externalUrl: "https://github.com/youngeek-0410/fes-order",
+    },
+    {
+      id: 11,
+      title: "勤怠管理 Slack アプリ",
+      categoryID: CATEGORY["BACKEND"],
+      thumbnailUrl: "https://images.igsr5.com/l/ferefjio.png",
+      imgUrl: "https://images.igsr5.com/l/ferefjio.png",
+      description:
+        "自分がインターン先で使うために作った Slack アプリです。仕事始めに `/start`を、離脱時に`/end`のスラッシュコマンドを打つことで後から日毎の勤務時間を確認することができます。会社として報告する勤怠サービスはあるものの、自分の場合1日の隙間時間で何回かに分けて働くことが多かったので、1日ごとの勤務時間の計算を効率化するために作りました。",
+      devStyle: 0,
+      devDate: new Date("2021-11"),
+      tags: ["Golang", "Node.js", "Bolt/slack", "Docker"],
+      externalUrl: "https://github.com/igsr5/time-management-go",
+    },
+  ].sort((a, b) => {
+    if (a.devDate > b.devDate) {
+      return -1;
+    } else if (a.devDate === b.devDate) {
+      return 0;
+    } else {
+      return 1;
+    }
+  }) as MediaItemType[],
 };
