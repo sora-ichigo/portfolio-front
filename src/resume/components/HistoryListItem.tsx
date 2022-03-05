@@ -23,7 +23,7 @@ export const HistoryListItem: React.FC<HistoryListItemType> = ({
     <h4 className="text-xs font-bold uppercase tracking-widest text-grey-2">
       {subTitle}
     </h4>
-    <p className="text-md mt-3 tracking-wider">{text}</p>
+    <p className="mt-3 font-japanese text-sm tracking-wider">{text}</p>
   </div>
 );
 
