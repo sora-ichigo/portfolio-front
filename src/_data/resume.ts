@@ -109,7 +109,7 @@ export const resumeData: ResumeData = {
     ],
   },
   viewMoreAbout: {
-    text: "ここまでこのサイトを読んだ人は分かっているかもしれませんが、このサイトはあまり情報を乗せていません。もしこのサイト以上のことで知りたいことがあれば、開発関連は GitHub, Wantedly Profile を、それ以外なら Instagram, Twitter にとんでほしいです。SNS はよく分からないので基本的に投稿は少なめですが DM は使えます。",
+    text: "ここまでこのサイトを読んだ人は分かっているかもしれませんが、このサイトはあまり情報を載せていません。もしこのサイト以上のことで知りたいことがあれば、開発関連は GitHub, Wantedly Profile を、それ以外なら Instagram, Twitter にとんでほしいです。SNS はよく分からないので基本的に投稿は少なめですが DM は使えます。",
     sns: [
       {
         url: "https://www.instagram.com/sora_ick12/",

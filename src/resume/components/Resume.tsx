@@ -24,7 +24,7 @@ export const Resume: React.FC<{ data: Data }> = ({ data }) => {
           <GlobalHeading icon={FaSuperpowers} text="development Skills" />
         </div>
         <p className="font-japanese text-sm">
-          自分が扱える専門技術を一番得意なものを基準として相対的にグラフ化しています。
+          自分が扱える専門技術のうち一番得意なものを基準として相対的にグラフ化しています。
         </p>
         <div className="pb-14 md:pb-10">
           {resumeData.skills.development.map((v, i) => (
