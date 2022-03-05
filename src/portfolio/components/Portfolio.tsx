@@ -52,7 +52,7 @@ export const Portfolio: React.FC<{ data: Data }> = ({ data }) => {
       </div>
 
       <div className="my-8 flex justify-center">
-        <ul className="flex uppercase">
+        <ul className="flex flex-wrap justify-center uppercase">
           {portfolioData.categoryData.map((v) => (
             <CategoryBtn text={v.name} id={v.id} key={v.id} />
           ))}

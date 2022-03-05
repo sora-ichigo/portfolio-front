@@ -31,7 +31,7 @@ export const useRenderMediaItem = (
         onClick={() => setSelected(true)}
       >
         <Link href={`/portfolio?item=${mediaItem.id}`} shallow>
-          <a className="flex h-full flex-col">
+          <a className="flex flex-col">
             <div className="h-full">
               <img
                 src={mediaItem.thumbnailUrl}

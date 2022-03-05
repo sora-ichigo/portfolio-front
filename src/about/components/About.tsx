@@ -32,7 +32,7 @@ export const About: React.FC<{ data: Data }> = ({ data }) => {
           </div>
           <p className="mb-1 break-words rounded bg-blue-light px-8 py-5 font-japanese text-ex-sm leading-relaxed text-grey-3">
             最近、自分的最強の画像サーバを作りはじめました。
-            とりあえず作ったけどまだ使ってません。
+            このサイトの開発でめちゃくちゃ役に立ちました。
             <br />
             <a
               href="https://zenn.dev/ichigo_dev/articles/b435fba30a73e23e78ad

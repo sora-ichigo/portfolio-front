@@ -104,7 +104,7 @@ export const MediaItemModal: React.FC<{
               TECHNOLOGY
             </h3>
 
-            <ul>
+            <ul className="mb-5">
               {mediaItem.tags.map((v, i) => (
                 <TagItem key={i}>{v}</TagItem>
               ))}
