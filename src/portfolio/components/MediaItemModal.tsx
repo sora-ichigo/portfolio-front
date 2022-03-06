@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import styled from "styled-components";
@@ -7,6 +8,7 @@ import { useMediaQuery } from "react-responsive";
 
 import { DEV_STYLE, MediaItemType } from "../../domain";
 import { toFormatDevDateString } from "../../common/utils/toFormatDevDateString";
+import Head from "next/head";
 
 export const MediaItemModal: React.FC<{
   mediaItem: MediaItemType;
@@ -38,6 +40,10 @@ export const MediaItemModal: React.FC<{
       style={customStyles}
       ariaHideApp={false}
     >
+      <Head>
+        <title>{`${mediaItem.title} | `}Sora Ichigo's HP</title>
+      </Head>
+
       <AiFillCloseCircle
         className="absolute hidden cursor-pointer bg-white text-7xl text-green md:block"
         style={{ top: "2%", right: "3%" }}
