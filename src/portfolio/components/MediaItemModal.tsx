@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-/* eslint-disable @next/next/no-img-element */
 import React from "react";
+import Image from "next/image";
 import styled from "styled-components";
 import { AiFillCloseCircle } from "react-icons/ai";
 import Modal from "react-modal";
@@ -56,7 +56,12 @@ export const MediaItemModal: React.FC<{
         <div className="lg:grid lg:grid-cols-5 lg:gap-10">
           <div className="col-span-3">
             <div className="mb-4">
-              <img src={mediaItem.imgUrl} alt="" />
+              <Image
+                src={mediaItem.imgUrl}
+                alt={mediaItem.title}
+                width={740}
+                height={520}
+              />
             </div>
           </div>
           <div className="col-span-2">
