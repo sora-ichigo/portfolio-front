@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { getCategoryName } from "../../common/utils/getCategoryName";
@@ -32,12 +32,12 @@ export const useRenderMediaItem = (
       >
         <Link href={`/portfolio?item=${mediaItem.id}`} shallow>
           <a className="flex h-full flex-col items-stretch">
-            <img
+            <Image
               src={mediaItem.thumbnailUrl}
-              data-src={mediaItem.thumbnailUrl}
               alt={mediaItem.title}
-              className="lazy h-full w-full object-cover transition hover:opacity-50"
-              style={{ flex: "1 0 0" }}
+              className="h-full w-full object-cover transition hover:opacity-50"
+              width={320}
+              height={200}
             />
             <div className="px-10 py-7 text-center">
               <h3 className="font-japanese text-sm tracking-wider text-navy">
