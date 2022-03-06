@@ -1,7 +1,7 @@
 import React from "react";
 import { NextPage } from "next";
 
-const Custom404: NextPage = () => {
+const CustomError: NextPage = () => {
   return (
     <div
       className="flex flex-col items-center justify-center"
@@ -11,11 +11,13 @@ const Custom404: NextPage = () => {
         className="text-center font-japanese text-3xl leading-normal tracking-wider"
         style={{ maxWidth: "80%" }}
       >
-        お探しのページは
+        何かしらの
         <br />
-        見つかりませんでした
+        技術的問題が起きています
       </p>
-      <p className="text-2xl tracking-wider text-grey-2">404 NOT FOUND</p>
+      <p className="text-2xl tracking-wider text-grey-2">
+        500 INTERNAL SERVER ERROR
+      </p>
 
       <a href="/" className="mt-8 border border-navy px-5 py-3 text-navy">
         トップページに戻る
@@ -24,4 +26,4 @@ const Custom404: NextPage = () => {
   );
 };
 
-export default Custom404;
+export default CustomError;
