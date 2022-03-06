@@ -37,7 +37,6 @@ export const useRenderMediaItem = (
               alt={mediaItem.title}
               className="h-full w-full object-cover transition hover:opacity-50"
               style={{ flex: "1 0 0" }}
-              loading="lazy"
             />
             <div className="px-10 py-7 text-center">
               <h3 className="font-japanese text-sm tracking-wider text-navy">
