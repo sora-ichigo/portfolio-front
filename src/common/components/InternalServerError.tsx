@@ -1,7 +1,6 @@
 import React from "react";
-import { NextPage } from "next";
 
-const CustomError: NextPage = () => {
+export const InternalServerError: React.FC = () => {
   return (
     <div
       className="flex flex-col items-center justify-center"
@@ -25,5 +24,3 @@ const CustomError: NextPage = () => {
     </div>
   );
 };
-
-export default CustomError;
