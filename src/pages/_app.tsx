@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import SwiperCore, { Pagination, Navigation } from "swiper";
+import * as Sentry from "@sentry/react";
 
 import { Footer } from "../common/components/Footer";
 
@@ -10,8 +11,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "tailwindcss/tailwind.css";
 import "../styles/index.css";
+import { InternalServerError } from "../common/components/InternalServerError";
 
 SwiperCore.use([Pagination, Navigation]);
+
+const fallback = <InternalServerError></InternalServerError>;
 
 const App = ({ Component, pageProps }: any) => {
   const router = useRouter();
@@ -43,7 +47,9 @@ const App = ({ Component, pageProps }: any) => {
         </title>
         <link rel="icon" href="https://images.igsr5.com/l/riujrfe.png" />
       </Head>
-      <Component {...pageProps} />
+      <Sentry.ErrorBoundary fallback={fallback}>
+        <Component {...pageProps} />
+      </Sentry.ErrorBoundary>
       <Footer />
     </>
   );
