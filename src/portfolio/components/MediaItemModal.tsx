@@ -56,7 +56,7 @@ export const MediaItemModal: React.FC<{
         <div className="lg:grid lg:grid-cols-5 lg:gap-10">
           <div className="col-span-3">
             <div className="mb-4">
-              <img src={mediaItem.imgUrl} alt="" />
+              <img src={mediaItem.imgUrl} alt="" loading="lazy" />
             </div>
           </div>
           <div className="col-span-2">

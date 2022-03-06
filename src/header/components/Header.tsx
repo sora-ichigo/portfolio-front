@@ -27,6 +27,7 @@ export const Header: React.FC<Props> = (props) => {
         src={headerData.profileImgUrl}
         width={isWindowMd ? 160 : 140}
         height={isWindowMd ? 160 : 140}
+        loading="eager"
         alt="Ichigo Sora"
       />
       <h1 className="mt-3.5 text-2xl font-light leading-snug">
