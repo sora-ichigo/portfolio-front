@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import SwiperCore, { Pagination, Navigation } from "swiper";
 import * as Sentry from "@sentry/react";
 
@@ -12,6 +11,7 @@ import "swiper/css/navigation";
 import "tailwindcss/tailwind.css";
 import "../styles/index.css";
 import { InternalServerError } from "../common/components/InternalServerError";
+import { GlobalHead } from "../common/components/GlobalHead";
 
 SwiperCore.use([Pagination, Navigation]);
 
@@ -40,13 +40,7 @@ const App = ({ Component, pageProps }: any) => {
 
   return (
     <>
-      <Head>
-        <title>
-          {currentPageString !== "" ? `${currentPageString} | ` : ""}Sora
-          Ichigo's HP
-        </title>
-        <link rel="icon" href="https://images.igsr5.com/l/riujrfe.png" />
-      </Head>
+      <GlobalHead currentPageString={currentPageString} />
       <Sentry.ErrorBoundary fallback={fallback}>
         <Component {...pageProps} />
       </Sentry.ErrorBoundary>
