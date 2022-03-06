@@ -1,4 +1,5 @@
 # 🌍 My portfolio sitee
+:memo: パフォーマンス改善を行うに伴い改善前のコードをブランチに切り出して保存しておく
 
 <img src="https://images.igsr5.com/l/afjife.png" width="700px" />
 
