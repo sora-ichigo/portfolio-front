@@ -12,13 +12,6 @@ export const About: React.FC<{ data: Data }> = ({ data }) => {
   const aboutData: AboutData = data as AboutData;
   return (
     <>
-      <button
-        onClick={() => {
-          throw new Error("test");
-        }}
-      >
-        click
-      </button>
       <div className="lg:grid lg:grid-cols-3 lg:gap-8">
         {/* -------------------------
         A LITTLE ABOUT ME
