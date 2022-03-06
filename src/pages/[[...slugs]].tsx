@@ -10,8 +10,6 @@ export default Home;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   let pageType: MainPageType = 0;
-  throw new Error("test");
-
   // TODO: テスト書く
   switch (ctx.req.url?.split("?")[0]) {
     case "/":
