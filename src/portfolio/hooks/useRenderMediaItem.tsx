@@ -34,9 +34,8 @@ export const useRenderMediaItem = (
           <a className="flex h-full flex-col items-stretch">
             <img
               src={mediaItem.thumbnailUrl}
-              data-src={mediaItem.thumbnailUrl}
               alt={mediaItem.title}
-              className="lazy h-full w-full object-cover transition hover:opacity-50"
+              className="h-full w-full object-cover transition hover:opacity-50"
               style={{ flex: "1 0 0" }}
               loading="lazy"
             />

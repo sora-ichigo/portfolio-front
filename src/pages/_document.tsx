@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-sync-scripts */
 import Document, {
   DocumentContext,
   Head,
@@ -7,7 +6,6 @@ import Document, {
   NextScript,
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-import { isSupportNativeLazyLoad } from "../common/utils/isSupportNativeLazyLoad";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -46,16 +44,6 @@ export default class MyDocument extends Document {
           ></link>
         </Head>
         <body className="font-main font-light text-navy">
-          {!isSupportNativeLazyLoad && (
-            <>
-              <script
-                async
-                src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.6.1/dist/lazyload.min.js"
-              ></script>
-              <script>new LagyLoad({}).update();</script>
-            </>
-          )}
-
           <Main />
           <NextScript />
         </body>
