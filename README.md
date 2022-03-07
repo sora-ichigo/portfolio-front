@@ -1,4 +1,4 @@
-# 🌍 My portfolio sitee
+# 🌍 My portfolio site
 
 <img src="https://images.igsr5.com/l/afjife.png" width="700px" />
 
