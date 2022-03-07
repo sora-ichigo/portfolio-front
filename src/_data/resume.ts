@@ -38,7 +38,7 @@ export const resumeData: ResumeData = {
     {
       title: "Golang v1.0 がリリース",
       subTitle: "released",
-      text: "最近自分がよく書いている言語のv1.0リリースがありました。もちろんこの時は Golang の存在自体全く知りません。自分が Golang を書き始めたのは Go Modules が出たあたりからなので本当にいい時代に生まれたなと思っています。",
+      text: "最近自分がよく書いている言語のv1.0リリースがありました。もちろんこの時は Golang の存在自体全く知りません。自分が Golang を書き始めたのは Go Modules の時代になってからなので本当にいい時代に生まれたなと思っています。",
       date: "2009",
     },
     {
