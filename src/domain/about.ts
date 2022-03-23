@@ -6,6 +6,7 @@ import { IconType } from "react-icons";
 // -------------------
 export type AboutData = {
   description: string;
+  tweet: string;
   services: ServiceListItemType[];
   funFacts: FunFactListItemType[];
   snsAccounts: SNSAccountDataType[];

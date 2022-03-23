@@ -167,6 +167,19 @@ export const portfolioData: PortfolioData = {
       tags: ["Golang", "Node.js", "Bolt/slack", "Docker"],
       externalUrl: "https://github.com/igsr5/time-management-go",
     },
+    {
+      id: 12,
+      title: "Metagros - OGP Metadaba 取得 npm Package",
+      categoryID: CATEGORY["BACKEND"],
+      thumbnailUrl: "https://images.igsr5.com/l/jfioefi.webp",
+      imgUrl: "https://images.igsr5.com/l/jfioefi.webp",
+      description:
+        "ESM + TypeScript で作った npm package です。任意のサイトURLを与えるとそのサイトのOGP Metadataをオブジェクトとして返してくれます。調子に乗って Native ESM only で作ったので使うのが大変でした。この npm package きっかけで Node.js 周りのモジュールシステムをとても勉強しているので作ってよかったです。名前は適当につけました。",
+      devStyle: 0,
+      devDate: new Date("2022-03"),
+      tags: ["Node.js", "ESM", "OGP"],
+      externalUrl: "https://github.com/igsr5/metagros",
+    },
   ].sort((a, b) => {
     if (a.devDate > b.devDate) {
       return -1;

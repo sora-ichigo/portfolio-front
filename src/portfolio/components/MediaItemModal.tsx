@@ -60,7 +60,7 @@ export const MediaItemModal: React.FC<{
                 src={mediaItem.imgUrl}
                 alt={mediaItem.title}
                 width={740}
-                height={520}
+                height={450}
               />
             </div>
           </div>
