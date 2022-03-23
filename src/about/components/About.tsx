@@ -31,15 +31,7 @@ export const About: React.FC<{ data: Data }> = ({ data }) => {
             <GlobalHeading text="A resent tweet" icon={FaTwitter} />
           </div>
           <p className="mb-1 break-words rounded bg-blue-light px-8 py-5 font-japanese text-ex-sm leading-relaxed text-grey-3">
-            最近、自分的最強の画像サーバを作りはじめました。
-            このサイトの開発でめちゃくちゃ役に立ちました。
-            <br />
-            <a
-              href="https://zenn.dev/ichigo_dev/articles/b435fba30a73e23e78ad
-"
-            >
-              https://zenn.dev/ichigo_dev/articles/b435fba30a73e23e78ad
-            </a>
+            ブログページ開発中、、、
           </p>
           <p
             className="text-center tracking-widest"

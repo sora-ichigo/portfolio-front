@@ -36,7 +36,7 @@ export const useRenderMediaItem = (
               src={mediaItem.thumbnailUrl}
               alt={mediaItem.title}
               className="h-full w-full object-cover transition hover:opacity-50"
-              width={320}
+              width={400}
               height={200}
             />
             <div className="px-10 py-7 text-center">
