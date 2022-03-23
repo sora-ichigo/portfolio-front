@@ -31,13 +31,13 @@ export const About: React.FC<{ data: Data }> = ({ data }) => {
             <GlobalHeading text="A resent tweet" icon={FaTwitter} />
           </div>
           <p className="mb-1 break-words rounded bg-blue-light px-8 py-5 font-japanese text-ex-sm leading-relaxed text-grey-3">
-            ブログページ開発中、、、
+            {aboutData.tweet}
           </p>
           <p
             className="text-center tracking-widest"
             style={{ fontSize: "10px" }}
           >
-            POSTED ON FEB 26, 2022
+            POSTED ON MAR 22, 2022
           </p>
         </div>
       </div>
