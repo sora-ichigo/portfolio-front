@@ -7,7 +7,6 @@ export type FeedSource = {
 export type PostItem = {
   title: string;
   link: string;
-  contentSnippet?: string;
+  thumbnailUrl?: string;
   isoDate?: string;
-  dateMiliSeconds: number;
 };

@@ -48,7 +48,7 @@ export const Blog: React.FC<{ data: Data }> = ({ data }) => {
   return (
     <>
       <div className="my-3">
-        <GlobalCenterHeading text="my works" icon={FaLeaf} />
+        <GlobalCenterHeading text="my blog" icon={FaLeaf} />
       </div>
 
       <div className="my-8 flex justify-center">

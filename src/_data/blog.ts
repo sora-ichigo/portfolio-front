@@ -30,6 +30,9 @@ export const portfolioData: BlogData = {
       categoryID: CATEGORY["FRONTEND"],
       thumbnailUrl: "https://images.igsr5.com/l/fljdfgk.jpeg",
       devDate: new Date("2021-08"),
+      tags: ["TypeScript", "Next.js", "React"],
+      externalUrl:
+        "https://www.wantedly.com/companies/wantedly/post_articles/359076",
     },
     {
       id: 1,
