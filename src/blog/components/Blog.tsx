@@ -3,8 +3,7 @@ import FlipMove from "react-flip-move";
 import { FaLeaf } from "react-icons/fa";
 
 import { GlobalCenterHeading } from "../../common/components/GlobalCenterHeading";
-import { Data } from "../../domain";
-import { BlogData } from "../../domain/blog";
+import { BlogData, Data } from "../../domain";
 import { BlogItem } from "./BlogItem";
 
 export const Blog: React.FC<{ data: Data }> = ({ data }) => {

@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 
-import { BlogItemType } from "../../domain/blog";
+import { BlogItemType } from "../../domain";
 import { useRenderBlogItem } from "../hooks/useRenderBlogItem";
 
 type Props = { blogItem: BlogItemType };

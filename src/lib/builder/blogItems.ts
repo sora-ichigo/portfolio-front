@@ -1,5 +1,5 @@
 import { getPageOGPMetadata } from "metagros";
-import { BlogItemType } from "../../domain/blog";
+import { BlogItemType } from "../../domain";
 import { getFeedItemsFromFeedURLs } from "./feedItems";
 
 export const getBlogItemsFromFeedURLs = async (

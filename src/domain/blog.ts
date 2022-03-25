@@ -9,5 +9,5 @@ export type BlogItemType = {
   title: string;
   createdAt: DevDate;
   thumbnailUrl: string;
-  link?: string;
+  link: string;
 };

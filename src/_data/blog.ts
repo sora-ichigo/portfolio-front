@@ -1,4 +1,4 @@
-import { BlogData, BlogItemType } from "../domain/blog";
+import { BlogData, BlogItemType } from "../domain";
 import data from "./.blogItems/data.json";
 
 const serializeBlogItem = (

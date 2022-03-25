@@ -1,11 +1,10 @@
 import React from "react";
 import { About } from "../../about/components/About";
-import { aboutData, portfolioData, resumeData } from "../../_data";
+import { aboutData, blogData, portfolioData, resumeData } from "../../_data";
 import { Data } from "../../domain";
 import { Portfolio } from "../../portfolio/components/Portfolio";
 import { Resume } from "../../resume/components/Resume";
 import { Blog } from "../../blog/components/Blog";
-import { blogData } from "../../_data/blog";
 
 export const MAIN_PAGES = {
   ABOUT_ME: 0,
