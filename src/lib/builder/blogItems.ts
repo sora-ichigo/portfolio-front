@@ -21,7 +21,7 @@ export const getBlogItemsFromFeedURLs = async (
         }
 
         const newValue: BlogItemType = {
-          id: i,
+          id: `${i}`,
           title: metadata.title,
           link: v.url,
           thumbnailUrl: metadata.image,

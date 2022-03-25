@@ -7,8 +7,12 @@ const feedURLs = [
 ];
 
 (async function (feedURLs: string[]) {
-  const blogItems = await getBlogItemsFromFeedURLs(feedURLs);
+  try {
+    const blogItems = await getBlogItemsFromFeedURLs(feedURLs);
 
-  fs.ensureDirSync("src/_data/.blogItems");
-  fs.writeJsonSync("src/_data/.blogItems/data.json", blogItems);
+    fs.ensureDirSync("src/_data/.blogItems");
+    fs.writeJsonSync("src/_data/.blogItems/data.json", blogItems);
+  } catch (err) {
+    // TODO: notify error to sentry.
+  }
 })(feedURLs);

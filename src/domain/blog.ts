@@ -5,7 +5,7 @@ export type BlogData = {
 type DevDate = Date;
 
 export type BlogItemType = {
-  id: number;
+  id: string;
   title: string;
   createdAt: DevDate;
   thumbnailUrl: string;
