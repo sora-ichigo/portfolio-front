@@ -18,7 +18,7 @@ async function fetchFeedItems(url: string) {
         title,
         link,
         thumbnailUrl: enclosure?.url,
-        isoDate: isoDate ? new Date(isoDate) : undefined,
+        CreatedAt: isoDate ? new Date(isoDate) : undefined,
       };
     })
     .filter(({ title, link }) => title && link) as PostItem[];

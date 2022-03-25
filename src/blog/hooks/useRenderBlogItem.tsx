@@ -1,13 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import { getCategoryName } from "../../common/utils/getCategoryName";
-import { CategoryDataType, MediaItemType } from "../../domain";
+import { BlogItemType } from "../../domain/blog";
 
 export const useRenderBlogItem = (
-  {
-    mediaItem: blogItem,
-    categoryData,
-  }: { mediaItem: MediaItemType; categoryData: CategoryDataType[] },
+  { blogItem: blogItem }: { blogItem: BlogItemType },
   ref: React.LegacyRef<HTMLDivElement> | undefined
 ) => {
   return (
@@ -24,9 +20,6 @@ export const useRenderBlogItem = (
           <h3 className="font-japanese text-sm tracking-wider text-navy">
             {blogItem.title}
           </h3>
-          <p className="uppercase text-grey-2" style={{ fontSize: "13px" }}>
-            {getCategoryName(blogItem.categoryID, categoryData)}
-          </p>
         </div>
       </a>
     </div>

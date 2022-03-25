@@ -5,6 +5,7 @@ import { Data } from "../../domain";
 import { Portfolio } from "../../portfolio/components/Portfolio";
 import { Resume } from "../../resume/components/Resume";
 import { Blog } from "../../blog/components/Blog";
+import { blogData } from "../../_data/blog";
 
 export const MAIN_PAGES = {
   ABOUT_ME: 0,
@@ -39,7 +40,7 @@ pageList[MAIN_PAGES["PORTFOLIO"]] = {
 };
 pageList[MAIN_PAGES["BLOG"]] = {
   name: "blog",
-  data: portfolioData,
+  data: blogData,
   component: Blog,
   path: "/blog",
 };
