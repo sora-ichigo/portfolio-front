@@ -1,4 +1,3 @@
-import fs from "fs-extra";
 import Parser from "rss-parser";
 
 const parser = new Parser();
@@ -18,7 +17,7 @@ const fetchFeedItemsFromURL = async (url: string): Promise<FeedItem[]> => {
     .filter((v) => v != null) as FeedItem[];
 };
 
-const getFeedItemsFromFeedURLs = async (feedURLs: string[]) => {
+export const getFeedItemsFromFeedURLs = async (feedURLs: string[]) => {
   if (!feedURLs.length) return [];
 
   let feedItems: FeedItem[] = [];
@@ -29,14 +28,3 @@ const getFeedItemsFromFeedURLs = async (feedURLs: string[]) => {
 
   return feedItems;
 };
-
-(async function () {
-  const feedURLs = [
-    "https://zenn.dev/ichigo_dev/feed",
-    "https://qiita.com/igsr5/feed",
-  ];
-  const feedItems = await getFeedItemsFromFeedURLs(feedURLs);
-
-  fs.ensureDirSync("src/_data/.feedItems");
-  fs.writeJsonSync("src/_data/.feedItems/data.json", feedItems);
-})();
