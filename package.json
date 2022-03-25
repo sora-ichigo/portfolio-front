@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:posts": "ts-node --project tsconfig.builder.json ./src/lib/builder/posts.ts",
+    "build:feedItems": "ts-node --project tsconfig.builder.json ./src/lib/builder/feedItems.ts",
     "start": "next start",
     "lint": "next lint"
   },

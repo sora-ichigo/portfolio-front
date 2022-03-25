@@ -36,8 +36,8 @@ export const useRenderMediaItem = (
               src={mediaItem.thumbnailUrl}
               alt={mediaItem.title}
               className="h-full w-full object-cover transition hover:opacity-50"
-              width={320}
-              height={200}
+              width={1280}
+              height={800}
             />
             <div className="px-10 py-7 text-center">
               <h3 className="font-japanese text-sm tracking-wider text-navy">
