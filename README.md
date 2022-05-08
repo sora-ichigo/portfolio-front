@@ -1,11 +1,14 @@
 # 🌍 My portfolio site
 
+Backend Repo - https://github.com/igsr5/portfolio-backend  
+Schema Repo(Protocol Buffers) - https://github.com/igsr5/portfolio-proto
 
 <img src="https://images.igsr5.com/l/afjife.png" width="700px" />
 
 https://igsr5.dev
 
 @igsr5 のポートフォリオサイトです。
+
 
 ## Summary
 - About page
