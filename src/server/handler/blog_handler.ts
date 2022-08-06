@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 import { v4 as uuidv4 } from "uuid";
 import { BlogData } from "../../domain/blog";
+import { prismaClient } from "../prisma_client";
 
 // TODO:
 // - prisuma client の作成処理を共通化する
@@ -10,15 +10,14 @@ import { BlogData } from "../../domain/blog";
 //   - sentry 通知: ok
 // http res/req におけるキャメルorスネークケースの統一
 
-const prisma = new PrismaClient();
-
 export const blogHandler: {
   getBlogs: NextApiHandler<{ blogs: BlogData[] }>;
   createBlog: NextApiHandler<{ blog: BlogData }>;
 } = {
   getBlogs: async (_req, res) => {
-    const blogsFromManual = await prisma.blog_from_manual_items.findMany();
-    const blogsFromRSS = await prisma.blog_from_rss_items.findMany();
+    const blogsFromManual =
+      await prismaClient.blog_from_manual_items.findMany();
+    const blogsFromRSS = await prismaClient.blog_from_rss_items.findMany();
 
     let blogs: BlogData[] = [
       ...blogsFromManual.map((blog) => ({
@@ -61,7 +60,7 @@ export const blogHandler: {
       thumbnail_url: string;
       service_name: string;
     } = req.body;
-    const blog = await prisma.blog_from_manual_items.create({
+    const blog = await prismaClient.blog_from_manual_items.create({
       data: {
         id: uuidv4(),
         title: params.title,
