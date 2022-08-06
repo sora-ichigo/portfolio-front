@@ -44,6 +44,7 @@ const HistoryIcon = styled.div<{ current?: boolean }>`
   background-color: ${(props) => (props.current ? "#345" : "#5BCF80")};
 
   @media (max-width: 768px) {
+    top: 39%;
     left: -85px;
   }
 `;
