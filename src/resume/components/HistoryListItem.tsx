@@ -31,7 +31,7 @@ const HistoryIcon = styled.div<{ current?: boolean }>`
   position: absolute;
   width: 58px;
   height: 58px;
-  top: 40%;
+  top: 34%;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -39,11 +39,12 @@ const HistoryIcon = styled.div<{ current?: boolean }>`
   letter-spacing: 0.5px;
   color: #fff;
   font-size: 11px;
-  left: -101px;
-  outline: 5px solid #fff;
+  left: -78px;
+  outline: 5px solid #ffffff;
   background-color: ${(props) => (props.current ? "#345" : "#5BCF80")};
 
   @media (max-width: 768px) {
+    top: 39%;
     left: -85px;
   }
 `;
