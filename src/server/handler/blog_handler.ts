@@ -17,6 +17,7 @@ export const blogHandler: {
   createBlog: NextApiHandler<{ blog: BlogData }>;
 } = {
   getBlogs: async (_req, res) => {
+    throw new Error("test");
     const blogsFromManual = await prisma.blog_from_manual_items.findMany();
     const blogsFromRSS = await prisma.blog_from_rss_items.findMany();
 
