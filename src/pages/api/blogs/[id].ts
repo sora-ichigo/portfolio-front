@@ -1,5 +1,6 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 import { BlogData } from "../../../domain/blog";
+import { blogHandler } from "../../../server/handler/blog_handler";
 import { withErrorHandlingHandler } from "../../../server/handler/utils";
 
 // ==============================
@@ -18,15 +19,15 @@ const handler = withErrorHandlingHandler(
     const { method } = req;
     switch (method) {
       case "GET": {
-        await getBlog(req, res);
+        await blogHandler.getBlog(req, res);
         break;
       }
       case "PUT": {
-        await updateBlog(req, res);
+        await blogHandler.updateBlog(req, res);
         break;
       }
       case "DELETE": {
-        await deleteBlog(req, res);
+        await blogHandler.deleteBlog(req, res);
         break;
       }
     }
@@ -35,40 +36,3 @@ const handler = withErrorHandlingHandler(
 );
 
 export default handler;
-
-const getBlog: NextApiHandler<{ blog: BlogData }> = async (_req, res) => {
-  const blog: BlogData = {
-    id: "1",
-    title: "test",
-    postedAt: new Date(),
-    siteUrl: "https://example.com",
-    thumbbnailUrl: "https://example.com",
-    serviceName: "test",
-  };
-  return res.status(200).json({ blog });
-};
-
-const updateBlog: NextApiHandler<{ blog: BlogData }> = async (req, res) => {
-  const { title, postedAt, siteUrl, thumbbnailUrl, serviceName } = req.body;
-  const blog: BlogData = {
-    id: "1",
-    title,
-    postedAt,
-    siteUrl,
-    thumbbnailUrl,
-    serviceName,
-  };
-  return res.status(200).json({ blog });
-};
-
-const deleteBlog: NextApiHandler<{ blog: BlogData }> = async (_req, res) => {
-  const blog: BlogData = {
-    id: "1",
-    title: "test",
-    postedAt: new Date(),
-    siteUrl: "https://example.com",
-    thumbbnailUrl: "https://example.com",
-    serviceName: "test",
-  };
-  return res.status(200).json({ blog });
-};

@@ -1,11 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import * as Sentry from "@sentry/nextjs";
+import { ResponseErorr } from "./error";
 
 export const withErrorHandlingHandler =
   (
     handler: (
       req: NextApiRequest,
-      res: NextApiResponse
+      res: NextApiResponse<ResponseErorr>
     ) => Promise<NextApiResponse>
   ) =>
   async (req: NextApiRequest, res: NextApiResponse) => {
