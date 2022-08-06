@@ -1,6 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import * as Sentry from "@sentry/nextjs";
 
 import { blogHandler } from "../../../server/handler/blog_handler";
+
+export const config = {
+  runtime: "experimental-edge",
+};
 
 // ==============================
 // Route:
@@ -16,18 +21,28 @@ import { blogHandler } from "../../../server/handler/blog_handler";
 // http res/req におけるキャメルorスネークケースの統一
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { method } = req;
-  switch (method) {
-    case "GET": {
-      await blogHandler.getBlogs(req, res);
-      break;
+  try {
+    const { method } = req;
+    switch (method) {
+      case "GET": {
+        await blogHandler.getBlogs(req, res);
+        break;
+      }
+      case "POST": {
+        await blogHandler.createBlog(req, res);
+        break;
+      }
     }
-    case "POST": {
-      await blogHandler.createBlog(req, res);
-      break;
+    return res.status(405).end();
+  } catch (err) {
+    if (err instanceof Error) {
+      Sentry.captureException(err);
+      await Sentry.flush(2000);
+      res.status(500).json({ statusCode: 500, message: err.message });
     }
+
+    res.status(500).json({ message: "Internal Server Error" });
   }
-  return res.status(405).end();
 };
 
 export default handler;

@@ -1,4 +1,5 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
+import * as Sentry from "@sentry/nextjs";
 import { BlogData } from "../../../domain/blog";
 
 // ==============================
@@ -8,23 +9,36 @@ import { BlogData } from "../../../domain/blog";
 //  - DELETE: /api/blogs/[id]
 // ==============================
 
+export const config = {
+  runtime: "experimental-edge",
+};
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { method } = req;
-  switch (method) {
-    case "GET": {
-      await getBlog(req, res);
-      break;
+  try {
+    const { method } = req;
+    switch (method) {
+      case "GET": {
+        await getBlog(req, res);
+        break;
+      }
+      case "PUT": {
+        await updateBlog(req, res);
+        break;
+      }
+      case "DELETE": {
+        await deleteBlog(req, res);
+        break;
+      }
     }
-    case "PUT": {
-      await updateBlog(req, res);
-      break;
+    return res.status(405).end();
+  } catch (err) {
+    if (err instanceof Error) {
+      Sentry.captureException(err);
+      res.status(500).json({ statusCode: 500, message: err.message });
     }
-    case "DELETE": {
-      await deleteBlog(req, res);
-      break;
-    }
+
+    res.status(500).json({ message: "Internal Server Error" });
   }
-  return res.status(405).end();
 };
 
 export default handler;

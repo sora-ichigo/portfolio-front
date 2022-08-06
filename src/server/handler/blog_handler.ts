@@ -7,7 +7,7 @@ import { BlogData } from "../../domain/blog";
 // - prisuma client の作成処理を共通化する
 // - error handling
 //   - レスポンス
-//   - sentry 通知
+//   - sentry 通知: ok
 // http res/req におけるキャメルorスネークケースの統一
 
 const prisma = new PrismaClient();
@@ -17,7 +17,6 @@ export const blogHandler: {
   createBlog: NextApiHandler<{ blog: BlogData }>;
 } = {
   getBlogs: async (_req, res) => {
-    throw new Error("test");
     const blogsFromManual = await prisma.blog_from_manual_items.findMany();
     const blogsFromRSS = await prisma.blog_from_rss_items.findMany();
 
