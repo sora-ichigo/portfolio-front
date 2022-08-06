@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import * as Sentry from "@sentry/nextjs";
 
 import { blogHandler } from "../../../server/handler/blog_handler";
+import { withErrorHandlingHandler } from "../../../server/handler/utils";
 
 export const config = {
   runtime: "experimental-edge",
@@ -14,14 +14,14 @@ export const config = {
 // ==============================
 
 // TODO:
-// - prisuma client の作成処理を共通化する
-// - error handling
+// - prisuma client の作成処理を共通化する:ok
+// - error handling:ok
 //   - レスポンス
 //   - sentry 通知
 // http res/req におけるキャメルorスネークケースの統一
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  try {
+const handler = withErrorHandlingHandler(
+  async (req: NextApiRequest, res: NextApiResponse) => {
     const { method } = req;
     switch (method) {
       case "GET": {
@@ -34,15 +34,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }
     }
     return res.status(405).end();
-  } catch (err) {
-    if (err instanceof Error) {
-      Sentry.captureException(err);
-      await Sentry.flush(2000);
-      res.status(500).json({ statusCode: 500, message: err.message });
-    }
-
-    res.status(500).json({ message: "Internal Server Error" });
   }
-};
+);
 
 export default handler;

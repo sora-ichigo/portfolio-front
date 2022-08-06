@@ -1,6 +1,6 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
-import * as Sentry from "@sentry/nextjs";
 import { BlogData } from "../../../domain/blog";
+import { withErrorHandlingHandler } from "../../../server/handler/utils";
 
 // ==============================
 // Route:
@@ -13,8 +13,8 @@ export const config = {
   runtime: "experimental-edge",
 };
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  try {
+const handler = withErrorHandlingHandler(
+  async (req: NextApiRequest, res: NextApiResponse) => {
     const { method } = req;
     switch (method) {
       case "GET": {
@@ -31,15 +31,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }
     }
     return res.status(405).end();
-  } catch (err) {
-    if (err instanceof Error) {
-      Sentry.captureException(err);
-      res.status(500).json({ statusCode: 500, message: err.message });
-    }
-
-    res.status(500).json({ message: "Internal Server Error" });
   }
-};
+);
 
 export default handler;
 
