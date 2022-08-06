@@ -40,7 +40,7 @@ const WorkHistoryIcon = styled.div`
 
   @media (max-width: 768px) {
     top: -18px;
-    left: -8px;
+    left: -88px;
     width: 70px;
     height: 70px;
   }
