@@ -14,7 +14,7 @@ export const HistoryList: React.FC<{
       <WorkHistoryIcon>
         <FaFlask className="text-grey-4" />
       </WorkHistoryIcon>
-      work history
+      <div className="ml-4">work history</div>
     </h2>
 
     {historyListProps.map((v, i) => {
@@ -27,7 +27,7 @@ const WorkHistoryIcon = styled.div`
   font-size: 24px;
   position: absolute;
   top: -27px;
-  left: -112px;
+  left: -88px;
   width: 86px;
   height: 86px;
   display: flex;
@@ -36,10 +36,11 @@ const WorkHistoryIcon = styled.div`
   align-items: center;
   border: 4px solid #f4f6f7;
   border-radius: 50%;
+  margin-right: 1rem;
 
   @media (max-width: 768px) {
     top: -18px;
-    left: -88px;
+    left: -8px;
     width: 70px;
     height: 70px;
   }
@@ -49,7 +50,7 @@ const HistoryLine = styled.div`
   z-index: -10;
   position: absolute;
   top: 0;
-  left: 41px;
+  left: 36px;
   height: 100%;
   background-color: #f4f6f7;
   width: 5px;
