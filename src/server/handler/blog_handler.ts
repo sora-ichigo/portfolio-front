@@ -196,16 +196,17 @@ const deleteBlog: NextApiHandler<void | ResponseErorr> = async (req, res) => {
   }
 };
 
+// TODO: create, update は未実装(site url を受け取って他のカラムはogpなどからサーバで取得したい)
 export const blogHandler: {
   getBlogs: NextApiHandler<{ blogs: BlogData[] } | ResponseErorr>;
   getBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr>;
-  createBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr>;
-  updateBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr>;
+  // createBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr>;
+  //updateBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr>;
   deleteBlog: NextApiHandler<void | ResponseErorr>;
 } = {
   getBlogs,
   getBlog,
-  createBlog,
-  updateBlog,
+  //createBlog,
+  //updateBlog,
   deleteBlog,
 };

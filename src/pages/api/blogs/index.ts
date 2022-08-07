@@ -21,7 +21,7 @@ const handler: NextApiHandler = async (req, res) => {
       return;
     }
     case "POST": {
-      await blogHandler.createBlog(req, res);
+      // await blogHandler.createBlog(req, res);
       return;
     }
   }
