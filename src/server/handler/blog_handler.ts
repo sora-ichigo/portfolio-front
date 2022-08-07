@@ -2,7 +2,6 @@ import {
   PrismaClientKnownRequestError,
   PrismaClientValidationError,
 } from "@prisma/client/runtime";
-import { count } from "console";
 import { NextApiHandler } from "next";
 import { v4 as uuidv4 } from "uuid";
 import { BlogData } from "../../domain/blog";
@@ -80,7 +79,7 @@ const createBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr> = async (
 ) => {
   const params: {
     title: string;
-    posted_at?: Date;
+    posted_at: Date;
     site_url: string;
     thumbnail_url: string;
     service_name: string;
@@ -90,9 +89,7 @@ const createBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr> = async (
       data: {
         id: uuidv4(),
         title: params.title,
-        posted_at: params.posted_at
-          ? new Date(params.posted_at).toISOString()
-          : null,
+        posted_at: new Date(params.posted_at).toISOString(),
         site_url: params.site_url,
         thumbnail_url: params.thumbnail_url,
         service_name: params.service_name,
@@ -114,6 +111,11 @@ const createBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr> = async (
       e instanceof PrismaClientKnownRequestError
     ) {
       return res.status(400).json({ message: e.message });
+    } else if (e instanceof RangeError) {
+      // For toISOString()
+      return res.status(400).json({
+        message: "Argument posted_at for data.posted_at is missing or invalid.",
+      });
     }
     throw e;
   }
@@ -126,17 +128,18 @@ const updateBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr> = async (
   const { id } = req.query;
   const params: {
     title: string;
-    posted_at?: Date;
+    posted_at: Date;
     site_url: string;
     thumbnail_url: string;
     service_name: string;
   } = req.body;
   try {
+    console.log(params.posted_at);
     const blog = await prismaClient.blog_from_manual_items.update({
       where: { id: id as string },
       data: {
         title: params.title,
-        posted_at: params.posted_at // TODO: 指定されないと null になってしまう、そもそもなんでDBはnullable？
+        posted_at: params.posted_at
           ? new Date(params.posted_at).toISOString()
           : undefined,
         site_url: params.site_url,
@@ -161,7 +164,13 @@ const updateBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr> = async (
       e instanceof PrismaClientKnownRequestError
     ) {
       return res.status(400).json({ message: e.message });
+    } else if (e instanceof RangeError) {
+      // For toISOString()
+      return res.status(400).json({
+        message: "Argument posted_at for data.posted_at is missing or invalid.",
+      });
     }
+
     throw e;
   }
 };

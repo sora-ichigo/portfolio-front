@@ -1,5 +1,5 @@
-import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
-import { BlogData } from "../../../domain/blog";
+import { NextApiRequest, NextApiResponse } from "next";
+import * as Sentry from "@sentry/nextjs";
 import { blogHandler } from "../../../server/handler/blog_handler";
 import { withErrorHandlingHandler } from "../../../server/handler/utils";
 
@@ -16,6 +16,7 @@ export const config = {
 
 const handler = withErrorHandlingHandler(
   async (req: NextApiRequest, res: NextApiResponse) => {
+    Sentry.captureException(new Error("Unknown error"));
     const { method } = req;
     switch (method) {
       case "GET": {

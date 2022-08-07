@@ -13,13 +13,6 @@ export const config = {
 //  - POST: /api/blogs
 // ==============================
 
-// TODO:
-// - prisuma client の作成処理を共通化する:ok
-// - error handling:ok
-//   - レスポンス
-//   - sentry 通知
-// http res/req におけるキャメルorスネークケースの統一
-
 const handler = withErrorHandlingHandler(
   async (req: NextApiRequest, res: NextApiResponse) => {
     const { method } = req;
