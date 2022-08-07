@@ -1,7 +1,6 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import * as Sentry from "@sentry/nextjs";
+import { withSentry } from "@sentry/nextjs";
+import { NextApiHandler } from "next";
 import { blogHandler } from "../../../server/handler/blog_handler";
-import { withErrorHandlingHandler } from "../../../server/handler/utils";
 
 // ==============================
 // Route:
@@ -14,26 +13,23 @@ export const config = {
   runtime: "experimental-edge",
 };
 
-const handler = withErrorHandlingHandler(
-  async (req: NextApiRequest, res: NextApiResponse) => {
-    Sentry.captureException(new Error("Unknown error"));
-    const { method } = req;
-    switch (method) {
-      case "GET": {
-        await blogHandler.getBlog(req, res);
-        break;
-      }
-      case "PUT": {
-        await blogHandler.updateBlog(req, res);
-        break;
-      }
-      case "DELETE": {
-        await blogHandler.deleteBlog(req, res);
-        break;
-      }
+const handler: NextApiHandler = async (req, res) => {
+  const { method } = req;
+  switch (method) {
+    case "GET": {
+      await blogHandler.getBlog(req, res);
+      break;
     }
-    return res.status(405).end();
+    case "PUT": {
+      await blogHandler.updateBlog(req, res);
+      break;
+    }
+    case "DELETE": {
+      await blogHandler.deleteBlog(req, res);
+      break;
+    }
   }
-);
+  res.status(405);
+};
 
-export default handler;
+export default withSentry(handler);

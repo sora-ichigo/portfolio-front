@@ -1,7 +1,7 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { withSentry } from "@sentry/nextjs";
+import { NextApiHandler } from "next";
 
 import { blogHandler } from "../../../server/handler/blog_handler";
-import { withErrorHandlingHandler } from "../../../server/handler/utils";
 
 export const config = {
   runtime: "experimental-edge",
@@ -13,21 +13,21 @@ export const config = {
 //  - POST: /api/blogs
 // ==============================
 
-const handler = withErrorHandlingHandler(
-  async (req: NextApiRequest, res: NextApiResponse) => {
-    const { method } = req;
-    switch (method) {
-      case "GET": {
-        await blogHandler.getBlogs(req, res);
-        break;
-      }
-      case "POST": {
-        await blogHandler.createBlog(req, res);
-        break;
-      }
+const handler: NextApiHandler = async (req, res) => {
+  const { method } = req;
+  switch (method) {
+    case "GET": {
+      await blogHandler.getBlogs(req, res);
+      return;
     }
-    return res.status(405).end();
+    case "POST": {
+      await blogHandler.createBlog(req, res);
+      return;
+    }
   }
-);
+  res.status(405);
+};
 
-export default handler;
+// TODO: いい感じに `res.status(500).json({ message: err.message });`したいけど方法がわからない
+// 現在は text/html がかえってきてしまう
+export default withSentry(handler);
