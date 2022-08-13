@@ -21,11 +21,12 @@ const handler: NextApiHandler = async (req, res) => {
       return;
     }
     case "POST": {
-      // await blogHandler.createBlog(req, res);
+      await blogHandler.createBlog(req, res);
       return;
     }
   }
   res.status(405);
+  return;
 };
 
 // TODO: いい感じに `res.status(500).json({ message: err.message });`したいけど方法がわからない
