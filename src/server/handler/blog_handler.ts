@@ -6,7 +6,7 @@ import { NextApiHandler } from "next";
 import { v4 as uuidv4 } from "uuid";
 import { BlogData } from "../../domain/blog";
 import { prismaClient } from "../prisma_client";
-import { ResponseErorr } from "./error";
+import { ResponseErorr } from "./error_type";
 
 const getBlogs: NextApiHandler<{ blogs: BlogData[] } | ResponseErorr> = async (
   _req,
