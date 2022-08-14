@@ -2,11 +2,18 @@ import React, { useRef, useState } from "react";
 import type CoreSwiper from "swiper";
 import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
 
-import { END_PAGE, MainPageType, PAGE_LIST } from "./common/utils/mainPages";
+import { END_PAGE, MainPageType, mainPageList } from "./common/utils/mainPages";
 import { Header } from "./header/components/Header";
 import { SwiperOverlay } from "./common/components/SwiperOverlay";
 import { useMediaQuery } from "react-responsive";
-import { headerData } from "./_data";
+import {
+  aboutData,
+  blogData,
+  headerData,
+  portfolioData,
+  resumeData,
+} from "./_data";
+import { Data } from "./domain";
 
 export const RootMain: React.FC<{ pageType: MainPageType }> = ({
   pageType,
@@ -41,6 +48,13 @@ export const RootMain: React.FC<{ pageType: MainPageType }> = ({
     isNext ? swiper?.slideNext() : isPrev ? swiper?.slidePrev() : null;
   };
 
+  const data: Record<string, Data> = {
+    about: aboutData,
+    resume: resumeData,
+    portfolio: portfolioData,
+    blog: blogData,
+  };
+
   return (
     <>
       <Header
@@ -57,12 +71,12 @@ export const RootMain: React.FC<{ pageType: MainPageType }> = ({
         onSlideChange={onMainSlideChange}
         className="pt-3"
       >
-        {PAGE_LIST.map((v, i) => (
+        {mainPageList.map((v, i) => (
           <SwiperSlide style={{ width: "85%" }} key={i}>
             {(props) => (
               <>
                 <SwiperOverlay {...props} moveSlide={moveSlide} />
-                {v.component({ data: v.data })}
+                {v.component({ data: data[v.name] })}
               </>
             )}
           </SwiperSlide>

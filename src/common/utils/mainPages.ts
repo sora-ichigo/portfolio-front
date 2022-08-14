@@ -13,38 +13,36 @@ export const MAIN_PAGES = {
   BLOG: 3,
 } as const;
 
-let pageList: {
+export let mainPageList: {
   name: string;
-  data: Data;
+  headerName: string;
   component: React.FC<{ data: Data }>;
   path: string;
 }[] = [];
-pageList[MAIN_PAGES["ABOUT_ME"]] = {
-  name: "about me",
-  data: aboutData,
+mainPageList[MAIN_PAGES["ABOUT_ME"]] = {
+  name: "about",
+  headerName: "about me",
   component: About,
   path: "/",
 };
-pageList[MAIN_PAGES["RESUME"]] = {
+mainPageList[MAIN_PAGES["RESUME"]] = {
   name: "resume",
-  data: resumeData,
+  headerName: "resume",
   component: Resume,
   path: "/resume",
 };
-pageList[MAIN_PAGES["PORTFOLIO"]] = {
+mainPageList[MAIN_PAGES["PORTFOLIO"]] = {
   name: "portfolio",
-  data: portfolioData,
+  headerName: "portfolio",
   component: Portfolio,
   path: "/portfolio",
 };
-pageList[MAIN_PAGES["BLOG"]] = {
+mainPageList[MAIN_PAGES["BLOG"]] = {
   name: "blog",
-  data: blogData,
+  headerName: "blog",
   component: Blog,
   path: "/blog",
 };
-
-export const PAGE_LIST = pageList;
 
 export type MainPageType = typeof MAIN_PAGES[keyof typeof MAIN_PAGES];
 
