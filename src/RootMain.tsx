@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import type CoreSwiper from "swiper";
 import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
 
@@ -6,14 +6,10 @@ import { END_PAGE, MainPageType, mainPageList } from "./common/utils/mainPages";
 import { Header } from "./header/components/Header";
 import { SwiperOverlay } from "./common/components/SwiperOverlay";
 import { useMediaQuery } from "react-responsive";
-import {
-  aboutData,
-  blogData,
-  headerData,
-  portfolioData,
-  resumeData,
-} from "./_data";
-import { Data } from "./domain";
+import { aboutData, headerData, portfolioData, resumeData } from "./_data";
+import { BlogData, Data } from "./domain";
+import axios from "axios";
+import useSwr from "swr";
 
 export const RootMain: React.FC<{ pageType: MainPageType }> = ({
   pageType,
@@ -48,12 +44,25 @@ export const RootMain: React.FC<{ pageType: MainPageType }> = ({
     isNext ? swiper?.slideNext() : isPrev ? swiper?.slidePrev() : null;
   };
 
-  const data: Record<string, Data> = {
-    about: aboutData,
-    resume: resumeData,
-    portfolio: portfolioData,
-    blog: blogData,
-  };
+  const mainPageData: Record<string, Data> = useMemo(() => {
+    return {
+      about: aboutData,
+      resume: resumeData,
+      portfolio: portfolioData,
+      blog: {} as Data,
+    };
+  }, []);
+
+  // TODO
+  // axios いい感じにする
+  // next/image　使えるようにする
+  // loadingの時の表示をいい感じにするようにする
+  // サーバーサイドでもblogdataを取得するようにする
+  const fetcher = axios;
+  const { data, error } = useSwr("http://localhost:3000/api/blogs", fetcher);
+  (mainPageData.blog as BlogData).blogItems = data?.data.blogs
+    ? data?.data.blogs
+    : [];
 
   return (
     <>
@@ -76,7 +85,7 @@ export const RootMain: React.FC<{ pageType: MainPageType }> = ({
             {(props) => (
               <>
                 <SwiperOverlay {...props} moveSlide={moveSlide} />
-                {v.component({ data: data[v.name] })}
+                {v.component({ data: mainPageData[v.name] })}
               </>
             )}
           </SwiperSlide>

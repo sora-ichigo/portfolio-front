@@ -1,20 +1,20 @@
 import React from "react";
 import Image from "next/image";
-import { BlogItemType } from "../../domain/blog";
+import { Blog } from "../../domain/blog";
 
 export const useRenderBlogItem = (
-  { blogItem: blogItem }: { blogItem: BlogItemType },
+  { blogItem: blogItem }: { blogItem: Blog },
   ref: React.LegacyRef<HTMLDivElement> | undefined
 ) => {
   return (
     <div className="mx-auto rounded border border-grey-4" ref={ref}>
       <a
         className="flex h-full flex-col items-stretch"
-        href={blogItem.link}
+        href={blogItem.siteUrl}
         target="_blank"
         rel="noreferrer"
       >
-        <Image
+        <img
           src={blogItem.thumbnailUrl}
           alt={blogItem.title}
           className="h-full w-full object-cover transition hover:opacity-50"

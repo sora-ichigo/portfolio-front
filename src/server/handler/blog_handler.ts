@@ -23,7 +23,7 @@ const getBlogs: NextApiHandler<{ blogs: Blog[] } | ResponseErorr> = async (
       title: blog.title,
       postedAt: blog.posted_at,
       siteUrl: blog.site_url,
-      thumbbnailUrl: blog.thumbnail_url,
+      thumbnailUrl: blog.thumbnail_url,
       serviceName: blog.service_name,
     })),
     ...blogsFromRSS.map((blog) => ({
@@ -31,7 +31,7 @@ const getBlogs: NextApiHandler<{ blogs: Blog[] } | ResponseErorr> = async (
       title: blog.title,
       postedAt: blog.posted_at!,
       siteUrl: blog.site_url,
-      thumbbnailUrl: blog.thumbnail_url,
+      thumbnailUrl: blog.thumbnail_url,
       serviceName: blog.service_name,
     })),
   ];
@@ -68,7 +68,7 @@ const getBlog: NextApiHandler<{ blog: Blog } | ResponseErorr> = async (
     title: blogFromManual?.title || blogFromRSS?.title!,
     postedAt: blogFromManual?.posted_at! || blogFromRSS?.posted_at!,
     siteUrl: blogFromManual?.site_url || blogFromRSS?.site_url!,
-    thumbbnailUrl: blogFromManual?.thumbnail_url || blogFromRSS?.thumbnail_url!,
+    thumbnailUrl: blogFromManual?.thumbnail_url || blogFromRSS?.thumbnail_url!,
     serviceName: blogFromManual?.service_name || blogFromRSS?.service_name!,
   };
 
@@ -110,7 +110,7 @@ const createBlog: NextApiHandler<{ blog: Blog } | ResponseErorr> = async (
         title: blog.title,
         postedAt: blog.posted_at!,
         siteUrl: blog.site_url,
-        thumbbnailUrl: blog.thumbnail_url,
+        thumbnailUrl: blog.thumbnail_url,
         serviceName: blog.service_name,
       },
     });
