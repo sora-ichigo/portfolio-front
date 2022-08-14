@@ -18,15 +18,15 @@ const handler: NextApiHandler = async (req, res) => {
   switch (method) {
     case "GET": {
       await blogHandler.getBlog(req, res);
-      break;
+      return;
     }
     case "PUT": {
-      // await blogHandler.updateBlog(req, res);
-      break;
+      o; // await blogHandler.updateBlog(req, res);
+      return;
     }
     case "DELETE": {
       await blogHandler.deleteBlog(req, res);
-      break;
+      return;
     }
   }
   res.status(405);
