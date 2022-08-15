@@ -36,7 +36,6 @@ export const getServerSideProps: GetServerSideProps<{
           blogItems = res.data.blogs;
         })
         .catch((err) => {});
-      console.log(blogItems);
       break;
     default:
       return { notFound: true };
