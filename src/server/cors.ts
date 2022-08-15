@@ -7,7 +7,7 @@ export const corsConfig = Cors({
   origin: [
     "http://localhost:3000",
     "https://igsr5.dev",
-    new RegExp(/\Ahttps:\/\/igsr5-front.*\.vercel.app\z/),
+    new RegExp(/^https:\/\/igsr5-front.*\.vercel.app$/),
   ],
   methods: ["POST", "GET", "HEAD"],
 });
