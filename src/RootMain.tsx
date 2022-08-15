@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import type CoreSwiper from "swiper";
 import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
 
@@ -8,12 +8,14 @@ import { SwiperOverlay } from "./common/components/SwiperOverlay";
 import { useMediaQuery } from "react-responsive";
 import { aboutData, headerData, portfolioData, resumeData } from "./_data";
 import { BlogData, Data } from "./domain";
-import axios from "axios";
 import useSwr from "swr";
+import { axiosClient } from "./axios_client";
+import { captureException } from "@sentry/nextjs";
 
-export const RootMain: React.FC<{ pageType: MainPageType }> = ({
-  pageType,
-}) => {
+export const RootMain: React.FC<{
+  pageType: MainPageType;
+  blogData: BlogData;
+}> = (props) => {
   const [swiper, setSwiper] = useState<CoreSwiper | undefined>(undefined);
   const [tabSwiper, setTabSwiper] = useState<CoreSwiper | undefined>(undefined);
 
@@ -49,33 +51,33 @@ export const RootMain: React.FC<{ pageType: MainPageType }> = ({
       about: aboutData,
       resume: resumeData,
       portfolio: portfolioData,
-      blog: {} as Data,
+      blog: props.blogData as Data,
     };
-  }, []);
+  }, [props.blogData]);
 
   // TODO
-  // axios いい感じにする
+  // service name で絞り込み
   // next/image　使えるようにする
-  // loadingの時の表示をいい感じにするようにする
-  // サーバーサイドでもblogdataを取得するようにする
-  const fetcher = axios;
-  const { data, error } = useSwr("http://localhost:3000/api/blogs", fetcher);
-  (mainPageData.blog as BlogData).blogItems = data?.data.blogs
-    ? data?.data.blogs
-    : [];
+  const { data, error } = useSwr("/api/blogs", axiosClient);
+  if (data?.data.blogs) {
+    (mainPageData.blog as BlogData).blogItems = data?.data.blogs
+      ? data?.data.blogs
+      : mainPageData.blog;
+  }
+  if (error) captureException(error);
 
   return (
     <>
       <Header
         headerData={headerData}
         swiperGeneralProps={swiperGeneralProps}
-        pageType={pageType}
+        pageType={props.pageType}
         setTabSwiper={setTabSwiper}
         moveSlide={moveSlide}
       />
       <Swiper
         {...swiperGeneralProps}
-        initialSlide={pageType}
+        initialSlide={props.pageType}
         onInit={(swiper: CoreSwiper) => setSwiper(swiper)}
         onSlideChange={onMainSlideChange}
         className="pt-3"
