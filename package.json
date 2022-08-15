@@ -12,6 +12,7 @@
     "db": "prisma pull"
   },
   "dependencies": {
+    "@blazity/next-image-proxy": "^1.0.2",
     "@prisma/client": "4.1.1",
     "@sentry/nextjs": "^6.18.1",
     "@types/open-graph-scraper": "^4.8.1",

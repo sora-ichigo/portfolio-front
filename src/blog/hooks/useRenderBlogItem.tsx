@@ -14,17 +14,28 @@ export const useRenderBlogItem = (
         target="_blank"
         rel="noreferrer"
       >
-        <img
-          src={blogItem.thumbnailUrl}
+        <Image
+          src={`/api/imageProxy?imageUrl=${blogItem.thumbnailUrl}`}
           alt={blogItem.title}
           className="h-full w-full object-cover transition hover:opacity-50"
           width={1200}
           height={630}
         />
-        <div className="px-10 py-7 text-center">
+        <div className="px-10 pt-7 pb-4 text-center">
           <h3 className="font-japanese text-sm tracking-wider text-navy">
             {blogItem.title}
           </h3>
+          <p className="text-navy" style={{ fontSize: "12px" }}>
+            {blogItem.serviceName}
+          </p>
+          <p
+            className="mt-4 uppercase text-grey-2"
+            style={{ fontSize: "14px" }}
+          >
+            {new Intl.DateTimeFormat("en-US").format(
+              new Date(blogItem.postedAt)
+            )}
+          </p>
         </div>
       </a>
     </div>

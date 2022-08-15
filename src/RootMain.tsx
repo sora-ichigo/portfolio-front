@@ -56,8 +56,7 @@ export const RootMain: React.FC<{
   }, [props.blogData]);
 
   // TODO
-  // service name で絞り込み
-  // next/image　使えるようにする
+  // thumbnail_url を s3 にアップロードし直す
   const { data, error } = useSwr("/api/blogs", axiosClient);
   if (data?.data.blogs) {
     (mainPageData.blog as BlogData).blogItems = data?.data.blogs
