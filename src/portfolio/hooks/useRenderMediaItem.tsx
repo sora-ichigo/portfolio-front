@@ -40,10 +40,10 @@ export const useRenderMediaItem = (
               height={800}
             />
             <div className="px-10 py-7 text-center">
-              <h3 className="font-japanese text-sm tracking-wider text-navy">
+              <h3 className="font-japanese text-base tracking-wider text-navy">
                 {mediaItem.title}
               </h3>
-              <p className="uppercase text-grey-2" style={{ fontSize: "13px" }}>
+              <p className="uppercase text-grey-2" style={{ fontSize: "12px" }}>
                 {getCategoryName(mediaItem.categoryID, categoryData)}
               </p>
             </div>

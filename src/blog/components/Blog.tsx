@@ -51,7 +51,7 @@ export const Blog: React.FC<{ data: Data }> = ({ data }) => {
       </div>
 
       <div className="my-8 flex justify-center">
-        <ul className="flex flex-wrap justify-center uppercase">
+        <ul className="flex flex-wrap justify-center">
           {Array.from(serviceNames.values()).map((v) => (
             <CategoryBtn text={v} id={v} key={v} />
           ))}

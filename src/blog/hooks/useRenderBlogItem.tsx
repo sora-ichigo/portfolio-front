@@ -22,7 +22,7 @@ export const useRenderBlogItem = (
           height={630}
         />
         <div className="px-10 pt-7 pb-4 text-center">
-          <h3 className="font-japanese text-sm tracking-wider text-navy">
+          <h3 className="font-japanese text-base tracking-wider text-navy">
             {blogItem.title}
           </h3>
           <p className="text-navy" style={{ fontSize: "12px" }}>
