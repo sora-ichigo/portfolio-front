@@ -25,20 +25,6 @@ export const portfolioData: PortfolioData = {
   ],
   mediaItems: [
     {
-      id: 0,
-      title: "wantedly.com を Next.js に移行した話",
-      categoryID: CATEGORY["FRONTEND"],
-      thumbnailUrl: "https://images.igsr5.com/l/fljdfgk.jpeg",
-      imgUrl: "https://images.igsr5.com/l/ifjsdf.webp",
-      description:
-        "インターン先での開発として自社サービスのフロントエンドに Next.js を導入しました。自分が行ったのはフレームワーク導入前の調査と実際に1つのリポジトリにフレームワークを実装する2つです。それまでフロントエンドを少ししか触ったことがなかったのでとても勉強になりました。導入後にブログも書いており、移行の背景ややったことをまとめています。",
-      devStyle: 2,
-      devDate: new Date("2021-08"),
-      tags: ["TypeScript", "Next.js", "React"],
-      externalUrl:
-        "https://www.wantedly.com/companies/wantedly/post_articles/359076",
-    },
-    {
       id: 1,
       title: "五目並べアプリ",
       categoryID: CATEGORY["FRONTEND"],
@@ -179,6 +165,21 @@ export const portfolioData: PortfolioData = {
       devDate: new Date("2022-03"),
       tags: ["Node.js", "ESM", "OGP"],
       externalUrl: "https://github.com/igsr5/metagros",
+    },
+    {
+      id: 13,
+      title: "株式会社夢尊 HP",
+      categoryID: CATEGORY["CODING"],
+      thumbnailUrl:
+        "https://res.cloudinary.com/drb9hgnv3/image/upload/v1660663428/portfolio/Screen_Shot_2022-08-17_at_0.23.05_bwevey.png",
+      imgUrl:
+        "https://res.cloudinary.com/drb9hgnv3/image/upload/v1660663428/portfolio/Screen_Shot_2022-08-17_at_0.23.05_bwevey.png",
+      description:
+        "個人で依頼を受けて株式会社夢尊のHP制作を行いました。HP の制作には Wordpress を採用、HP のイメージから伝えたい内容などのヒアリングも行いました。",
+      devStyle: 0,
+      devDate: new Date("2022-03"),
+      tags: ["Wordpress", "PHP"],
+      externalUrl: "https://muson.co.jp",
     },
   ].sort((a, b) => {
     if (a.devDate > b.devDate) {
