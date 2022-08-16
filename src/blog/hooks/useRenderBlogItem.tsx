@@ -24,17 +24,12 @@ export const useRenderBlogItem = (
           width={1200}
           height={630}
         />
-        <div className="px-10 pt-7 pb-4 text-center">
-          <h3 className="font-japanese text-base tracking-wider text-navy">
+        <div className="px-10 pt-5 pb-4 text-center">
+          <h3 className="font-japanese text-sm tracking-wider text-navy">
             {blogItem.title}
           </h3>
-          <p className="text-navy" style={{ fontSize: "12px" }}>
-            {blogItem.serviceName}
-          </p>
-          <p
-            className="mt-4 uppercase text-grey-2"
-            style={{ fontSize: "14px" }}
-          >
+          <p className="text-xs text-navy">{blogItem.serviceName}</p>
+          <p className="mt-4 text-xs uppercase text-grey-2">
             {new Intl.DateTimeFormat("en-US").format(
               new Date(blogItem.postedAt)
             )}
