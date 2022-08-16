@@ -21,7 +21,7 @@ const handler: NextApiHandler = async (req, res) => {
       return;
     }
     case "PUT": {
-      o; // await blogHandler.updateBlog(req, res);
+      // await blogHandler.updateBlog(req, res);
       return;
     }
     case "DELETE": {
