@@ -26,7 +26,7 @@ export const useRenderMediaItem = (
   return (
     <>
       <div
-        className="mx-auto rounded border border-grey-4"
+        className="max-h-sm mx-auto max-w-lg rounded border border-grey-4"
         ref={ref}
         onClick={() => setSelected(true)}
       >
