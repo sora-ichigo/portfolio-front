@@ -59,7 +59,7 @@ export const Portfolio: React.FC<{ data: Data }> = ({ data }) => {
         </ul>
       </div>
 
-      <FlipMove className="mb-8 grid grid-cols-1 gap-12 gap-y-12 px-4 sm:grid-cols-2 lg:grid-cols-3">
+      <FlipMove className="mb-8 grid grid-cols-1 gap-12 gap-y-16 px-4 sm:grid-cols-2 lg:grid-cols-3">
         {visibleMediaData.map((v) => (
           <MediaItem
             key={v.id}

@@ -8,7 +8,7 @@ export const useRenderBlogItem = (
 ) => {
   return (
     <div
-      className="max-h-sm mx-auto max-w-lg rounded border border-grey-4"
+      className="max-h-sm mx-auto max-w-xl rounded border border-grey-4"
       ref={ref}
     >
       <a
