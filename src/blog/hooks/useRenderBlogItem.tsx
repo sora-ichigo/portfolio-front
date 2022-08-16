@@ -15,7 +15,7 @@ export const useRenderBlogItem = (
         rel="noreferrer"
       >
         <Image
-          src={`/api/imageProxy?imageUrl=${blogItem.thumbnailUrl}`}
+          src={blogItem.thumbnailUrl}
           alt={blogItem.title}
           className="h-full w-full object-cover transition hover:opacity-50"
           width={1200}
