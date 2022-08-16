@@ -33,7 +33,6 @@ const App = ({ Component, pageProps }: any) => {
     }
 
     for (const mainPage of mainPageList) {
-      console.log(path);
       if (mainPage === aboutPage) continue;
 
       if (path.includes(mainPage.path)) {
