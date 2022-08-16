@@ -12,6 +12,7 @@ import "tailwindcss/tailwind.css";
 import "../styles/index.css";
 import { InternalServerError } from "../common/components/InternalServerError";
 import { GlobalHead } from "../common/components/GlobalHead";
+import { mainPageList, MAIN_PAGES } from "../common/utils/mainPages";
 
 SwiperCore.use([Pagination, Navigation]);
 
@@ -23,18 +24,24 @@ const App = ({ Component, pageProps }: any) => {
   const [currentPageString, setCurrentPageString] = useState("");
 
   useEffect(() => {
-    const url = path.split("?");
-    const pageType = url[0].split("/");
-    switch (pageType[1]) {
-      case "":
-        setCurrentPageString("About");
+    const aboutPage = mainPageList[MAIN_PAGES["ABOUT_ME"]];
+    if (path === aboutPage.path) {
+      setCurrentPageString(
+        `${aboutPage.name[0].toUpperCase()}${aboutPage.name.slice(1)}`
+      );
+      return;
+    }
+
+    for (const mainPage of mainPageList) {
+      console.log(path);
+      if (mainPage === aboutPage) continue;
+
+      if (path.includes(mainPage.path)) {
+        setCurrentPageString(
+          `${mainPage.name[0].toUpperCase()}${mainPage.name.slice(1)}`
+        );
         break;
-      case "resume":
-        setCurrentPageString("Resume");
-        break;
-      case "portfolio":
-        setCurrentPageString("Portfolio");
-        break;
+      }
     }
   }, [path]);
 
