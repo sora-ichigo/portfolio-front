@@ -14,6 +14,7 @@ https://igsr5.dev
 - About page
 - Resume page
 - Portfolio page
+- Blog page
 
 
 ## Development
