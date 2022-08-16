@@ -9,6 +9,7 @@ import { Blog } from "../../domain/blog";
 import { prismaClient } from "../prisma_client";
 import { ResponseErorr } from "./error_type";
 import { OpenGraphImage, OpenGraphProperties } from "open-graph-scraper";
+import { cloudinaryClient } from "../../cloudinary";
 
 const getBlogs: NextApiHandler<{ blogs: Blog[] } | ResponseErorr> = async (
   _req,
@@ -94,13 +95,26 @@ const createBlog: NextApiHandler<{ blog: Blog } | ResponseErorr> = async (
       ? new Date(postedAtString).toISOString()
       : undefined;
 
+    let CloudinaryThumbnailUrl: string = "";
+    await cloudinaryClient.uploader.upload(
+      thumbnailUrl || params.thumbnail_url,
+      { folder: "portfolio" },
+      (error, result) => {
+        if (!result || error) {
+          throw error;
+        }
+
+        CloudinaryThumbnailUrl = result.secure_url;
+      }
+    );
+
     const blog = await prismaClient.blog_from_manual_items.create({
       data: {
         id: uuidv4(),
         title: title || params.title,
         posted_at: postedAt || new Date(params.posted_at).toISOString(),
         site_url: params.site_url,
-        thumbnail_url: thumbnailUrl || params.thumbnail_url,
+        thumbnail_url: CloudinaryThumbnailUrl,
         service_name: serviceName || params.service_name,
       },
     });
