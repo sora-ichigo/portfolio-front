@@ -1,7 +1,9 @@
 import { withSentry } from "@sentry/nextjs";
 import { NextApiHandler } from "next";
+import { corsConfig } from "../../../server/cors";
 
 import { blogHandler } from "../../../server/handler/blog_handler";
+import { setMiddleware } from "../../../server/setMiddleware";
 
 export const config = {
   runtime: "experimental-edge",
@@ -14,6 +16,8 @@ export const config = {
 // ==============================
 
 const handler: NextApiHandler = async (req, res) => {
+  setMiddleware(req, res, corsConfig);
+
   const { method } = req;
   switch (method) {
     case "GET": {

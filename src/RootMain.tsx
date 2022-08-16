@@ -1,16 +1,21 @@
-import React, { useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import type CoreSwiper from "swiper";
 import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
 
-import { END_PAGE, MainPageType, PAGE_LIST } from "./common/utils/mainPages";
+import { END_PAGE, MainPageType, mainPageList } from "./common/utils/mainPages";
 import { Header } from "./header/components/Header";
 import { SwiperOverlay } from "./common/components/SwiperOverlay";
 import { useMediaQuery } from "react-responsive";
-import { headerData } from "./_data";
+import { aboutData, headerData, portfolioData, resumeData } from "./_data";
+import { BlogData, Data } from "./domain";
+import useSwr from "swr";
+import { axiosClient } from "./axios_client";
+import { captureException } from "@sentry/nextjs";
 
-export const RootMain: React.FC<{ pageType: MainPageType }> = ({
-  pageType,
-}) => {
+export const RootMain: React.FC<{
+  pageType: MainPageType;
+  blogData: BlogData;
+}> = (props) => {
   const [swiper, setSwiper] = useState<CoreSwiper | undefined>(undefined);
   const [tabSwiper, setTabSwiper] = useState<CoreSwiper | undefined>(undefined);
 
@@ -41,28 +46,47 @@ export const RootMain: React.FC<{ pageType: MainPageType }> = ({
     isNext ? swiper?.slideNext() : isPrev ? swiper?.slidePrev() : null;
   };
 
+  const mainPageData: Record<string, Data> = useMemo(() => {
+    return {
+      about: aboutData,
+      resume: resumeData,
+      portfolio: portfolioData,
+      blog: props.blogData as Data,
+    };
+  }, [props.blogData]);
+
+  // TODO
+  // thumbnail_url を s3 にアップロードし直す
+  const { data, error } = useSwr("/api/blogs", axiosClient);
+  if (data?.data.blogs) {
+    (mainPageData.blog as BlogData).blogItems = data?.data.blogs
+      ? data?.data.blogs
+      : mainPageData.blog;
+  }
+  if (error) captureException(error);
+
   return (
     <>
       <Header
         headerData={headerData}
         swiperGeneralProps={swiperGeneralProps}
-        pageType={pageType}
+        pageType={props.pageType}
         setTabSwiper={setTabSwiper}
         moveSlide={moveSlide}
       />
       <Swiper
         {...swiperGeneralProps}
-        initialSlide={pageType}
+        initialSlide={props.pageType}
         onInit={(swiper: CoreSwiper) => setSwiper(swiper)}
         onSlideChange={onMainSlideChange}
         className="pt-3"
       >
-        {PAGE_LIST.map((v, i) => (
+        {mainPageList.map((v, i) => (
           <SwiperSlide style={{ width: "85%" }} key={i}>
             {(props) => (
               <>
                 <SwiperOverlay {...props} moveSlide={moveSlide} />
-                {v.component({ data: v.data })}
+                {v.component({ data: mainPageData[v.name] })}
               </>
             )}
           </SwiperSlide>

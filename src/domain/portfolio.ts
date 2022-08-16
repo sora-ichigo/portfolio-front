@@ -17,7 +17,6 @@ export type CategoryDataType = { name: string; id: CategoryType };
 type DevStyle = 0 | 1 | 2;
 export const DEV_STYLE = ["個人開発", "チーム開発", "インターン開発"];
 
-let date = new Date("2021-08");
 type DevDate = Date;
 
 export type MediaItemType = {

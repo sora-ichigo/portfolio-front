@@ -5,7 +5,7 @@ import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
 import type CoreSwiper from "swiper";
 import { useMediaQuery } from "react-responsive";
 
-import { MainPageType, PAGE_LIST } from "../../common/utils/mainPages";
+import { MainPageType, mainPageList } from "../../common/utils/mainPages";
 import { HeaderDataType } from "../../domain";
 import { headerData } from "../../_data";
 
@@ -57,7 +57,7 @@ const SwiperPart: React.FC<Props> = ({
       allowTouchMove={false}
       className="mx-auto flex h-24 max-w-5xl items-center text-xl sm:text-3xl md:text-4xl lg:text-4-5xl"
     >
-      {PAGE_LIST.map((v, i) => (
+      {mainPageList.map((v, i) => (
         <SwiperSlide key={i} className="w-1/3 font-tabTitle font-bold">
           {({ isActive, isNext, isPrev }) => {
             if (isActive && router.asPath.split("?")[0] !== v.path) {
@@ -72,7 +72,7 @@ const SwiperPart: React.FC<Props> = ({
                 }
                 onClick={() => moveSlide(isNext, isPrev)}
               >
-                {v.name}
+                {v.headerName}
               </span>
             );
           }}

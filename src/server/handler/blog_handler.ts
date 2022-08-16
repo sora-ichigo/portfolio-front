@@ -5,26 +5,26 @@ import {
 import { NextApiHandler } from "next";
 import { v4 as uuidv4 } from "uuid";
 import * as ogp from "open-graph-scraper";
-import { BlogData } from "../../domain/blog";
+import { Blog } from "../../domain/blog";
 import { prismaClient } from "../prisma_client";
 import { ResponseErorr } from "./error_type";
 import { OpenGraphImage, OpenGraphProperties } from "open-graph-scraper";
 import { cloudinaryClient } from "../../cloudinary";
 
-const getBlogs: NextApiHandler<{ blogs: BlogData[] } | ResponseErorr> = async (
+const getBlogs: NextApiHandler<{ blogs: Blog[] } | ResponseErorr> = async (
   _req,
   res
 ) => {
   const blogsFromManual = await prismaClient.blog_from_manual_items.findMany();
   const blogsFromRSS = await prismaClient.blog_from_rss_items.findMany();
 
-  let blogs: BlogData[] = [
+  let blogs: Blog[] = [
     ...blogsFromManual.map((blog) => ({
       id: blog.id,
       title: blog.title,
       postedAt: blog.posted_at,
       siteUrl: blog.site_url,
-      thumbbnailUrl: blog.thumbnail_url,
+      thumbnailUrl: blog.thumbnail_url,
       serviceName: blog.service_name,
     })),
     ...blogsFromRSS.map((blog) => ({
@@ -32,7 +32,7 @@ const getBlogs: NextApiHandler<{ blogs: BlogData[] } | ResponseErorr> = async (
       title: blog.title,
       postedAt: blog.posted_at!,
       siteUrl: blog.site_url,
-      thumbbnailUrl: blog.thumbnail_url,
+      thumbnailUrl: blog.thumbnail_url,
       serviceName: blog.service_name,
     })),
   ];
@@ -47,7 +47,7 @@ const getBlogs: NextApiHandler<{ blogs: BlogData[] } | ResponseErorr> = async (
   return res.status(200).json({ blogs });
 };
 
-const getBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr> = async (
+const getBlog: NextApiHandler<{ blog: Blog } | ResponseErorr> = async (
   req,
   res
 ) => {
@@ -64,19 +64,19 @@ const getBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr> = async (
     return res.status(404).json({ message: "blog not found" });
   }
 
-  const blog: BlogData = {
+  const blog: Blog = {
     id: blogFromManual?.id || blogFromRSS?.id!,
     title: blogFromManual?.title || blogFromRSS?.title!,
     postedAt: blogFromManual?.posted_at! || blogFromRSS?.posted_at!,
     siteUrl: blogFromManual?.site_url || blogFromRSS?.site_url!,
-    thumbbnailUrl: blogFromManual?.thumbnail_url || blogFromRSS?.thumbnail_url!,
+    thumbnailUrl: blogFromManual?.thumbnail_url || blogFromRSS?.thumbnail_url!,
     serviceName: blogFromManual?.service_name || blogFromRSS?.service_name!,
   };
 
   return res.status(200).json({ blog });
 };
 
-const createBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr> = async (
+const createBlog: NextApiHandler<{ blog: Blog } | ResponseErorr> = async (
   req,
   res
 ) => {
@@ -124,7 +124,7 @@ const createBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr> = async (
         title: blog.title,
         postedAt: blog.posted_at!,
         siteUrl: blog.site_url,
-        thumbbnailUrl: blog.thumbnail_url,
+        thumbnailUrl: blog.thumbnail_url,
         serviceName: blog.service_name,
       },
     });
@@ -225,9 +225,9 @@ const deleteBlog: NextApiHandler<void | ResponseErorr> = async (req, res) => {
 
 // TODO: create, update は未実装(site url を受け取って他のカラムはogpなどからサーバで取得したい)
 export const blogHandler: {
-  getBlogs: NextApiHandler<{ blogs: BlogData[] } | ResponseErorr>;
-  getBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr>;
-  createBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr>;
+  getBlogs: NextApiHandler<{ blogs: Blog[] } | ResponseErorr>;
+  getBlog: NextApiHandler<{ blog: Blog } | ResponseErorr>;
+  createBlog: NextApiHandler<{ blog: Blog } | ResponseErorr>;
   //updateBlog: NextApiHandler<{ blog: BlogData } | ResponseErorr>;
   deleteBlog: NextApiHandler<void | ResponseErorr>;
 } = {
