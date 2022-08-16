@@ -7,7 +7,10 @@ export const useRenderBlogItem = (
   ref: React.LegacyRef<HTMLDivElement> | undefined
 ) => {
   return (
-    <div className="mx-auto rounded border border-grey-4" ref={ref}>
+    <div
+      className="max-h-sm mx-auto max-w-xl rounded border border-grey-4"
+      ref={ref}
+    >
       <a
         className="flex h-full flex-col items-stretch"
         href={blogItem.siteUrl}
