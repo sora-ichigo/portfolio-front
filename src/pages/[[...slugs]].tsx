@@ -23,6 +23,7 @@ export const getStaticProps: GetStaticProps<{
 }> = async (ctx) => {
   let pageType: MainPageType = 0;
   let blogItems: Blog[] = [];
+
   let pageName: string | undefined;
   if (Array.isArray(ctx.params?.slugs)) {
     pageName = ctx.params?.slugs[0];
@@ -54,6 +55,7 @@ export const getStaticProps: GetStaticProps<{
 
   return {
     props: { pageType, blogData: { blogItems } },
+    revalidate: 2,
   };
 };
 

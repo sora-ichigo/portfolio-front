@@ -8,6 +8,10 @@ import { BlogItem } from "./BlogItem";
 
 export const Blog: React.FC<{ data: Data }> = ({ data }) => {
   const blogData = data as BlogData;
+  if (typeof blogData?.blogItems === "undefined") {
+    return null;
+  }
+
   const serviceNames: Set<string> = new Set();
   serviceNames.add("ALL");
   blogData.blogItems.map((v) => serviceNames.add(v.serviceName));
