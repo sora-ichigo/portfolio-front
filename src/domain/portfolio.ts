@@ -8,6 +8,7 @@ export const CATEGORY = {
   FRONTEND: 1,
   INFRASTRUCTURE: 2,
   CODING: 3,
+  OTHER: 4,
 } as const;
 export type CategoryType = -1 | typeof CATEGORY[keyof typeof CATEGORY];
 
