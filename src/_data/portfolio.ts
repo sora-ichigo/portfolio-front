@@ -22,6 +22,10 @@ export const portfolioData: PortfolioData = {
       name: "coding",
       id: CATEGORY["CODING"],
     },
+    {
+      name: "other",
+      id: CATEGORY["OTHER"],
+    },
   ],
   mediaItems: [
     {
@@ -180,6 +184,23 @@ export const portfolioData: PortfolioData = {
       devDate: new Date("2022-03"),
       tags: ["Wordpress", "PHP"],
       externalUrl: "https://muson.co.jp",
+    },
+    {
+      id: 14,
+      title:
+        "傾けると「英語」が「日本語」に翻訳される、感覚的に操作しながら学習できる電子英単語帳",
+      categoryID: CATEGORY["OTHER"],
+      thumbnailUrl:
+        "https://res.cloudinary.com/drb9hgnv3/image/upload/v1660755701/portfolio/slack-imgs.com_lnbt0f.jpg",
+      imgUrl:
+        "https://res.cloudinary.com/drb9hgnv3/image/upload/v1660755701/portfolio/slack-imgs.com_lnbt0f.jpg",
+      description:
+        "Raspberry PIと拡張ボード「RASPI-HOME」と組み合わせて制作した電子単語帳です。ディスプレイ部分に英単語を表示し、手前に30度以上傾けると対応する日本語に表示が切り替わります。スイッチを押すと、次の英単語が表示される仕組みです。これは高校2年生の時に参加したラズパイコンテストの作品です。ありがたいことに優良賞をいただきました。「この単語帳で将来はTOIECで満点を取りたいと考えています」とか言いながらTOEICの綴りを思いっきり間違えているのがウケたのかと思います。",
+      devStyle: 0,
+      devDate: new Date("2019-08"),
+      tags: ["Python", "Raspberry Pi"],
+      externalUrl:
+        "https://project.nikkeibp.co.jp/pc/atcl/20/08/04/00032/092800046/",
     },
   ].sort((a, b) => {
     if (a.devDate > b.devDate) {
