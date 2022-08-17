@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import type CoreSwiper from "swiper";
 import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
 
@@ -37,6 +37,7 @@ export const RootMain: React.FC<{
   const swiperGeneralProps: SwiperProps = {
     slidesPerView: "auto",
     spaceBetween: isWindowMd ? 50 : 10,
+    loopedSlides: 4,
     loop: true,
     speed: 500,
     centeredSlides: true,
@@ -51,7 +52,7 @@ export const RootMain: React.FC<{
       about: aboutData,
       resume: resumeData,
       portfolio: portfolioData,
-      blog: props.blogData as Data,
+      blog: props.blogData,
     };
   }, [props.blogData]);
 
@@ -65,8 +66,19 @@ export const RootMain: React.FC<{
   }
   if (error) captureException(error);
 
+  // swiper の描画にラグがあるため、完全にレンダリングが終わるまでloadingを表示する
+  // (一瞬なので真っ白な画面にしている)
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setLoading(false);
+    return;
+  }, []);
+
   return (
-    <>
+    <div className={loading ? "fixed bottom-0" : ""}>
+      {loading && (
+        <div className="fixed top-0 left-0 z-50 h-full w-full bg-white"></div>
+      )}
       <Header
         headerData={headerData}
         swiperGeneralProps={swiperGeneralProps}
@@ -92,7 +104,7 @@ export const RootMain: React.FC<{
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 };
 
