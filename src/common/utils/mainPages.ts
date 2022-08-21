@@ -1,4 +1,5 @@
 import React from "react";
+
 import { About } from "../../about/components/About";
 import { Data } from "../../domain";
 import { Portfolio } from "../../portfolio/components/Portfolio";
@@ -45,11 +46,8 @@ mainPageList[MAIN_PAGES["BLOG"]] = {
 
 export type MainPageType = typeof MAIN_PAGES[keyof typeof MAIN_PAGES];
 
-export const END_PAGE: MainPageType = (Object.keys(MAIN_PAGES).length -
-  1) as MainPageType;
+export const END_PAGE: MainPageType = (Object.keys(MAIN_PAGES).length - 1) as MainPageType;
 
-export const GetPageNameFromPageType = (
-  pageType: MainPageType
-): keyof typeof MAIN_PAGES => {
+export const GetPageNameFromPageType = (pageType: MainPageType): keyof typeof MAIN_PAGES => {
   return Object.keys(MAIN_PAGES)[pageType] as keyof typeof MAIN_PAGES;
 };

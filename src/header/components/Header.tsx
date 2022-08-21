@@ -30,9 +30,7 @@ export const Header: React.FC<Props> = (props) => {
         priority={true}
         alt="Ichigo Sora"
       />
-      <h1 className="mt-3.5 text-2xl font-light leading-snug">
-        {props.headerData.name}
-      </h1>
+      <h1 className="mt-3.5 text-2xl font-light leading-snug">{props.headerData.name}</h1>
       <p className="mb-2 inline-block rounded  bg-yellow-marker px-2.5 py-1.5 italic leading-none">
         {props.headerData.description}
       </p>
@@ -41,12 +39,7 @@ export const Header: React.FC<Props> = (props) => {
   );
 };
 
-const SwiperPart: React.FC<Props> = ({
-  swiperGeneralProps,
-  pageType,
-  setTabSwiper,
-  moveSlide,
-}) => {
+const SwiperPart: React.FC<Props> = ({ swiperGeneralProps, pageType, setTabSwiper, moveSlide }) => {
   const router = useRouter();
 
   return (
@@ -67,9 +60,7 @@ const SwiperPart: React.FC<Props> = ({
             }
             return (
               <span
-                className={
-                  isActive ? "text-navy" : "cursor-pointer text-grey-4"
-                }
+                className={isActive ? "text-navy" : "cursor-pointer text-grey-4"}
                 onClick={() => moveSlide(isNext, isPrev)}
               >
                 {v.headerName}

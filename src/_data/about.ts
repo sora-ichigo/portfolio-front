@@ -11,6 +11,7 @@ import {
 import { FiMusic } from "react-icons/fi";
 import { RiMotorbikeFill } from "react-icons/ri";
 import { SiRuby, SiTypescript, SiZenn } from "react-icons/si";
+
 import { WtdIcon } from "../common/components/WtdIcon";
 import { AboutData } from "../domain";
 

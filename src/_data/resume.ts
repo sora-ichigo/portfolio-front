@@ -1,4 +1,5 @@
 import { FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
+
 import { WtdIconForResume } from "../common/components/WtdIcon";
 import { ResumeData } from "../domain";
 

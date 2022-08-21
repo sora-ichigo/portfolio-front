@@ -1,28 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import FlipMove from "react-flip-move";
 import { FaLeaf } from "react-icons/fa";
 
 import { GlobalCenterHeading } from "../../common/components/GlobalCenterHeading";
-import { BlogData, Data } from "../../domain";
+import { Blog as BlogType, BlogData, Data } from "../../domain";
+
 import { BlogItem } from "./BlogItem";
 
 export const Blog: React.FC<{ data: Data }> = ({ data }) => {
   const blogData = data as BlogData;
-  if (typeof blogData?.blogItems === "undefined") {
-    return null;
+  let blogItems: BlogType[] = useMemo(() => [], []);
+  if (typeof blogData?.blogItems !== "undefined") {
+    blogItems = blogData.blogItems;
   }
 
   const serviceNames: Set<string> = new Set();
   serviceNames.add("ALL");
-  blogData.blogItems.map((v) => serviceNames.add(v.serviceName));
+  blogItems.map((v) => serviceNames.add(v.serviceName));
 
-  const [visibleBlogItems, setVisibleBlogItems] = useState(blogData.blogItems);
+  const [visibleBlogItems, setVisibleBlogItems] = useState(blogItems);
   const [currentCategory, setCurrentCategory] = useState<string>("ALL");
 
-  const CategoryBtn: React.FC<{ text: string; id: string }> = ({
-    text,
-    id,
-  }) => (
+  useEffect(() => {
+    if (currentCategory === "ALL") {
+      setVisibleBlogItems(blogItems);
+      return;
+    } else {
+      const newBlogItems = blogItems.filter((v) => v.serviceName === currentCategory);
+      setVisibleBlogItems(newBlogItems);
+    }
+  }, [blogItems, currentCategory]);
+
+  const CategoryBtn: React.FC<{ text: string; id: string }> = ({ text, id }) => (
     <li
       className={`${
         id === currentCategory
@@ -35,18 +44,6 @@ export const Blog: React.FC<{ data: Data }> = ({ data }) => {
       {text}
     </li>
   );
-
-  useEffect(() => {
-    if (currentCategory === "ALL") {
-      setVisibleBlogItems(blogData.blogItems);
-      return;
-    } else {
-      const newBlogItems = blogData.blogItems.filter(
-        (v) => v.serviceName === currentCategory
-      );
-      setVisibleBlogItems(newBlogItems);
-    }
-  }, [blogData.blogItems, currentCategory]);
 
   return (
     <>

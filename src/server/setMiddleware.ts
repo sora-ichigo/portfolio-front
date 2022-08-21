@@ -3,11 +3,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 // And to throw an error when an error happens in a middleware
-export const setMiddleware = (
-  req: NextApiRequest,
-  res: NextApiResponse,
-  fn: Function
-) => {
+export const setMiddleware = (req: NextApiRequest, res: NextApiResponse, fn: Function) => {
   return new Promise((resolve, reject) => {
     fn(req, res, (result: any) => {
       if (result instanceof Error) {

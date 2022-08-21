@@ -8,13 +8,8 @@ type SwiperOverlayProps = {
   moveSlide: (isNext: boolean, isPrev: boolean) => void;
 };
 
-export const SwiperOverlay: React.FC<SwiperOverlayProps> = ({
-  isNext,
-  isPrev,
-  moveSlide,
-}) => {
-  if (isNext || isPrev)
-    return <OverlayDiv onClick={() => moveSlide(isNext, isPrev)} />;
+export const SwiperOverlay: React.FC<SwiperOverlayProps> = ({ isNext, isPrev, moveSlide }) => {
+  if (isNext || isPrev) return <OverlayDiv onClick={() => moveSlide(isNext, isPrev)} />;
   return <></>;
 };
 

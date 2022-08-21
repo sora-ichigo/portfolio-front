@@ -3,13 +3,7 @@ import styled from "styled-components";
 
 import { HistoryListItemType } from "../../domain";
 
-export const HistoryListItem: React.FC<HistoryListItemType> = ({
-  title,
-  subTitle,
-  text,
-  date,
-  current,
-}) => (
+export const HistoryListItem: React.FC<HistoryListItemType> = ({ title, subTitle, text, date, current }) => (
   <div className="relative -z-10 mb-12 rounded-md border-3 border-grey-4 px-8 py-6">
     <HistoryArrow>
       <div className="top" />
@@ -20,9 +14,7 @@ export const HistoryListItem: React.FC<HistoryListItemType> = ({
     <HistoryIcon current={current}>{date}</HistoryIcon>
 
     <h3 className="text-base font-bold">{title}</h3>
-    <h4 className="text-xs font-bold uppercase tracking-widest text-grey-2">
-      {subTitle}
-    </h4>
+    <h4 className="text-xs font-bold uppercase tracking-widest text-grey-2">{subTitle}</h4>
     <p className="mt-3 font-japanese text-sm tracking-wider">{text}</p>
   </div>
 );

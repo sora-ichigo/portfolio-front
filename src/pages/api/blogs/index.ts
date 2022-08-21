@@ -1,7 +1,7 @@
 import { withSentry } from "@sentry/nextjs";
 import { NextApiHandler } from "next";
-import { corsConfig } from "../../../server/cors";
 
+import { corsConfig } from "../../../server/cors";
 import { blogHandler } from "../../../server/handler/blog_handler";
 import { setMiddleware } from "../../../server/setMiddleware";
 

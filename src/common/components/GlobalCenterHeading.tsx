@@ -10,9 +10,7 @@ export const GlobalCenterHeading: React.FC<Props> = ({ text, icon }) => (
       <div className="flex h-12 w-12 items-center justify-center rounded-full border-4 border-grey-1  text-grey-4">
         {React.createElement(icon)}
       </div>
-      <span className="pl-3 pr-6 text-xs font-bold uppercase tracking-widest">
-        {text}
-      </span>
+      <span className="pl-3 pr-6 text-xs font-bold uppercase tracking-widest">{text}</span>
     </span>
   </div>
 );

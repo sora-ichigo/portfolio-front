@@ -2,11 +2,12 @@ import React from "react";
 import { FaUserAlt, FaTwitter, FaMagic, FaBurn } from "react-icons/fa";
 import { IoShareSocialSharp } from "react-icons/io5";
 
-import { ServiceListItem } from "./ServiceListItem";
-import { FunFactListItem } from "./FunFactListItem";
 import { GlobalHeading } from "../../common/components/GlobalHeading";
 import { StrWithBr } from "../../common/components/StrWithBr";
 import { AboutData, Data } from "../../domain";
+
+import { ServiceListItem } from "./ServiceListItem";
+import { FunFactListItem } from "./FunFactListItem";
 
 export const About: React.FC<{ data: Data }> = ({ data }) => {
   const aboutData: AboutData = data as AboutData;
@@ -33,10 +34,7 @@ export const About: React.FC<{ data: Data }> = ({ data }) => {
           <p className="mb-1 break-words rounded bg-blue-light px-8 py-5 font-japanese text-ex-sm leading-relaxed text-grey-3">
             {aboutData.tweet}
           </p>
-          <p
-            className="text-center tracking-widest"
-            style={{ fontSize: "10px" }}
-          >
+          <p className="text-center tracking-widest" style={{ fontSize: "10px" }}>
             POSTED ON MAR 22, 2022
           </p>
         </div>
@@ -51,13 +49,7 @@ export const About: React.FC<{ data: Data }> = ({ data }) => {
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {aboutData.services.map((v, i) => (
-            <ServiceListItem
-              key={i}
-              icon={v.icon}
-              color={v.color}
-              title={v.title}
-              text={v.text}
-            />
+            <ServiceListItem key={i} icon={v.icon} color={v.color} title={v.title} text={v.text} />
           ))}
         </div>
       </div>

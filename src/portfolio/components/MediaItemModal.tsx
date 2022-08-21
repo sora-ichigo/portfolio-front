@@ -5,10 +5,10 @@ import styled from "styled-components";
 import { AiFillCloseCircle } from "react-icons/ai";
 import Modal from "react-modal";
 import { useMediaQuery } from "react-responsive";
+import Head from "next/head";
 
 import { DEV_STYLE, MediaItemType } from "../../domain";
 import { toFormatDevDateString } from "../../common/utils/toFormatDevDateString";
-import Head from "next/head";
 
 export const MediaItemModal: React.FC<{
   mediaItem: MediaItemType;
@@ -34,12 +34,7 @@ export const MediaItemModal: React.FC<{
   };
 
   return (
-    <Modal
-      isOpen={selected}
-      onRequestClose={onRequestClose}
-      style={customStyles}
-      ariaHideApp={false}
-    >
+    <Modal isOpen={selected} onRequestClose={onRequestClose} style={customStyles} ariaHideApp={false}>
       <Head>
         <title>{`${mediaItem.title} | `}Sora Ichigo's HP</title>
       </Head>
@@ -50,30 +45,18 @@ export const MediaItemModal: React.FC<{
         onClick={onRequestClose}
       />
       <div className="mx-auto w-11/12">
-        <h2 className="pt-4 pb-8 font-japanese text-2xl  tracking-wider md:text-3-4xl">
-          {mediaItem.title}
-        </h2>
+        <h2 className="pt-4 pb-8 font-japanese text-2xl  tracking-wider md:text-3-4xl">{mediaItem.title}</h2>
         <div className="lg:grid lg:grid-cols-5 lg:gap-10">
           <div className="col-span-3">
             <div className="mb-4">
-              <Image
-                src={mediaItem.imgUrl}
-                alt={mediaItem.title}
-                width={740}
-                height={450}
-              />
+              <Image src={mediaItem.imgUrl} alt={mediaItem.title} width={740} height={450} />
             </div>
           </div>
           <div className="col-span-2">
-            <h3
-              className="mb-1 font-bold uppercase tracking-widest text-grey-2"
-              style={{ fontSize: "13px" }}
-            >
+            <h3 className="mb-1 font-bold uppercase tracking-widest text-grey-2" style={{ fontSize: "13px" }}>
               DESCRIPTION
             </h3>
-            <p className="font-sm mb-5 font-japanese">
-              {mediaItem.description}
-            </p>
+            <p className="font-sm mb-5 font-japanese">{mediaItem.description}</p>
             {mediaItem.externalUrl && (
               <div className="mt-3 mb-5">
                 <a
@@ -88,30 +71,17 @@ export const MediaItemModal: React.FC<{
               </div>
             )}
 
-            <h3
-              className="mt-8 mb-1 font-bold uppercase tracking-widest text-grey-2"
-              style={{ fontSize: "13px" }}
-            >
+            <h3 className="mt-8 mb-1 font-bold uppercase tracking-widest text-grey-2" style={{ fontSize: "13px" }}>
               DEV Style
             </h3>
-            <p className="mb-5 font-japanese text-sm">
-              {DEV_STYLE[mediaItem.devStyle]}
-            </p>
+            <p className="mb-5 font-japanese text-sm">{DEV_STYLE[mediaItem.devStyle]}</p>
 
-            <h3
-              className="mt-8 mb-1 font-bold uppercase tracking-widest text-grey-2"
-              style={{ fontSize: "13px" }}
-            >
+            <h3 className="mt-8 mb-1 font-bold uppercase tracking-widest text-grey-2" style={{ fontSize: "13px" }}>
               Date
             </h3>
-            <p className="mb-5 text-sm">
-              {toFormatDevDateString(mediaItem.devDate)}
-            </p>
+            <p className="mb-5 text-sm">{toFormatDevDateString(mediaItem.devDate)}</p>
 
-            <h3
-              className="mt-8 font-bold uppercase tracking-widest text-grey-2"
-              style={{ fontSize: "13px" }}
-            >
+            <h3 className="mt-8 font-bold uppercase tracking-widest text-grey-2" style={{ fontSize: "13px" }}>
               TECHNOLOGY
             </h3>
 

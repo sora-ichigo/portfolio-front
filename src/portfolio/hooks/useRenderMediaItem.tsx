@@ -2,15 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+
 import { getCategoryName } from "../../common/utils/getCategoryName";
 import { CategoryDataType, MediaItemType } from "../../domain";
 import { MediaItemModal } from "../components/MediaItemModal";
 
 export const useRenderMediaItem = (
-  {
-    mediaItem,
-    categoryData,
-  }: { mediaItem: MediaItemType; categoryData: CategoryDataType[] },
+  { mediaItem, categoryData }: { mediaItem: MediaItemType; categoryData: CategoryDataType[] },
   ref: React.LegacyRef<HTMLDivElement> | undefined
 ) => {
   const router = useRouter();
@@ -40,9 +38,7 @@ export const useRenderMediaItem = (
               height={800}
             />
             <div className="px-10 py-7 text-center">
-              <h3 className="font-japanese text-base tracking-wider text-navy">
-                {mediaItem.title}
-              </h3>
+              <h3 className="font-japanese text-base tracking-wider text-navy">{mediaItem.title}</h3>
               <p className="uppercase text-grey-2" style={{ fontSize: "12px" }}>
                 {getCategoryName(mediaItem.categoryID, categoryData)}
               </p>
@@ -51,11 +47,7 @@ export const useRenderMediaItem = (
         </Link>
       </div>
 
-      <MediaItemModal
-        mediaItem={mediaItem}
-        selected={selected}
-        onRequestClose={onRequestClose}
-      />
+      <MediaItemModal mediaItem={mediaItem} selected={selected} onRequestClose={onRequestClose} />
     </>
   );
 };
