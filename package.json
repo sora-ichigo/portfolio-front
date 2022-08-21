@@ -7,7 +7,7 @@
     "build": "next build",
     "builder": "ts-node --project tsconfig.builder.json ./src/lib/builder/run.ts",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint ./src",
     "generate": "prisma generate",
     "db": "prisma pull"
   },
