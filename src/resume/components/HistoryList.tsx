@@ -51,7 +51,7 @@ const HistoryLine = styled.div`
   z-index: -10;
   position: absolute;
   top: 0;
-  left: 63px;
+  left: 36px;
   height: 100%;
   background-color: #f4f6f7;
   width: 5px;
