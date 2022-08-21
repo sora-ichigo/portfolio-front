@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+
 import { Blog } from "../../domain/blog";
 
 export const useRenderBlogItem = (
@@ -7,16 +8,8 @@ export const useRenderBlogItem = (
   ref: React.LegacyRef<HTMLDivElement> | undefined
 ) => {
   return (
-    <div
-      className="max-h-sm mx-auto max-w-xl rounded border border-grey-4"
-      ref={ref}
-    >
-      <a
-        className="flex h-full flex-col items-stretch"
-        href={blogItem.siteUrl}
-        target="_blank"
-        rel="noreferrer"
-      >
+    <div className="max-h-sm mx-auto max-w-xl rounded border border-grey-4" ref={ref}>
+      <a className="flex h-full flex-col items-stretch" href={blogItem.siteUrl} target="_blank" rel="noreferrer">
         <Image
           src={blogItem.thumbnailUrl}
           alt={blogItem.title}
@@ -25,14 +18,10 @@ export const useRenderBlogItem = (
           height={630}
         />
         <div className="px-10 pt-5 pb-4 text-center">
-          <h3 className="font-japanese text-sm tracking-wider text-navy">
-            {blogItem.title}
-          </h3>
+          <h3 className="font-japanese text-sm tracking-wider text-navy">{blogItem.title}</h3>
           <p className="text-xs text-navy">{blogItem.serviceName}</p>
           <p className="mt-4 text-xs uppercase text-grey-2">
-            {new Intl.DateTimeFormat("en-US").format(
-              new Date(blogItem.postedAt)
-            )}
+            {new Intl.DateTimeFormat("en-US").format(new Date(blogItem.postedAt))}
           </p>
         </div>
       </a>

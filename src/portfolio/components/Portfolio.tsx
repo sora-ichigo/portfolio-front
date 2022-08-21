@@ -4,20 +4,16 @@ import { FaLeaf } from "react-icons/fa";
 
 import { GlobalCenterHeading } from "../../common/components/GlobalCenterHeading";
 import { CategoryType, Data, MediaItemType, PortfolioData } from "../../domain";
+
 import { MediaItem } from "./MediaItem";
 
 export const Portfolio: React.FC<{ data: Data }> = ({ data }) => {
   const portfolioData = data as PortfolioData;
 
   const [currentCategory, setCurrentCategory] = useState<CategoryType>(-1);
-  const [visibleMediaData, setVisibleMediaData] = useState<MediaItemType[]>(
-    portfolioData.mediaItems
-  );
+  const [visibleMediaData, setVisibleMediaData] = useState<MediaItemType[]>(portfolioData.mediaItems);
 
-  const CategoryBtn: React.FC<{ text: string; id: CategoryType }> = ({
-    text,
-    id,
-  }) => (
+  const CategoryBtn: React.FC<{ text: string; id: CategoryType }> = ({ text, id }) => (
     <li
       className={`${
         id === currentCategory
@@ -61,11 +57,7 @@ export const Portfolio: React.FC<{ data: Data }> = ({ data }) => {
 
       <FlipMove className="mb-8 grid grid-cols-1 gap-12 gap-y-16 px-4 sm:grid-cols-2 lg:grid-cols-3">
         {visibleMediaData.map((v) => (
-          <MediaItem
-            key={v.id}
-            mediaItem={v}
-            categoryData={portfolioData.categoryData}
-          />
+          <MediaItem key={v.id} mediaItem={v} categoryData={portfolioData.categoryData} />
         ))}
       </FlipMove>
     </>

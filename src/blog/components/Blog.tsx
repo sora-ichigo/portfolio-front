@@ -4,25 +4,30 @@ import { FaLeaf } from "react-icons/fa";
 
 import { GlobalCenterHeading } from "../../common/components/GlobalCenterHeading";
 import { BlogData, Data } from "../../domain";
+
 import { BlogItem } from "./BlogItem";
 
 export const Blog: React.FC<{ data: Data }> = ({ data }) => {
   const blogData = data as BlogData;
-  if (typeof blogData?.blogItems === "undefined") {
-    return null;
-  }
 
   const serviceNames: Set<string> = new Set();
   serviceNames.add("ALL");
   blogData.blogItems.map((v) => serviceNames.add(v.serviceName));
 
-  const [visibleBlogItems, setVisibleBlogItems] = useState(blogData.blogItems);
+  const [visibleBlogItems, setVisibleBlogItems] = useState(blogData?.blogItems);
   const [currentCategory, setCurrentCategory] = useState<string>("ALL");
 
-  const CategoryBtn: React.FC<{ text: string; id: string }> = ({
-    text,
-    id,
-  }) => (
+  useEffect(() => {
+    if (currentCategory === "ALL") {
+      setVisibleBlogItems(blogData.blogItems);
+      return;
+    } else {
+      const newBlogItems = blogData.blogItems.filter((v) => v.serviceName === currentCategory);
+      setVisibleBlogItems(newBlogItems);
+    }
+  }, [blogData.blogItems, currentCategory]);
+
+  const CategoryBtn: React.FC<{ text: string; id: string }> = ({ text, id }) => (
     <li
       className={`${
         id === currentCategory
@@ -35,18 +40,6 @@ export const Blog: React.FC<{ data: Data }> = ({ data }) => {
       {text}
     </li>
   );
-
-  useEffect(() => {
-    if (currentCategory === "ALL") {
-      setVisibleBlogItems(blogData.blogItems);
-      return;
-    } else {
-      const newBlogItems = blogData.blogItems.filter(
-        (v) => v.serviceName === currentCategory
-      );
-      setVisibleBlogItems(newBlogItems);
-    }
-  }, [blogData.blogItems, currentCategory]);
 
   return (
     <>

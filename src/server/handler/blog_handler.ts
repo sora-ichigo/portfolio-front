@@ -1,20 +1,16 @@
-import {
-  PrismaClientKnownRequestError,
-  PrismaClientValidationError,
-} from "@prisma/client/runtime";
+import { PrismaClientKnownRequestError, PrismaClientValidationError } from "@prisma/client/runtime";
 import { NextApiHandler } from "next";
 import { v4 as uuidv4 } from "uuid";
 import * as ogp from "open-graph-scraper";
+import { OpenGraphImage, OpenGraphProperties } from "open-graph-scraper";
+
 import { Blog } from "../../domain/blog";
 import { prismaClient } from "../prisma_client";
-import { ResponseErorr } from "./error_type";
-import { OpenGraphImage, OpenGraphProperties } from "open-graph-scraper";
 import { cloudinaryClient } from "../../cloudinary";
 
-const getBlogs: NextApiHandler<{ blogs: Blog[] } | ResponseErorr> = async (
-  _req,
-  res
-) => {
+import { ResponseErorr } from "./error_type";
+
+const getBlogs: NextApiHandler<{ blogs: Blog[] } | ResponseErorr> = async (_req, res) => {
   const blogsFromManual = await prismaClient.blog_from_manual_items.findMany();
   const blogsFromRSS = await prismaClient.blog_from_rss_items.findMany();
 
@@ -47,10 +43,7 @@ const getBlogs: NextApiHandler<{ blogs: Blog[] } | ResponseErorr> = async (
   return res.status(200).json({ blogs });
 };
 
-const getBlog: NextApiHandler<{ blog: Blog } | ResponseErorr> = async (
-  req,
-  res
-) => {
+const getBlog: NextApiHandler<{ blog: Blog } | ResponseErorr> = async (req, res) => {
   const { id } = req.query;
 
   const blogFromManual = await prismaClient.blog_from_manual_items.findUnique({
@@ -76,10 +69,7 @@ const getBlog: NextApiHandler<{ blog: Blog } | ResponseErorr> = async (
   return res.status(200).json({ blog });
 };
 
-const createBlog: NextApiHandler<{ blog: Blog } | ResponseErorr> = async (
-  req,
-  res
-) => {
+const createBlog: NextApiHandler<{ blog: Blog } | ResponseErorr> = async (req, res) => {
   try {
     const params: {
       title: string;
@@ -89,11 +79,8 @@ const createBlog: NextApiHandler<{ blog: Blog } | ResponseErorr> = async (
       service_name: string;
     } = req.body;
 
-    const { title, postedAtString, thumbnailUrl, serviceName } =
-      await getOGPData(params.site_url);
-    const postedAt = postedAtString
-      ? new Date(postedAtString).toISOString()
-      : undefined;
+    const { title, postedAtString, thumbnailUrl, serviceName } = await getOGPData(params.site_url);
+    const postedAt = postedAtString ? new Date(postedAtString).toISOString() : undefined;
 
     let CloudinaryThumbnailUrl: string = "";
     await cloudinaryClient.uploader.upload(
@@ -132,10 +119,7 @@ const createBlog: NextApiHandler<{ blog: Blog } | ResponseErorr> = async (
     // NOTE: 現在validation エラーでどのカラムが問題であったかわからない状態だが、
     // フロントエンド側で丁寧にバリデーションする予定なのでここでは考えない
     // なお、og 取得の処理は理想的にはフロント側でフォーム補完として実装したい
-    if (
-      e instanceof PrismaClientKnownRequestError ||
-      e instanceof PrismaClientValidationError
-    ) {
+    if (e instanceof PrismaClientKnownRequestError || e instanceof PrismaClientValidationError) {
       return res.status(400).json({ message: e.message });
     } else if (e instanceof RangeError) {
       // For toISOString()
@@ -208,15 +192,11 @@ const deleteBlog: NextApiHandler<void | ResponseErorr> = async (req, res) => {
       where: { id: id as string },
     });
 
-    if (payload.count === 0)
-      return res.status(404).json({ message: "blog not found" });
+    if (payload.count === 0) return res.status(404).json({ message: "blog not found" });
 
     return res.status(200).json();
   } catch (e) {
-    if (
-      e instanceof PrismaClientValidationError ||
-      e instanceof PrismaClientKnownRequestError
-    ) {
+    if (e instanceof PrismaClientValidationError || e instanceof PrismaClientKnownRequestError) {
       return res.status(400).json({ message: e.message });
     }
     throw e;

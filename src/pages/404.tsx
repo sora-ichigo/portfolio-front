@@ -3,14 +3,8 @@ import { NextPage } from "next";
 
 const Custom404: NextPage = () => {
   return (
-    <div
-      className="flex flex-col items-center justify-center"
-      style={{ height: "95vh" }}
-    >
-      <p
-        className="text-center font-japanese text-3xl leading-normal tracking-wider"
-        style={{ maxWidth: "80%" }}
-      >
+    <div className="flex flex-col items-center justify-center" style={{ height: "95vh" }}>
+      <p className="text-center font-japanese text-3xl leading-normal tracking-wider" style={{ maxWidth: "80%" }}>
         お探しのページは
         <br />
         見つかりませんでした

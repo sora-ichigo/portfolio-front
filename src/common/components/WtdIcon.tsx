@@ -26,34 +26,10 @@ export const WtdIcon: React.FC = () => {
           fill="#334455"
           fillRule="evenodd"
         ></path>
-        <path
-          id="path2"
-          d=""
-          stroke="none"
-          fill="#334455"
-          fillRule="evenodd"
-        ></path>
-        <path
-          id="path3"
-          d=""
-          stroke="none"
-          fill="#334455"
-          fillRule="evenodd"
-        ></path>
-        <path
-          id="path4"
-          d=""
-          stroke="none"
-          fill="#334455"
-          fillRule="evenodd"
-        ></path>
-        <path
-          id="path5"
-          d=""
-          stroke="none"
-          fill="#334455"
-          fillRule="evenodd"
-        ></path>
+        <path id="path2" d="" stroke="none" fill="#334455" fillRule="evenodd"></path>
+        <path id="path3" d="" stroke="none" fill="#334455" fillRule="evenodd"></path>
+        <path id="path4" d="" stroke="none" fill="#334455" fillRule="evenodd"></path>
+        <path id="path5" d="" stroke="none" fill="#334455" fillRule="evenodd"></path>
       </g>
     </svg>
   );
@@ -85,34 +61,10 @@ export const WtdIconForResume: React.FC = () => {
           fill="#334455"
           fillRule="evenodd"
         ></path>
-        <path
-          id="path2"
-          d=""
-          stroke="none"
-          fill="#334455"
-          fillRule="evenodd"
-        ></path>
-        <path
-          id="path3"
-          d=""
-          stroke="none"
-          fill="#334455"
-          fillRule="evenodd"
-        ></path>
-        <path
-          id="path4"
-          d=""
-          stroke="none"
-          fill="#334455"
-          fillRule="evenodd"
-        ></path>
-        <path
-          id="path5"
-          d=""
-          stroke="none"
-          fill="#334455"
-          fillRule="evenodd"
-        ></path>
+        <path id="path2" d="" stroke="none" fill="#334455" fillRule="evenodd"></path>
+        <path id="path3" d="" stroke="none" fill="#334455" fillRule="evenodd"></path>
+        <path id="path4" d="" stroke="none" fill="#334455" fillRule="evenodd"></path>
+        <path id="path5" d="" stroke="none" fill="#334455" fillRule="evenodd"></path>
       </g>
     </svg>
   );

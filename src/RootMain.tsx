@@ -1,16 +1,16 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import type CoreSwiper from "swiper";
 import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
+import { useMediaQuery } from "react-responsive";
+import { captureException } from "@sentry/nextjs";
+import useSwr from "swr";
 
 import { END_PAGE, MainPageType, mainPageList } from "./common/utils/mainPages";
 import { Header } from "./header/components/Header";
 import { SwiperOverlay } from "./common/components/SwiperOverlay";
-import { useMediaQuery } from "react-responsive";
 import { aboutData, headerData, portfolioData, resumeData } from "./_data";
 import { BlogData, Data } from "./domain";
-import useSwr from "swr";
 import { axiosClient } from "./axios_client";
-import { captureException } from "@sentry/nextjs";
 
 export const RootMain: React.FC<{
   pageType: MainPageType;
@@ -60,9 +60,7 @@ export const RootMain: React.FC<{
   // thumbnail_url を s3 にアップロードし直す
   const { data, error } = useSwr("/api/blogs", axiosClient);
   if (data?.data.blogs) {
-    (mainPageData.blog as BlogData).blogItems = data?.data.blogs
-      ? data?.data.blogs
-      : mainPageData.blog;
+    (mainPageData.blog as BlogData).blogItems = data?.data.blogs ? data?.data.blogs : mainPageData.blog;
   }
   if (error) captureException(error);
 
@@ -76,9 +74,7 @@ export const RootMain: React.FC<{
 
   return (
     <div className={loading ? "fixed bottom-0" : ""}>
-      {loading && (
-        <div className="fixed top-0 left-0 z-50 h-full w-full bg-white"></div>
-      )}
+      {loading && <div className="fixed top-0 left-0 z-50 h-full w-full bg-white"></div>}
       <Header
         headerData={headerData}
         swiperGeneralProps={swiperGeneralProps}
@@ -109,10 +105,7 @@ export const RootMain: React.FC<{
 };
 
 // どの方向にスライドが動いたか
-const checkSlideMove: (status: {
-  prev: number;
-  current: number;
-}) => "NOOP" | "NEXT" | "PREV" = ({ prev, current }) => {
+const checkSlideMove: (status: { prev: number; current: number }) => "NOOP" | "NEXT" | "PREV" = ({ prev, current }) => {
   if (prev === current) {
     return "NOOP";
   }

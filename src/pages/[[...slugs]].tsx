@@ -1,17 +1,12 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { RootMain } from "../RootMain";
-import {
-  MAIN_PAGES,
-  MainPageType,
-  mainPageList,
-} from "../common/utils/mainPages";
-import { axiosClient } from "../axios_client";
-import { Blog, BlogData } from "../domain";
 import { captureException } from "@sentry/nextjs";
 
-const Home: NextPage<{ pageType: MainPageType; blogData: BlogData }> = (
-  props
-) => {
+import { RootMain } from "../RootMain";
+import { MAIN_PAGES, MainPageType, mainPageList } from "../common/utils/mainPages";
+import { axiosClient } from "../axios_client";
+import { Blog, BlogData } from "../domain";
+
+const Home: NextPage<{ pageType: MainPageType; blogData: BlogData }> = (props) => {
   return <RootMain {...props} />;
 };
 

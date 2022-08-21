@@ -1,11 +1,11 @@
 import React from "react";
 import { FaSuperpowers } from "react-icons/fa";
-import { AiOutlineAntDesign } from "react-icons/ai";
 import { GiArmoredBoomerang } from "react-icons/gi";
 
 import { GlobalHeading } from "../../common/components/GlobalHeading";
-import { HistoryList } from "./HistoryList";
 import { Data, ResumeData, SkillItemType } from "../../domain";
+
+import { HistoryList } from "./HistoryList";
 
 export const Resume: React.FC<{ data: Data }> = ({ data }) => {
   const resumeData: ResumeData = data as ResumeData;
@@ -49,22 +49,12 @@ export const Resume: React.FC<{ data: Data }> = ({ data }) => {
             ------------------------- */}
         <div className="pb-12">
           <div className="my-3">
-            <GlobalHeading
-              icon={GiArmoredBoomerang}
-              text="view more about me"
-            />
+            <GlobalHeading icon={GiArmoredBoomerang} text="view more about me" />
           </div>
-          <p className="mt-4 mb-4 font-japanese leading-7">
-            {resumeData.viewMoreAbout.text}
-          </p>
+          <p className="mt-4 mb-4 font-japanese leading-7">{resumeData.viewMoreAbout.text}</p>
           <div className="flex text-4xl">
             {resumeData.viewMoreAbout.sns.map((v, i) => (
-              <a
-                className="mr-3 text-navy"
-                href={v.url}
-                target="_blunk"
-                key={i}
-              >
+              <a className="mr-3 text-navy" href={v.url} target="_blunk" key={i}>
                 {React.createElement(v.icon)}
               </a>
             ))}
