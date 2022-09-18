@@ -198,6 +198,19 @@ export const portfolioData: PortfolioData = {
       tags: ["Python", "Raspberry Pi"],
       externalUrl: "https://project.nikkeibp.co.jp/pc/atcl/20/08/04/00032/092800046/",
     },
+    {
+      id: 15,
+      title: "Nebuta Live - 全国のねぶた祭りをもっと楽しく",
+      categoryID: CATEGORY["FRONTEND"],
+      thumbnailUrl: "https://res.cloudinary.com/drb9hgnv3/image/upload/v1663485378/188551530-73356d10-63ab-491b-a0c8-50c198d4ffa1_sq2tex.png",
+      imgUrl: "https://res.cloudinary.com/drb9hgnv3/image/upload/v1663485378/188551530-73356d10-63ab-491b-a0c8-50c198d4ffa1_sq2tex.png",
+      description:
+        "全国のねぶた祭り当日をもっと楽しくするアプリです。このアプリは若者向けにねぶた祭りでの悩みのあれこれを解消し、今までにない楽しみを提供します。またこの作品は TwoGate DevCamp 2022 の優勝作品です。 Team B(@igsr5, @Okakakai, @kurakke) が開発しました。 開発期間は2日弱でした。",
+      devStyle: 1,
+      devDate: new Date("2022-09"),
+      tags: ["TypeScript", "React", "Next.js", "Google Maps API"],
+      externalUrl: "https://github.com/igsr5/nebuta-live",
+    },
   ].sort((a, b) => {
     if (a.devDate > b.devDate) {
       return -1;
