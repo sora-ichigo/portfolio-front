@@ -6,4 +6,8 @@
   a {
     @apply text-green-link;
   }
+
+  html {
+    font-size: 16px;
+  }
 }
