@@ -18,7 +18,7 @@ import { AboutData } from "../domain";
 export const aboutData: AboutData = {
   description:
     "こんにちは！愛知県の情報工学科学生です。\nソフトウェア開発を通じて課題を解決するのが好きです。\n普段はコードを書いたり, バイクに乗ったり, 温泉に入ったりしています。",
-  tweet: "ブログページを実装しました",
+  tweet: "最近早起きをおぼえました",
   services: [
     {
       icon: SiTypescript,

@@ -18,7 +18,7 @@ module.exports = {
         grey: {
           DEFAULT: "#96A5A8", // 少し薄めのテキストカラー
           1: "#F4F6F7", // ボーダー、WORK PROCESS のアイコンのところ
-          2: "#C9D5D6", // Resume > History のサブタイトルのテキストカラー
+          2: "#9a9a9a", // Resume > History のサブタイトルのテキストカラー
           3: "#6A7686", // 背景が白以外の時の文字色
           4: "#D0DADC", // タブタイトル(inactive), 見出しアイコン色
         },

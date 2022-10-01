@@ -9,7 +9,7 @@ import { HistoryListItem } from "./HistoryListItem";
 export const HistoryList: React.FC<{
   historyListProps: HistoryListItemType[];
 }> = ({ historyListProps }) => (
-  <div className="relative mt-5 pl-24 pb-2 sm:ml-4 md:ml-0 md:pl-28">
+  <HistoryWrapper>
     <HistoryLine />
     <h2 className="relative mb-9 text-2xl font-light tracking-widest">
       <WorkHistoryIcon>
@@ -21,8 +21,21 @@ export const HistoryList: React.FC<{
     {historyListProps.map((v, i) => {
       return <HistoryListItem key={i} {...v} />;
     })}
-  </div>
+  </HistoryWrapper>
 );
+
+const HistoryWrapper = styled.div`
+  position: relative;
+  margin-top: 1.25rem;
+  padding-bottom: 0.5rem;
+  @media (min-width: 768px) {
+    margin-left: 0;
+    padding-left: 5.3rem;
+  }
+  @media (min-width: 640px) {
+    margin-left: 1rem;
+  }
+`;
 
 const WorkHistoryIcon = styled.div`
   font-size: 24px;
