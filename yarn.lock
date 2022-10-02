@@ -3206,10 +3206,10 @@ react-refresh@0.8.3:
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.8.3.tgz"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
 
-react-responsive@^9.0.0-beta.6:
-  version "9.0.0-beta.6"
-  resolved "https://registry.npmjs.org/react-responsive/-/react-responsive-9.0.0-beta.6.tgz"
-  integrity sha512-Flk6UrnpBBByreva6ja/TsbXiXq4BXOlDEKL6Ur+nshUs3CcN5W0BpGe6ClFWrKcORkMZAAYy7A4N4xlMmpgVw==
+react-responsive@9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/react-responsive/-/react-responsive-9.0.0.tgz#deb58d0bcb11854f84103bc0e5cecd799161fa5a"
+  integrity sha512-hyJmKpAglo1AdZsGmu1sab0VInEGzUTXT3nJ3Cl7cMDjR0ffV30lOM3N1xag456OsCGAgqRIkgloLy6tHaqZ2w==
   dependencies:
     hyphenate-style-name "^1.0.0"
     matchmediaquery "^0.3.0"
