@@ -28,9 +28,10 @@ const HistoryWrapper = styled.div`
   position: relative;
   margin-top: 1.25rem;
   padding-bottom: 0.5rem;
+  padding-left: 95px;
   @media (min-width: 768px) {
     margin-left: 0;
-    padding-left: 5.3rem;
+    padding-left: 84px;
   }
   @media (min-width: 640px) {
     margin-left: 1rem;
