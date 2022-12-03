@@ -1,6 +1,6 @@
 import { NextLayout } from "../_app";
-import { GlobalFooter } from "../../common/components/GlobalFooter";
 import { GlobalHeader } from "../../new/common/components/GlobalHeader";
+import { GlobalFooter } from "../../new/common/components/GlobalFooter";
 
 export const Layout: NextLayout = (page) => {
   return (
