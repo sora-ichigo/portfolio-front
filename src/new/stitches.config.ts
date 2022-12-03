@@ -23,6 +23,7 @@ export const defaultCss = css({
   fontSize: "16px",
   fontFamily: "$lato",
   fontWeight: 300,
+  margin: 0,
   a: {
     color: "$green",
   },
