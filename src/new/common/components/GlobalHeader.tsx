@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
+import { styled } from "../../stitches.config";
+
 type HeaderData = {
   name: string;
   description: string;
@@ -13,19 +15,46 @@ type Props = {
 
 export const GlobalHeader: React.FC<Props> = (props) => {
   return (
-    <header className="pt-6 text-center sm:px-4 sm:pb-1 md:p-8">
-      <Image
-        className="mx-auto block rounded-full"
-        src={props.data.iconUrl}
-        width={160}
-        height={160}
-        priority={true}
-        alt="Ichigo Sora"
-      />
-      <h1 className="mt-3.5 text-2xl font-light leading-snug">{props.data.name}</h1>
-      <p className="mb-2 inline-block rounded  bg-yellow-marker px-2.5 py-1.5 italic leading-none">
-        {props.data.description}
-      </p>
-    </header>
+    <Header>
+      <Icon src={props.data.iconUrl} width={160} height={160} priority={true} alt="Ichigo Sora" />
+      <Name>{props.data.name}</Name>
+      <Description>{props.data.description}</Description>
+    </Header>
   );
 };
+
+const Header = styled("div", {
+  paddingTop: "1.5rem",
+  textAlign: "center",
+  "@md": {
+    paddingTop: "2rem",
+  },
+});
+
+const Icon = styled(Image, {
+  display: "inline-block",
+  borderRadius: "50%",
+  width: "140px",
+  height: "140px",
+  "@md": {
+    width: "160px",
+    height: "160px",
+  },
+});
+
+const Name = styled("h1", {
+  marginTop: "16px",
+  marginBottom: "0px",
+  fontSize: "1.5rem",
+  lineHeight: "1",
+});
+
+const Description = styled("p", {
+  marginTop: "4px",
+  marginBottom: "0px",
+  padding: "4px 12px",
+  display: "inline-block",
+  borderRadius: "4px",
+  fontStyle: "italic",
+  background: "#FAF46A",
+});

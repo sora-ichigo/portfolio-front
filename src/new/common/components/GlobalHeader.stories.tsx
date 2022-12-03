@@ -2,6 +2,8 @@ import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { within } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
 
+import { defaultCss, styled } from "../../stitches.config";
+
 import { GlobalHeader } from "./GlobalHeader";
 
 type Story = ComponentStoryObj<typeof GlobalHeader>;
@@ -12,7 +14,6 @@ const meta: Meta = {
 };
 
 export default meta;
-
 export const Default: Story = {
   decorators: [],
   args: {
@@ -28,3 +29,7 @@ export const Default: Story = {
     expect(canvas.queryByText("Software Engineer")).toBeInTheDocument();
   },
 };
+
+const Base = styled("div", {
+  ...defaultCss,
+});

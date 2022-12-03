@@ -1,6 +1,8 @@
 import Document, { DocumentContext, Head, Html, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
+import { defaultCss, getCssText, styled } from "../new/stitches.config";
+
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet();
@@ -35,12 +37,18 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300&family=M+PLUS+1p&display=swap"
             rel="stylesheet"
           ></link>
+
+          <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
         </Head>
-        <body className="font-main font-light text-navy">
+        <Body>
           <Main />
           <NextScript />
-        </body>
+        </Body>
       </Html>
     );
   }
 }
+
+const Body = styled("body", {
+  ...defaultCss,
+});

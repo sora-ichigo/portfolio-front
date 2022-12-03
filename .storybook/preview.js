@@ -1,5 +1,7 @@
-import "../src/styles/index.css";
 import * as NextImage from "next/image";
+import React from "react";
+
+import { styled, defaultCss } from "../src/new/stitches.config";
 
 const OriginalNextImage = NextImage.default;
 
@@ -16,4 +18,26 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  parameters: {
+    breakpoints: {
+      breakpointNames: {
+        sm: "640",
+        md: "768",
+      },
+    },
+  },
 };
+
+export const decorators = [
+  (Story) => {
+    return (
+      <Base>
+        <Story />
+      </Base>
+    );
+  },
+];
+
+const Base = styled("div", {
+  ...defaultCss,
+});

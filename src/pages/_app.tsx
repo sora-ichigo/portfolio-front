@@ -6,8 +6,7 @@ import * as Sentry from "@sentry/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import "tailwindcss/tailwind.css";
-import "../styles/index.css";
+// import "tailwindcss/tailwind.css";
 
 import { InternalServerError } from "../common/components/InternalServerError";
 import { GlobalHead } from "../common/components/GlobalHead";
