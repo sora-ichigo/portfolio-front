@@ -1,8 +1,9 @@
-import { NextLayout } from "../_app";
-import { GlobalHeader } from "../../new/common/components/GlobalHeader";
-import { GlobalFooter } from "../../new/common/components/GlobalFooter";
+import { NextLayout } from "../../../pages/_app";
 
-export const Layout: NextLayout = (page) => {
+import { GlobalHeader } from "./GlobalHeader";
+import { GlobalFooter } from "./GlobalFooter";
+
+export const GlobalLayout: NextLayout = (page) => {
   return (
     <>
       <GlobalHeader

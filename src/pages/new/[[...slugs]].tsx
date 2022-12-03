@@ -2,14 +2,13 @@ import { GetStaticPaths, GetStaticProps } from "next";
 
 import { SlideContentContainer } from "../../new/SlideContentContainer";
 import { NextPageWithLayout } from "../_app";
-
-import { Layout } from "./layout";
+import { GlobalLayout } from "../../new/common/components/GlobalLayout";
 
 const Page: NextPageWithLayout = (props) => {
   return <SlideContentContainer />;
 };
 
-Page.getLayout = Layout;
+Page.getLayout = GlobalLayout;
 
 export default Page;
 
