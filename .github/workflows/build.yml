@@ -3,7 +3,7 @@ name: Build
 on: [pull_request]
 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
     env:
       NPM_TOKEN: ${{ secrets.ORG_SHARED_NPM_TOKEN }}

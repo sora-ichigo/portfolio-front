@@ -3,7 +3,7 @@ name: Test
 on: [pull_request]
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
     env:
       NPM_TOKEN: ${{ secrets.ORG_SHARED_NPM_TOKEN }}
