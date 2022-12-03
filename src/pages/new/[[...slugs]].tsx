@@ -1,8 +1,14 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 
-const Page: NextPage = (props) => {
+import { NextPageWithLayout } from "../_app";
+
+import { Layout } from "./layout";
+
+const Page: NextPageWithLayout = (props) => {
   return <div>Page</div>;
 };
+
+Page.getLayout = Layout;
 
 export default Page;
 
