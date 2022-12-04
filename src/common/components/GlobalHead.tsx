@@ -1,11 +1,10 @@
-/* eslint-disable react/no-unescaped-entities */
 import Head from "next/head";
 import React from "react";
 
-export const GlobalHead: React.FC<{ currentPageString: string }> = ({ currentPageString }) => (
+export const GlobalHead: React.FC<{ title: string }> = ({ title }) => (
   <Head>
-    <title>{currentPageString !== "" ? `${currentPageString} | ` : ""}Sora Ichigo's HP</title>
-    <meta key="og:title" property="og:title" content="Sora Ichigo の HP サイト" />
+    <title>{title}</title>
+    <meta key="og:title" property="og:title" content={title} />
     <meta property="og:type" content="website" />
     <meta
       key="og:description"

@@ -5,9 +5,9 @@ import { corsConfig } from "../../../server/cors";
 import { blogHandler } from "../../../server/handler/blog_handler";
 import { setMiddleware } from "../../../server/setMiddleware";
 
-export const config = {
-  runtime: "experimental-edge",
-};
+// export const config = {
+//   runtime: "experimental-edge",
+// };
 
 // ==============================
 // Route:

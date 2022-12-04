@@ -9,7 +9,7 @@ const moduleExports = {
   // Your existing module.exports
   reactStrictMode: true,
   images: {
-    domains: ["images.igsr5.com", "res.cloudinary.com"],
+    domains: ["via.placeholder.com", "images.igsr5.com", "res.cloudinary.com"],
   },
 };
 

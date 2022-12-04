@@ -12,9 +12,9 @@ import { setMiddleware } from "../../../server/setMiddleware";
 //  - DELETE: /api/blogs/[id]
 // ==============================
 
-export const config = {
-  runtime: "experimental-edge",
-};
+// export const config = {
+//   runtime: "experimental-edge",
+// };
 
 const handler: NextApiHandler = async (req, res) => {
   setMiddleware(req, res, corsConfig);

@@ -1,50 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import React, { ReactElement, ReactNode } from "react";
+import { AppProps } from "next/app";
+import { NextPage } from "next";
 import SwiperCore, { Pagination, Navigation } from "swiper";
 import * as Sentry from "@sentry/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import "tailwindcss/tailwind.css";
-import "../styles/index.css";
+// import "tailwindcss/tailwind.css";
+
 import { InternalServerError } from "../common/components/InternalServerError";
 import { GlobalHead } from "../common/components/GlobalHead";
-import { mainPageList, MAIN_PAGES } from "../common/utils/mainPages";
-import { Footer } from "../common/components/Footer";
+
+export type NextLayout = (page: ReactElement) => ReactNode;
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: NextLayout;
+};
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
 
 SwiperCore.use([Pagination, Navigation]);
+const App = ({ Component, pageProps }: AppPropsWithLayout) => {
+  const getLayout = Component.getLayout ?? ((page) => page);
 
-const fallback = <InternalServerError></InternalServerError>;
-
-const App = ({ Component, pageProps }: any) => {
-  const router = useRouter();
-  const path = router.asPath;
-  const [currentPageString, setCurrentPageString] = useState("");
-
-  useEffect(() => {
-    const aboutPage = mainPageList[MAIN_PAGES["ABOUT_ME"]];
-    if (path === aboutPage.path) {
-      setCurrentPageString(`${aboutPage.name[0].toUpperCase()}${aboutPage.name.slice(1)}`);
-      return;
-    }
-
-    for (const mainPage of mainPageList) {
-      if (mainPage === aboutPage) continue;
-
-      if (path.includes(mainPage.path)) {
-        setCurrentPageString(`${mainPage.name[0].toUpperCase()}${mainPage.name.slice(1)}`);
-        break;
-      }
-    }
-  }, [path]);
-
-  return (
+  return getLayout(
     <>
-      <GlobalHead currentPageString={currentPageString} />
-      <Sentry.ErrorBoundary fallback={fallback}>
+      <GlobalHead title="Sora Ichigo's HP" />
+      <Sentry.ErrorBoundary fallback={<InternalServerError />}>
         <Component {...pageProps} />
       </Sentry.ErrorBoundary>
-      <Footer />
     </>
   );
 };

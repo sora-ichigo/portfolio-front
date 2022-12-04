@@ -1,11 +1,19 @@
 import React from "react";
 
-export const Footer: React.FC = () => (
-  <div className="mt-2 py-2 text-center" style={{ fontSize: "12px" }}>
+import { styled } from "../../stitches.config";
+
+export const GlobalFooter: React.FC = () => (
+  <Footer>
     © 2022 @igsr5, the design is inspierd by{" "}
     <a href="https://themeforest.net/item/cvcard-wp-responsive-vcard-theme/7476245" target="_blank" rel="noreferrer">
       cvCard WP
     </a>
     .
-  </div>
+  </Footer>
 );
+
+const Footer = styled("footer", {
+  margin: "8px 0",
+  textAlign: "center",
+  fontSize: "12px",
+});
