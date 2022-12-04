@@ -1,7 +1,7 @@
 import Document, { DocumentContext, Head, Html, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
-import { defaultCss, getCssText, styled } from "../new/stitches.config";
+import { getCssText, globalStyles } from "../new/stitches.config";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -30,6 +30,7 @@ export default class MyDocument extends Document {
   }
 
   render(): JSX.Element {
+    globalStyles();
     return (
       <Html>
         <Head>
@@ -40,15 +41,11 @@ export default class MyDocument extends Document {
 
           <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
         </Head>
-        <Body>
+        <body>
           <Main />
           <NextScript />
-        </Body>
+        </body>
       </Html>
     );
   }
 }
-
-const Body = styled("body", {
-  ...defaultCss,
-});

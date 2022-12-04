@@ -6,6 +6,8 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
       navy: "#334455",
       yellow: "#FAF46A",
       green: "#009966",
+      grey1: "#F4F6F7",
+      grey4: "#D0DADC",
     },
     fonts: {
       lato: "Lato, sans-serif",
@@ -18,19 +20,22 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
   utils: {},
 });
 
-export const defaultCss = css({
-  color: "$navy",
-  fontSize: "16px",
-  fontFamily: "$lato",
-  fontWeight: 300,
-  margin: 0,
-  a: {
-    color: "$green",
-  },
-  // css reset
+export const globalStyles = globalCss({
   "h1, h2, h3, h4, h5, h6, p": {
     lineHeight: "inherit",
     fontWeight: "inherit",
     fontFamily: "inherit",
+  },
+  a: {
+    color: "$green",
+  },
+  body: {
+    margin: 0,
+  },
+  "*": {
+    fontWeight: 300,
+    color: "$navy",
+    fontSize: "16px",
+    fontFamily: "$lato",
   },
 });

@@ -1,7 +1,7 @@
 import * as NextImage from "next/image";
 import React from "react";
 
-import { styled, defaultCss } from "../src/new/stitches.config";
+import { globalStyles } from "../src/new/stitches.config";
 
 const OriginalNextImage = NextImage.default;
 
@@ -30,14 +30,7 @@ export const parameters = {
 
 export const decorators = [
   (Story) => {
-    return (
-      <Base>
-        <Story />
-      </Base>
-    );
+    globalStyles();
+    return <Story />;
   },
 ];
-
-const Base = styled("div", {
-  ...defaultCss,
-});
